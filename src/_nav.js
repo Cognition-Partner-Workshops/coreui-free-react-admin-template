@@ -40,6 +40,11 @@ const _nav = [
     items: [
       {
         component: CNavItem,
+        name: 'DNS Lookup',
+        to: '/dns/lookup',
+      },
+      {
+        component: CNavItem,
         name: 'DNS Zones',
         to: '/dns/zones',
       },

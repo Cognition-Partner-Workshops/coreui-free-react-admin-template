@@ -52,6 +52,7 @@ const Toasts = React.lazy(() => import('./views/notifications/toasts/Toasts'))
 const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 
 // DNS Management
+const DNSLookup = React.lazy(() => import('./views/dns/lookup/DNSLookup'))
 const DNSZones = React.lazy(() => import('./views/dns/zones/DNSZones'))
 const DNSRecords = React.lazy(() => import('./views/dns/records/DNSRecords'))
 
@@ -102,7 +103,8 @@ const routes = [
   { path: '/notifications/toasts', name: 'Toasts', element: Toasts },
   { path: '/widgets', name: 'Widgets', element: Widgets },
   // DNS Management
-  { path: '/dns', name: 'DNS', element: DNSZones, exact: true },
+  { path: '/dns', name: 'DNS', element: DNSLookup, exact: true },
+  { path: '/dns/lookup', name: 'DNS Lookup', element: DNSLookup },
   { path: '/dns/zones', name: 'DNS Zones', element: DNSZones },
   { path: '/dns/records', name: 'DNS Records', element: DNSRecords },
 ]
