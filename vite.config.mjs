@@ -9,6 +9,17 @@ export default defineConfig(() => {
     build: {
       outDir: 'build',
     },
+    test: {
+      globals: true,
+      environment: 'jsdom',
+      setupFiles: './src/test/setup.js',
+      coverage: {
+        provider: 'v8',
+        reporter: ['text', 'json', 'html'],
+        include: ['src/**/*.js', 'src/**/*.jsx'],
+        exclude: ['src/test/**', 'node_modules/**'],
+      },
+    },
     css: {
       postcss: {
         plugins: [
