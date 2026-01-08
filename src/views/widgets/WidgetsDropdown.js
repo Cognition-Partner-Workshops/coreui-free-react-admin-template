@@ -25,7 +25,15 @@ import {
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Filler)
 
-const StatsWidget = ({ color, value, change, changeIcon, title, chartData, chartType = 'line' }) => {
+const StatsWidget = ({
+  color,
+  value,
+  change,
+  changeIcon,
+  title,
+  chartData,
+  chartType = 'line',
+}) => {
   const theme = useTheme()
   const [anchorEl, setAnchorEl] = React.useState(null)
   const open = Boolean(anchorEl)
@@ -47,7 +55,9 @@ const StatsWidget = ({ color, value, change, changeIcon, title, chartData, chart
   }
 
   return (
-    <Card sx={{ bgcolor: `${color}.main`, color: 'white', position: 'relative', overflow: 'hidden' }}>
+    <Card
+      sx={{ bgcolor: `${color}.main`, color: 'white', position: 'relative', overflow: 'hidden' }}
+    >
       <CardContent sx={{ pb: 0 }}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
           <Box>
@@ -105,12 +115,14 @@ const WidgetsDropdown = (props) => {
       title: 'Users',
       chartData: {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-        datasets: [{
-          backgroundColor: 'transparent',
-          borderColor: 'rgba(255,255,255,.55)',
-          pointBackgroundColor: theme.palette.primary.main,
-          data: [65, 59, 84, 84, 51, 55, 40],
-        }],
+        datasets: [
+          {
+            backgroundColor: 'transparent',
+            borderColor: 'rgba(255,255,255,.55)',
+            pointBackgroundColor: theme.palette.primary.main,
+            data: [65, 59, 84, 84, 51, 55, 40],
+          },
+        ],
       },
     },
     {
@@ -121,12 +133,14 @@ const WidgetsDropdown = (props) => {
       title: 'Income',
       chartData: {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-        datasets: [{
-          backgroundColor: 'transparent',
-          borderColor: 'rgba(255,255,255,.55)',
-          pointBackgroundColor: theme.palette.info.main,
-          data: [1, 18, 9, 17, 34, 22, 11],
-        }],
+        datasets: [
+          {
+            backgroundColor: 'transparent',
+            borderColor: 'rgba(255,255,255,.55)',
+            pointBackgroundColor: theme.palette.info.main,
+            data: [1, 18, 9, 17, 34, 22, 11],
+          },
+        ],
       },
     },
     {
@@ -137,12 +151,14 @@ const WidgetsDropdown = (props) => {
       title: 'Conversion Rate',
       chartData: {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-        datasets: [{
-          backgroundColor: 'rgba(255,255,255,.2)',
-          borderColor: 'rgba(255,255,255,.55)',
-          data: [78, 81, 80, 45, 34, 12, 40],
-          fill: true,
-        }],
+        datasets: [
+          {
+            backgroundColor: 'rgba(255,255,255,.2)',
+            borderColor: 'rgba(255,255,255,.55)',
+            data: [78, 81, 80, 45, 34, 12, 40],
+            fill: true,
+          },
+        ],
       },
     },
     {
@@ -153,13 +169,28 @@ const WidgetsDropdown = (props) => {
       title: 'Sessions',
       chartType: 'bar',
       chartData: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        datasets: [{
-          backgroundColor: 'rgba(255,255,255,.2)',
-          borderColor: 'rgba(255,255,255,.55)',
-          data: [78, 81, 80, 45, 34, 12, 40, 85, 65, 23, 12, 98],
-          barPercentage: 0.6,
-        }],
+        labels: [
+          'Jan',
+          'Feb',
+          'Mar',
+          'Apr',
+          'May',
+          'Jun',
+          'Jul',
+          'Aug',
+          'Sep',
+          'Oct',
+          'Nov',
+          'Dec',
+        ],
+        datasets: [
+          {
+            backgroundColor: 'rgba(255,255,255,.2)',
+            borderColor: 'rgba(255,255,255,.55)',
+            data: [78, 81, 80, 45, 34, 12, 40, 85, 65, 23, 12, 98],
+            barPercentage: 0.6,
+          },
+        ],
       },
     },
   ]

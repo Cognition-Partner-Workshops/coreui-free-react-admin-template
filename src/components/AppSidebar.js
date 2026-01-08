@@ -39,7 +39,12 @@ const AppSidebar = ({ drawerWidth = 256 }) => {
         }}
       >
         <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-          <Typography variant="h6" noWrap component="div" sx={{ color: 'white', fontWeight: 'bold' }}>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ color: 'white', fontWeight: 'bold' }}
+          >
             Admin Dashboard
           </Typography>
         </Link>
@@ -65,10 +70,7 @@ const AppSidebar = ({ drawerWidth = 256 }) => {
   )
 
   return (
-    <Box
-      component="nav"
-      sx={{ width: { md: drawerWidth }, flexShrink: { md: 0 } }}
-    >
+    <Box component="nav" sx={{ width: { md: drawerWidth }, flexShrink: { md: 0 } }}>
       <Drawer
         variant={isMobile ? 'temporary' : 'permanent'}
         open={sidebarShow}

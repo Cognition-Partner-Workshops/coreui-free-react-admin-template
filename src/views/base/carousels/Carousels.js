@@ -120,7 +120,10 @@ const Carousels = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                Carousel <Typography component="span" variant="body2">Slide only</Typography>
+                Carousel{' '}
+                <Typography component="span" variant="body2">
+                  Slide only
+                </Typography>
               </Typography>
             }
           />
@@ -139,7 +142,10 @@ const Carousels = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                Carousel <Typography component="span" variant="body2">With controls</Typography>
+                Carousel{' '}
+                <Typography component="span" variant="body2">
+                  With controls
+                </Typography>
               </Typography>
             }
           />
@@ -158,7 +164,10 @@ const Carousels = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                Carousel <Typography component="span" variant="body2">With indicators</Typography>
+                Carousel{' '}
+                <Typography component="span" variant="body2">
+                  With indicators
+                </Typography>
               </Typography>
             }
           />
@@ -177,7 +186,10 @@ const Carousels = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                Carousel <Typography component="span" variant="body2">With captions</Typography>
+                Carousel{' '}
+                <Typography component="span" variant="body2">
+                  With captions
+                </Typography>
               </Typography>
             }
           />

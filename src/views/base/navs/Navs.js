@@ -47,7 +47,10 @@ const Navs = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Navs <Typography component="span" variant="body2">Base navs</Typography>
+                React Navs{' '}
+                <Typography component="span" variant="body2">
+                  Base navs
+                </Typography>
               </Typography>
             }
           />
@@ -58,10 +61,14 @@ const Navs = () => {
             </Typography>
             <DocsExample href="components/nav-tabs#base-nav">
               <Box sx={{ display: 'flex' }}>
-                <NavLink href="#" active>Active</NavLink>
+                <NavLink href="#" active>
+                  Active
+                </NavLink>
                 <NavLink href="#">Link</NavLink>
                 <NavLink href="#">Link</NavLink>
-                <NavLink href="#" disabled>Disabled</NavLink>
+                <NavLink href="#" disabled>
+                  Disabled
+                </NavLink>
               </Box>
             </DocsExample>
           </CardContent>
@@ -72,7 +79,10 @@ const Navs = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Navs <Typography component="span" variant="body2">Horizontal alignment</Typography>
+                React Navs{' '}
+                <Typography component="span" variant="body2">
+                  Horizontal alignment
+                </Typography>
               </Typography>
             }
           />
@@ -85,10 +95,14 @@ const Navs = () => {
             </Typography>
             <DocsExample href="components/nav-tabs#horizontal-alignment">
               <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                <NavLink href="#" active>Active</NavLink>
+                <NavLink href="#" active>
+                  Active
+                </NavLink>
                 <NavLink href="#">Link</NavLink>
                 <NavLink href="#">Link</NavLink>
-                <NavLink href="#" disabled>Disabled</NavLink>
+                <NavLink href="#" disabled>
+                  Disabled
+                </NavLink>
               </Box>
             </DocsExample>
             <Typography variant="body2" color="text.secondary" sx={{ mb: 1, mt: 2 }}>
@@ -96,10 +110,14 @@ const Navs = () => {
             </Typography>
             <DocsExample href="components/nav-tabs#base-nav">
               <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                <NavLink href="#" active>Active</NavLink>
+                <NavLink href="#" active>
+                  Active
+                </NavLink>
                 <NavLink href="#">Link</NavLink>
                 <NavLink href="#">Link</NavLink>
-                <NavLink href="#" disabled>Disabled</NavLink>
+                <NavLink href="#" disabled>
+                  Disabled
+                </NavLink>
               </Box>
             </DocsExample>
           </CardContent>
@@ -110,7 +128,10 @@ const Navs = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Navs <Typography component="span" variant="body2">Vertical</Typography>
+                React Navs{' '}
+                <Typography component="span" variant="body2">
+                  Vertical
+                </Typography>
               </Typography>
             }
           />
@@ -120,10 +141,14 @@ const Navs = () => {
             </Typography>
             <DocsExample href="components/nav-tabs#vertical">
               <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                <NavLink href="#" active>Active</NavLink>
+                <NavLink href="#" active>
+                  Active
+                </NavLink>
                 <NavLink href="#">Link</NavLink>
                 <NavLink href="#">Link</NavLink>
-                <NavLink href="#" disabled>Disabled</NavLink>
+                <NavLink href="#" disabled>
+                  Disabled
+                </NavLink>
               </Box>
             </DocsExample>
           </CardContent>
@@ -134,31 +159,31 @@ const Navs = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Navs <Typography component="span" variant="body2">With dropdowns</Typography>
+                React Navs{' '}
+                <Typography component="span" variant="body2">
+                  With dropdowns
+                </Typography>
               </Typography>
             }
           />
           <CardContent>
             <DocsExample href="components/nav-tabs#tabs-with-dropdowns">
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <NavLink href="#" active>Active</NavLink>
-                <Button
-                  onClick={handleClick}
-                  sx={{ textTransform: 'none' }}
-                >
+                <NavLink href="#" active>
+                  Active
+                </NavLink>
+                <Button onClick={handleClick} sx={{ textTransform: 'none' }}>
                   Dropdown
                 </Button>
-                <Menu
-                  anchorEl={anchorEl}
-                  open={open}
-                  onClose={handleClose}
-                >
+                <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
                   <MenuItem onClick={handleClose}>Action</MenuItem>
                   <MenuItem onClick={handleClose}>Another action</MenuItem>
                   <MenuItem onClick={handleClose}>Something else here</MenuItem>
                 </Menu>
                 <NavLink href="#">Link</NavLink>
-                <NavLink href="#" disabled>Disabled</NavLink>
+                <NavLink href="#" disabled>
+                  Disabled
+                </NavLink>
               </Box>
             </DocsExample>
           </CardContent>

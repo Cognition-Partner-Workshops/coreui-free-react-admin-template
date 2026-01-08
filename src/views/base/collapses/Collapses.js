@@ -59,7 +59,10 @@ const Collapses = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Collapse <Typography component="span" variant="body2">Horizontal</Typography>
+                React Collapse{' '}
+                <Typography component="span" variant="body2">
+                  Horizontal
+                </Typography>
               </Typography>
             }
           />
@@ -96,7 +99,10 @@ const Collapses = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Collapse <Typography component="span" variant="body2">multi target</Typography>
+                React Collapse{' '}
+                <Typography component="span" variant="body2">
+                  multi target
+                </Typography>
               </Typography>
             }
           />

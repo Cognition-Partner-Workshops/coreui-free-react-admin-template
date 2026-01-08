@@ -17,7 +17,10 @@ const Progress = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Progress <Typography component="span" variant="body2">Basic example</Typography>
+                React Progress{' '}
+                <Typography component="span" variant="body2">
+                  Basic example
+                </Typography>
               </Typography>
             }
           />
@@ -40,7 +43,10 @@ const Progress = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Progress <Typography component="span" variant="body2">Labels</Typography>
+                React Progress{' '}
+                <Typography component="span" variant="body2">
+                  Labels
+                </Typography>
               </Typography>
             }
           />
@@ -54,7 +60,9 @@ const Progress = () => {
                   <LinearProgress variant="determinate" value={25} />
                 </Box>
                 <Box sx={{ minWidth: 35 }}>
-                  <Typography variant="body2" color="text.secondary">25%</Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    25%
+                  </Typography>
                 </Box>
               </Box>
             </DocsExample>
@@ -66,7 +74,10 @@ const Progress = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Progress <Typography component="span" variant="body2">Height</Typography>
+                React Progress{' '}
+                <Typography component="span" variant="body2">
+                  Height
+                </Typography>
               </Typography>
             }
           />
@@ -86,7 +97,10 @@ const Progress = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Progress <Typography component="span" variant="body2">Backgrounds</Typography>
+                React Progress{' '}
+                <Typography component="span" variant="body2">
+                  Backgrounds
+                </Typography>
               </Typography>
             }
           />
@@ -108,7 +122,10 @@ const Progress = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Progress <Typography component="span" variant="body2">Buffer</Typography>
+                React Progress{' '}
+                <Typography component="span" variant="body2">
+                  Buffer
+                </Typography>
               </Typography>
             }
           />
@@ -128,7 +145,10 @@ const Progress = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Progress <Typography component="span" variant="body2">Indeterminate</Typography>
+                React Progress{' '}
+                <Typography component="span" variant="body2">
+                  Indeterminate
+                </Typography>
               </Typography>
             }
           />

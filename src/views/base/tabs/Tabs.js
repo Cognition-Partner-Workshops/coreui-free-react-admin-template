@@ -69,7 +69,10 @@ const TabsView = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Tabs <Typography component="span" variant="body2">Centered</Typography>
+                React Tabs{' '}
+                <Typography component="span" variant="body2">
+                  Centered
+                </Typography>
               </Typography>
             }
           />
@@ -103,7 +106,10 @@ const TabsView = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Tabs <Typography component="span" variant="body2">Vertical</Typography>
+                React Tabs{' '}
+                <Typography component="span" variant="body2">
+                  Vertical
+                </Typography>
               </Typography>
             }
           />

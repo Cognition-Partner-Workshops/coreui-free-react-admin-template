@@ -83,7 +83,10 @@ const AccordionView = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Accordion <Typography component="span" variant="body2">Flush</Typography>
+                React Accordion{' '}
+                <Typography component="span" variant="body2">
+                  Flush
+                </Typography>
               </Typography>
             }
           />
@@ -148,7 +151,10 @@ const AccordionView = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Accordion <Typography component="span" variant="body2">Always open</Typography>
+                React Accordion{' '}
+                <Typography component="span" variant="body2">
+                  Always open
+                </Typography>
               </Typography>
             }
           />

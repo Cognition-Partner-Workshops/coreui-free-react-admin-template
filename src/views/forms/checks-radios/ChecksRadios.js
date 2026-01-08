@@ -1,17 +1,17 @@
-import React from "react"
-import Grid from "@mui/material/Grid"
-import Card from "@mui/material/Card"
-import CardContent from "@mui/material/CardContent"
-import CardHeader from "@mui/material/CardHeader"
-import Typography from "@mui/material/Typography"
-import FormControlLabel from "@mui/material/FormControlLabel"
-import Checkbox from "@mui/material/Checkbox"
-import Radio from "@mui/material/Radio"
-import RadioGroup from "@mui/material/RadioGroup"
-import Switch from "@mui/material/Switch"
-import FormGroup from "@mui/material/FormGroup"
-import Box from "@mui/material/Box"
-import { DocsComponents, DocsExample } from "src/components"
+import React from 'react'
+import Grid from '@mui/material/Grid'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardHeader from '@mui/material/CardHeader'
+import Typography from '@mui/material/Typography'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import Checkbox from '@mui/material/Checkbox'
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import Switch from '@mui/material/Switch'
+import FormGroup from '@mui/material/FormGroup'
+import Box from '@mui/material/Box'
+import { DocsComponents, DocsExample } from 'src/components'
 
 const ChecksRadios = () => {
   return (
@@ -37,7 +37,11 @@ const ChecksRadios = () => {
             <DocsExample href="forms/checks-radios#radios">
               <RadioGroup defaultValue="option1">
                 <FormControlLabel value="option1" control={<Radio />} label="Default radio" />
-                <FormControlLabel value="option2" control={<Radio />} label="Second default radio" />
+                <FormControlLabel
+                  value="option2"
+                  control={<Radio />}
+                  label="Second default radio"
+                />
               </RadioGroup>
             </DocsExample>
           </CardContent>
@@ -50,7 +54,10 @@ const ChecksRadios = () => {
             <DocsExample href="forms/checks-radios#switches">
               <FormGroup>
                 <FormControlLabel control={<Switch />} label="Default switch checkbox" />
-                <FormControlLabel control={<Switch defaultChecked />} label="Checked switch checkbox" />
+                <FormControlLabel
+                  control={<Switch defaultChecked />}
+                  label="Checked switch checkbox"
+                />
               </FormGroup>
             </DocsExample>
           </CardContent>

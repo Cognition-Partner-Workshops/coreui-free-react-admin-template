@@ -19,7 +19,10 @@ const Tooltips = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Tooltip <Typography component="span" variant="body2">Basic example</Typography>
+                React Tooltip{' '}
+                <Typography component="span" variant="body2">
+                  Basic example
+                </Typography>
               </Typography>
             }
           />
@@ -31,23 +34,35 @@ const Tooltips = () => {
               <Typography variant="body2" color="text.secondary">
                 Tight pants next level keffiyeh
                 <Tooltip title="Tooltip text">
-                  <Link href="#" sx={{ mx: 0.5 }}> you probably </Link>
+                  <Link href="#" sx={{ mx: 0.5 }}>
+                    {' '}
+                    you probably{' '}
+                  </Link>
                 </Tooltip>
                 haven&apos;t heard of them. Photo booth beard raw denim letterpress vegan messenger
                 bag stumptown. Farm-to-table seitan, mcsweeney&apos;s fixie sustainable quinoa 8-bit
                 american apparel
                 <Tooltip title="Tooltip text">
-                  <Link href="#" sx={{ mx: 0.5 }}> have a </Link>
+                  <Link href="#" sx={{ mx: 0.5 }}>
+                    {' '}
+                    have a{' '}
+                  </Link>
                 </Tooltip>
                 terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo
-                thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney&apos;s
-                cleanse vegan chambray. A really ironic artisan
+                thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney&apos;s cleanse
+                vegan chambray. A really ironic artisan
                 <Tooltip title="Tooltip text">
-                  <Link href="#" sx={{ mx: 0.5 }}> whatever keytar </Link>
+                  <Link href="#" sx={{ mx: 0.5 }}>
+                    {' '}
+                    whatever keytar{' '}
+                  </Link>
                 </Tooltip>
                 scenester farm-to-table banksy Austin
                 <Tooltip title="Tooltip text">
-                  <Link href="#" sx={{ mx: 0.5 }}> twitter handle </Link>
+                  <Link href="#" sx={{ mx: 0.5 }}>
+                    {' '}
+                    twitter handle{' '}
+                  </Link>
                 </Tooltip>
                 freegan cred raw denim single-origin coffee viral.
               </Typography>
@@ -58,17 +73,37 @@ const Tooltips = () => {
             </Typography>
             <DocsExample href="components/tooltip">
               <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-                <Tooltip title="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." placement="top">
-                  <Button variant="outlined" color="secondary">Tooltip on top</Button>
+                <Tooltip
+                  title="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+                  placement="top"
+                >
+                  <Button variant="outlined" color="secondary">
+                    Tooltip on top
+                  </Button>
                 </Tooltip>
-                <Tooltip title="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." placement="right">
-                  <Button variant="outlined" color="secondary">Tooltip on right</Button>
+                <Tooltip
+                  title="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+                  placement="right"
+                >
+                  <Button variant="outlined" color="secondary">
+                    Tooltip on right
+                  </Button>
                 </Tooltip>
-                <Tooltip title="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." placement="bottom">
-                  <Button variant="outlined" color="secondary">Tooltip on bottom</Button>
+                <Tooltip
+                  title="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+                  placement="bottom"
+                >
+                  <Button variant="outlined" color="secondary">
+                    Tooltip on bottom
+                  </Button>
                 </Tooltip>
-                <Tooltip title="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." placement="left">
-                  <Button variant="outlined" color="secondary">Tooltip on left</Button>
+                <Tooltip
+                  title="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+                  placement="left"
+                >
+                  <Button variant="outlined" color="secondary">
+                    Tooltip on left
+                  </Button>
                 </Tooltip>
               </Box>
             </DocsExample>

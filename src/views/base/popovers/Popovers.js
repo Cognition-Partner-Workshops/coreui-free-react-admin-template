@@ -84,7 +84,10 @@ const Popovers = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Popover <Typography component="span" variant="body2">Basic example</Typography>
+                React Popover{' '}
+                <Typography component="span" variant="body2">
+                  Basic example
+                </Typography>
               </Typography>
             }
           />
@@ -108,7 +111,10 @@ const Popovers = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Popover <Typography component="span" variant="body2">Four directions</Typography>
+                React Popover{' '}
+                <Typography component="span" variant="body2">
+                  Four directions
+                </Typography>
               </Typography>
             }
           />

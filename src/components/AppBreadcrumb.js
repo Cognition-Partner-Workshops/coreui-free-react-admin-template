@@ -50,12 +50,7 @@ const AppBreadcrumb = () => {
             {breadcrumb.name}
           </Typography>
         ) : (
-          <Link
-            key={index}
-            component={RouterLink}
-            to={breadcrumb.pathname}
-            color="inherit"
-          >
+          <Link key={index} component={RouterLink} to={breadcrumb.pathname} color="inherit">
             {breadcrumb.name}
           </Link>
         )

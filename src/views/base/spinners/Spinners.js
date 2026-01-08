@@ -18,7 +18,10 @@ const Spinners = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Spinner <Typography component="span" variant="body2">Border</Typography>
+                React Spinner{' '}
+                <Typography component="span" variant="body2">
+                  Border
+                </Typography>
               </Typography>
             }
           />
@@ -50,7 +53,10 @@ const Spinners = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Spinner <Typography component="span" variant="body2">Size</Typography>
+                React Spinner{' '}
+                <Typography component="span" variant="body2">
+                  Size
+                </Typography>
               </Typography>
             }
           />
@@ -73,7 +79,10 @@ const Spinners = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Spinner <Typography component="span" variant="body2">Buttons</Typography>
+                React Spinner{' '}
+                <Typography component="span" variant="body2">
+                  Buttons
+                </Typography>
               </Typography>
             }
           />

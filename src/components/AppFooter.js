@@ -24,8 +24,8 @@ const AppFooter = () => {
       <Typography variant="body2" color="text.secondary">
         <Link href="https://mui.com" target="_blank" rel="noopener noreferrer" color="inherit">
           Material UI
-        </Link>
-        {' '}&copy; 2025 Admin Dashboard.
+        </Link>{' '}
+        &copy; 2025 Admin Dashboard.
       </Typography>
       <Typography variant="body2" color="text.secondary">
         Powered by{' '}

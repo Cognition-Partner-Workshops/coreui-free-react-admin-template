@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useMemo } from 'react'
 import { useTheme } from '@mui/material/styles'
 import { Line } from 'react-chartjs-2'
 import {
@@ -21,14 +21,18 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  Filler
+  Filler,
 )
+
+const generateRandomData = (count, min = 0, max = 100) =>
+  Array.from({ length: count }, () => Math.floor(Math.random() * (max - min + 1)) + min)
 
 const MainChart = () => {
   const theme = useTheme()
   const chartRef = useRef(null)
 
-  const random = (min = 0, max = 100) => Math.floor(Math.random() * (max - min + 1)) + min
+  const dataset1Data = useMemo(() => generateRandomData(7, 50, 200), [])
+  const dataset2Data = useMemo(() => generateRandomData(7, 50, 200), [])
 
   const borderColor = theme.palette.divider
   const textColor = theme.palette.text.primary
@@ -42,15 +46,7 @@ const MainChart = () => {
         borderColor: theme.palette.info.main,
         pointHoverBackgroundColor: theme.palette.info.main,
         borderWidth: 2,
-        data: [
-          random(50, 200),
-          random(50, 200),
-          random(50, 200),
-          random(50, 200),
-          random(50, 200),
-          random(50, 200),
-          random(50, 200),
-        ],
+        data: dataset1Data,
         fill: true,
       },
       {
@@ -59,15 +55,7 @@ const MainChart = () => {
         borderColor: theme.palette.success.main,
         pointHoverBackgroundColor: theme.palette.success.main,
         borderWidth: 2,
-        data: [
-          random(50, 200),
-          random(50, 200),
-          random(50, 200),
-          random(50, 200),
-          random(50, 200),
-          random(50, 200),
-          random(50, 200),
-        ],
+        data: dataset2Data,
       },
       {
         label: 'My Third dataset',

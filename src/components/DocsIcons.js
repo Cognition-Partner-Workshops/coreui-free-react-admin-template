@@ -20,19 +20,14 @@ const DocsIcons = () => (
   >
     <Grid container spacing={3} alignItems="center">
       <Grid item xs={12} xl="auto" sx={{ display: { xs: 'none', xl: 'block' } }}>
-        <Box
-          component="img"
-          src={IconsImg}
-          alt="Material Icons"
-          sx={{ width: 160, height: 160 }}
-        />
+        <Box component="img" src={IconsImg} alt="Material Icons" sx={{ width: 160, height: 160 }} />
       </Grid>
       <Grid item xs={12} md>
         <Typography variant="body1">
-          Material UI Icons package is delivered with more than 2000 icons in multiple formats. 
-          Material Icons are beautifully crafted symbols for common actions and items. You can use 
-          them in your digital products for web or mobile app. For more information please visit 
-          our documentation.
+          Material UI Icons package is delivered with more than 2000 icons in multiple formats.
+          Material Icons are beautifully crafted symbols for common actions and items. You can use
+          them in your digital products for web or mobile app. For more information please visit our
+          documentation.
         </Typography>
       </Grid>
       <Grid item xs={12} md="auto">

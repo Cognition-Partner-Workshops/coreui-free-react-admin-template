@@ -131,28 +131,19 @@ const AppHeader = ({ drawerWidth = 256 }) => {
               horizontal: 'right',
             }}
           >
-            <MenuItem
-              onClick={() => handleThemeChange('light')}
-              selected={themeMode === 'light'}
-            >
+            <MenuItem onClick={() => handleThemeChange('light')} selected={themeMode === 'light'}>
               <ListItemIcon>
                 <LightModeIcon fontSize="small" />
               </ListItemIcon>
               <ListItemText>Light</ListItemText>
             </MenuItem>
-            <MenuItem
-              onClick={() => handleThemeChange('dark')}
-              selected={themeMode === 'dark'}
-            >
+            <MenuItem onClick={() => handleThemeChange('dark')} selected={themeMode === 'dark'}>
               <ListItemIcon>
                 <DarkModeIcon fontSize="small" />
               </ListItemIcon>
               <ListItemText>Dark</ListItemText>
             </MenuItem>
-            <MenuItem
-              onClick={() => handleThemeChange('auto')}
-              selected={themeMode === 'auto'}
-            >
+            <MenuItem onClick={() => handleThemeChange('auto')} selected={themeMode === 'auto'}>
               <ListItemIcon>
                 <ContrastIcon fontSize="small" />
               </ListItemIcon>

@@ -133,7 +133,7 @@ const Dashboard = () => {
   return (
     <Box>
       <WidgetsDropdown sx={{ mb: 4 }} />
-      
+
       <Card sx={{ mb: 4 }}>
         <CardContent>
           <Grid container spacing={2} alignItems="center">
@@ -145,7 +145,12 @@ const Dashboard = () => {
                 January - July 2023
               </Typography>
             </Grid>
-            <Grid item xs={12} sm={7} sx={{ display: { xs: 'none', md: 'block' }, textAlign: 'right' }}>
+            <Grid
+              item
+              xs={12}
+              sm={7}
+              sx={{ display: { xs: 'none', md: 'block' }, textAlign: 'right' }}
+            >
               <IconButton color="primary" sx={{ mr: 2 }}>
                 <CloudDownloadIcon />
               </IconButton>
@@ -171,7 +176,10 @@ const Dashboard = () => {
                 lg={3}
                 xl={2.4}
                 key={index}
-                sx={{ display: index === progressExample.length - 1 ? { xs: 'none', xl: 'block' } : 'block' }}
+                sx={{
+                  display:
+                    index === progressExample.length - 1 ? { xs: 'none', xl: 'block' } : 'block',
+                }}
               >
                 <Typography variant="body2" color="text.secondary">
                   {item.title}
@@ -320,9 +328,13 @@ const Dashboard = () => {
                     <PeopleIcon />
                   </TableCell>
                   <TableCell sx={{ bgcolor: 'action.hover' }}>User</TableCell>
-                  <TableCell align="center" sx={{ bgcolor: 'action.hover' }}>Country</TableCell>
+                  <TableCell align="center" sx={{ bgcolor: 'action.hover' }}>
+                    Country
+                  </TableCell>
                   <TableCell sx={{ bgcolor: 'action.hover' }}>Usage</TableCell>
-                  <TableCell align="center" sx={{ bgcolor: 'action.hover' }}>Payment Method</TableCell>
+                  <TableCell align="center" sx={{ bgcolor: 'action.hover' }}>
+                    Payment Method
+                  </TableCell>
                   <TableCell sx={{ bgcolor: 'action.hover' }}>Activity</TableCell>
                 </TableRow>
               </TableHead>

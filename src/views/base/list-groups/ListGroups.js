@@ -22,7 +22,10 @@ const ListGroups = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React List Group <Typography component="span" variant="body2">Basic example</Typography>
+                React List Group{' '}
+                <Typography component="span" variant="body2">
+                  Basic example
+                </Typography>
               </Typography>
             }
           />
@@ -32,12 +35,29 @@ const ListGroups = () => {
               Build upon it with the options that follow, or with your CSS as required.
             </Typography>
             <DocsExample href="components/list-group">
-              <List sx={{ bgcolor: 'background.paper', border: 1, borderColor: 'divider', borderRadius: 1 }}>
-                <ListItem divider><ListItemText primary="Cras justo odio" /></ListItem>
-                <ListItem divider><ListItemText primary="Dapibus ac facilisis in" /></ListItem>
-                <ListItem divider><ListItemText primary="Morbi leo risus" /></ListItem>
-                <ListItem divider><ListItemText primary="Porta ac consectetur ac" /></ListItem>
-                <ListItem><ListItemText primary="Vestibulum at eros" /></ListItem>
+              <List
+                sx={{
+                  bgcolor: 'background.paper',
+                  border: 1,
+                  borderColor: 'divider',
+                  borderRadius: 1,
+                }}
+              >
+                <ListItem divider>
+                  <ListItemText primary="Cras justo odio" />
+                </ListItem>
+                <ListItem divider>
+                  <ListItemText primary="Dapibus ac facilisis in" />
+                </ListItem>
+                <ListItem divider>
+                  <ListItemText primary="Morbi leo risus" />
+                </ListItem>
+                <ListItem divider>
+                  <ListItemText primary="Porta ac consectetur ac" />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary="Vestibulum at eros" />
+                </ListItem>
               </List>
             </DocsExample>
           </CardContent>
@@ -48,7 +68,10 @@ const ListGroups = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React List Group <Typography component="span" variant="body2">Active items</Typography>
+                React List Group{' '}
+                <Typography component="span" variant="body2">
+                  Active items
+                </Typography>
               </Typography>
             }
           />
@@ -57,12 +80,29 @@ const ListGroups = () => {
               Add <code>selected</code> prop to a ListItem to show the current active selection.
             </Typography>
             <DocsExample href="components/list-group/#active-items">
-              <List sx={{ bgcolor: 'background.paper', border: 1, borderColor: 'divider', borderRadius: 1 }}>
-                <ListItem divider selected><ListItemText primary="Cras justo odio" /></ListItem>
-                <ListItem divider><ListItemText primary="Dapibus ac facilisis in" /></ListItem>
-                <ListItem divider><ListItemText primary="Morbi leo risus" /></ListItem>
-                <ListItem divider><ListItemText primary="Porta ac consectetur ac" /></ListItem>
-                <ListItem><ListItemText primary="Vestibulum at eros" /></ListItem>
+              <List
+                sx={{
+                  bgcolor: 'background.paper',
+                  border: 1,
+                  borderColor: 'divider',
+                  borderRadius: 1,
+                }}
+              >
+                <ListItem divider selected>
+                  <ListItemText primary="Cras justo odio" />
+                </ListItem>
+                <ListItem divider>
+                  <ListItemText primary="Dapibus ac facilisis in" />
+                </ListItem>
+                <ListItem divider>
+                  <ListItemText primary="Morbi leo risus" />
+                </ListItem>
+                <ListItem divider>
+                  <ListItemText primary="Porta ac consectetur ac" />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary="Vestibulum at eros" />
+                </ListItem>
               </List>
             </DocsExample>
           </CardContent>
@@ -73,7 +113,10 @@ const ListGroups = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React List Group <Typography component="span" variant="body2">With badges</Typography>
+                React List Group{' '}
+                <Typography component="span" variant="body2">
+                  With badges
+                </Typography>
               </Typography>
             }
           />
@@ -82,22 +125,24 @@ const ListGroups = () => {
               Add badges to any list group item to show unread counts, activity, and more.
             </Typography>
             <DocsExample href="components/list-group/#with-badges">
-              <List sx={{ bgcolor: 'background.paper', border: 1, borderColor: 'divider', borderRadius: 1 }}>
+              <List
+                sx={{
+                  bgcolor: 'background.paper',
+                  border: 1,
+                  borderColor: 'divider',
+                  borderRadius: 1,
+                }}
+              >
                 <ListItem
                   divider
                   secondaryAction={<Chip label="14" color="primary" size="small" />}
                 >
                   <ListItemText primary="Cras justo odio" />
                 </ListItem>
-                <ListItem
-                  divider
-                  secondaryAction={<Chip label="2" color="primary" size="small" />}
-                >
+                <ListItem divider secondaryAction={<Chip label="2" color="primary" size="small" />}>
                   <ListItemText primary="Dapibus ac facilisis in" />
                 </ListItem>
-                <ListItem
-                  secondaryAction={<Chip label="1" color="primary" size="small" />}
-                >
+                <ListItem secondaryAction={<Chip label="1" color="primary" size="small" />}>
                   <ListItemText primary="Morbi leo risus" />
                 </ListItem>
               </List>
@@ -110,7 +155,10 @@ const ListGroups = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React List Group <Typography component="span" variant="body2">Checkboxes</Typography>
+                React List Group{' '}
+                <Typography component="span" variant="body2">
+                  Checkboxes
+                </Typography>
               </Typography>
             }
           />
@@ -119,7 +167,14 @@ const ListGroups = () => {
               Place MUI checkboxes within list group items and customize as needed.
             </Typography>
             <DocsExample href="components/list-group/#checkboxes-and-radios">
-              <List sx={{ bgcolor: 'background.paper', border: 1, borderColor: 'divider', borderRadius: 1 }}>
+              <List
+                sx={{
+                  bgcolor: 'background.paper',
+                  border: 1,
+                  borderColor: 'divider',
+                  borderRadius: 1,
+                }}
+              >
                 <ListItem divider>
                   <Checkbox edge="start" />
                   <ListItemText primary="Cras justo odio" />

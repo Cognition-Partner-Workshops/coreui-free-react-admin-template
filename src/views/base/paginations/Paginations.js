@@ -31,7 +31,10 @@ const Paginations = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Pagination <Typography component="span" variant="body2">With icons</Typography>
+                React Pagination{' '}
+                <Typography component="span" variant="body2">
+                  With icons
+                </Typography>
               </Typography>
             }
           />
@@ -50,7 +53,10 @@ const Paginations = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Pagination <Typography component="span" variant="body2">Disabled and active states</Typography>
+                React Pagination{' '}
+                <Typography component="span" variant="body2">
+                  Disabled and active states
+                </Typography>
               </Typography>
             }
           />
@@ -70,7 +76,10 @@ const Paginations = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Pagination <Typography component="span" variant="body2">Sizing</Typography>
+                React Pagination{' '}
+                <Typography component="span" variant="body2">
+                  Sizing
+                </Typography>
               </Typography>
             }
           />
@@ -93,7 +102,10 @@ const Paginations = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Pagination <Typography component="span" variant="body2">Alignment</Typography>
+                React Pagination{' '}
+                <Typography component="span" variant="body2">
+                  Alignment
+                </Typography>
               </Typography>
             }
           />

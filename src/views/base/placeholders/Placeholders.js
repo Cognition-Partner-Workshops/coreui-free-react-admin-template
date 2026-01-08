@@ -22,20 +22,25 @@ const Placeholders = () => {
           <CardContent>
             <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
               In the example below, we take a typical card component and recreate it with
-              placeholders applied to create a &quot;loading card&quot;. Size and proportions are the
-              same between the two.
+              placeholders applied to create a &quot;loading card&quot;. Size and proportions are
+              the same between the two.
             </Typography>
             <DocsExample href="components/placeholder">
-              <Box sx={{ display: 'flex', justifyContent: 'space-around', p: 3, flexWrap: 'wrap', gap: 2 }}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'space-around',
+                  p: 3,
+                  flexWrap: 'wrap',
+                  gap: 2,
+                }}
+              >
                 <Card sx={{ width: 288 }}>
-                  <CardMedia
-                    component="img"
-                    height="180"
-                    image={ReactImg}
-                    alt="React"
-                  />
+                  <CardMedia component="img" height="180" image={ReactImg} alt="React" />
                   <CardContent>
-                    <Typography variant="h6" gutterBottom>Card title</Typography>
+                    <Typography variant="h6" gutterBottom>
+                      Card title
+                    </Typography>
                     <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
                       Some quick example text to build on the card title and make up the bulk of the
                       card&apos;s content.
@@ -76,7 +81,10 @@ const Placeholders = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Placeholder <Typography component="span" variant="body2">Width</Typography>
+                React Placeholder{' '}
+                <Typography component="span" variant="body2">
+                  Width
+                </Typography>
               </Typography>
             }
           />
@@ -95,7 +103,10 @@ const Placeholders = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Placeholder <Typography component="span" variant="body2">Sizing</Typography>
+                React Placeholder{' '}
+                <Typography component="span" variant="body2">
+                  Sizing
+                </Typography>
               </Typography>
             }
           />
@@ -115,14 +126,17 @@ const Placeholders = () => {
           <CardHeader
             title={
               <Typography variant="h6">
-                React Placeholder <Typography component="span" variant="body2">Animation</Typography>
+                React Placeholder{' '}
+                <Typography component="span" variant="body2">
+                  Animation
+                </Typography>
               </Typography>
             }
           />
           <CardContent>
             <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-              Animate placeholders with animation=&quot;wave&quot; or animation=&quot;pulse&quot; to better convey
-              the perception of something being actively loaded.
+              Animate placeholders with animation=&quot;wave&quot; or animation=&quot;pulse&quot; to
+              better convey the perception of something being actively loaded.
             </Typography>
             <DocsExample href="components/placeholder#animation">
               <Skeleton variant="text" animation="wave" />
