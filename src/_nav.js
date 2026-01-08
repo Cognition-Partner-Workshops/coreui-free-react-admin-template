@@ -8,6 +8,7 @@ import {
   cilDescription,
   cilDrop,
   cilExternalLink,
+  cilGlobeAlt,
   cilNotes,
   cilPencil,
   cilPuzzle,
@@ -26,6 +27,28 @@ const _nav = [
       color: 'info',
       text: 'NEW',
     },
+  },
+  {
+    component: CNavTitle,
+    name: 'DNS Management',
+  },
+  {
+    component: CNavGroup,
+    name: 'DNS',
+    to: '/dns',
+    icon: <CIcon icon={cilGlobeAlt} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'DNS Zones',
+        to: '/dns/zones',
+      },
+      {
+        component: CNavItem,
+        name: 'DNS Records',
+        to: '/dns/records',
+      },
+    ],
   },
   {
     component: CNavTitle,
