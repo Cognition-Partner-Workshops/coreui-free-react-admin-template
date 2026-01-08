@@ -1,91 +1,41 @@
-import React, { useEffect, useState, createRef } from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
-import { CRow, CCol, CCard, CCardHeader, CCardBody } from '@coreui/react'
-import { rgbToHex } from '@coreui/utils'
-import { DocsLink } from 'src/components'
+import React from "react"
+import Grid from "@mui/material/Grid"
+import Card from "@mui/material/Card"
+import CardContent from "@mui/material/CardContent"
+import CardHeader from "@mui/material/CardHeader"
+import Typography from "@mui/material/Typography"
+import Box from "@mui/material/Box"
+import { useTheme } from "@mui/material/styles"
+import { DocsLink } from "src/components"
 
-const ThemeView = () => {
-  const [color, setColor] = useState('rgb(255, 255, 255)')
-  const ref = createRef()
-
-  useEffect(() => {
-    const el = ref.current.parentNode.firstChild
-    const varColor = window.getComputedStyle(el).getPropertyValue('background-color')
-    setColor(varColor)
-  }, [ref])
-
+const ThemeColor = ({ color, name, children }) => {
   return (
-    <table className="table w-100" ref={ref}>
-      <tbody>
-        <tr>
-          <td className="text-body-secondary">HEX:</td>
-          <td className="font-weight-bold">{rgbToHex(color)}</td>
-        </tr>
-        <tr>
-          <td className="text-body-secondary">RGB:</td>
-          <td className="font-weight-bold">{color}</td>
-        </tr>
-      </tbody>
-    </table>
+    <Grid item xs={12} sm={6} md={4} xl={2}>
+      <Box sx={{ bgcolor: color, height: 100, borderRadius: 1, mb: 1 }} />
+      <Typography variant="subtitle2">{children}</Typography>
+      <Typography variant="caption" color="text.secondary">{name}</Typography>
+    </Grid>
   )
-}
-
-const ThemeColor = ({ className, children }) => {
-  const classes = classNames(className, 'theme-color w-75 rounded mb-3')
-  return (
-    <CCol xs={12} sm={6} md={4} xl={2} className="mb-4">
-      <div className={classes} style={{ paddingTop: '75%' }}></div>
-      {children}
-      <ThemeView />
-    </CCol>
-  )
-}
-
-ThemeColor.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
 }
 
 const Colors = () => {
+  const theme = useTheme()
   return (
-    <>
-      <CCard className="mb-4">
-        <CCardHeader>
-          Theme colors
-          <DocsLink href="https://coreui.io/docs/utilities/colors/" />
-        </CCardHeader>
-        <CCardBody>
-          <CRow>
-            <ThemeColor className="bg-primary">
-              <h6>Brand Primary Color</h6>
-            </ThemeColor>
-            <ThemeColor className="bg-secondary">
-              <h6>Brand Secondary Color</h6>
-            </ThemeColor>
-            <ThemeColor className="bg-success">
-              <h6>Brand Success Color</h6>
-            </ThemeColor>
-            <ThemeColor className="bg-danger">
-              <h6>Brand Danger Color</h6>
-            </ThemeColor>
-            <ThemeColor className="bg-warning">
-              <h6>Brand Warning Color</h6>
-            </ThemeColor>
-            <ThemeColor className="bg-info">
-              <h6>Brand Info Color</h6>
-            </ThemeColor>
-            <ThemeColor className="bg-light">
-              <h6>Brand Light Color</h6>
-            </ThemeColor>
-            <ThemeColor className="bg-dark">
-              <h6>Brand Dark Color</h6>
-            </ThemeColor>
-          </CRow>
-        </CCardBody>
-      </CCard>
-    </>
+    <Card sx={{ mb: 4 }}>
+      <CardHeader title={<Typography variant="h6">Theme colors <DocsLink href="https://mui.com/material-ui/customization/palette/" /></Typography>} />
+      <CardContent>
+        <Grid container spacing={3}>
+          <ThemeColor color={theme.palette.primary.main} name="primary.main"><Typography variant="h6">Brand Primary Color</Typography></ThemeColor>
+          <ThemeColor color={theme.palette.secondary.main} name="secondary.main"><Typography variant="h6">Brand Secondary Color</Typography></ThemeColor>
+          <ThemeColor color={theme.palette.success.main} name="success.main"><Typography variant="h6">Brand Success Color</Typography></ThemeColor>
+          <ThemeColor color={theme.palette.error.main} name="error.main"><Typography variant="h6">Brand Danger Color</Typography></ThemeColor>
+          <ThemeColor color={theme.palette.warning.main} name="warning.main"><Typography variant="h6">Brand Warning Color</Typography></ThemeColor>
+          <ThemeColor color={theme.palette.info.main} name="info.main"><Typography variant="h6">Brand Info Color</Typography></ThemeColor>
+          <ThemeColor color={theme.palette.grey[100]} name="grey.100"><Typography variant="h6">Brand Light Color</Typography></ThemeColor>
+          <ThemeColor color={theme.palette.grey[900]} name="grey.900"><Typography variant="h6">Brand Dark Color</Typography></ThemeColor>
+        </Grid>
+      </CardContent>
+    </Card>
   )
 }
-
 export default Colors
