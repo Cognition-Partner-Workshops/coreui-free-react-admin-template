@@ -10,9 +10,9 @@ import {
 } from '@coreui/react-chartjs'
 import { DocsLink } from 'src/components'
 
-const Charts = () => {
-  const random = () => Math.round(Math.random() * 100)
+const random = () => Math.round(Math.random() * 100)
 
+const Charts = () => {
   return (
     <CRow>
       <CCol xs={12}></CCol>
