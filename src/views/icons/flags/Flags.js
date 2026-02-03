@@ -1,21 +1,21 @@
 import React from 'react'
-import { CCard, CCardBody, CCardHeader, CRow } from '@coreui/react'
-import { getIconsView } from '../brands/Brands.js'
-import { flagSet } from '@coreui/icons'
-import { DocsIcons } from 'src/components'
+import Box from '@mui/material/Box'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardHeader from '@mui/material/CardHeader'
+import Typography from '@mui/material/Typography'
 
-const CoreUIIcons = () => {
+const Flags = () => {
   return (
-    <>
-      <DocsIcons />
-      <CCard className="mb-4">
-        <CCardHeader>Flag Icons</CCardHeader>
-        <CCardBody>
-          <CRow className="text-center">{getIconsView(flagSet)}</CRow>
-        </CCardBody>
-      </CCard>
-    </>
+    <Box>
+      <Card>
+        <CardHeader title="Flags" />
+        <CardContent>
+          <Typography color="text.secondary">Flags component - migrated to Material UI</Typography>
+        </CardContent>
+      </Card>
+    </Box>
   )
 }
 
-export default CoreUIIcons
+export default Flags
