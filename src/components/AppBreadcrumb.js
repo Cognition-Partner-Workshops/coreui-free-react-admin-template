@@ -1,9 +1,11 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, Link as RouterLink } from 'react-router-dom'
+import Breadcrumbs from '@mui/material/Breadcrumbs'
+import Link from '@mui/material/Link'
+import Typography from '@mui/material/Typography'
+import HomeIcon from '@mui/icons-material/Home'
 
 import routes from '../routes'
-
-import { CBreadcrumb, CBreadcrumbItem } from '@coreui/react'
 
 const AppBreadcrumb = () => {
   const currentLocation = useLocation().pathname
@@ -32,19 +34,28 @@ const AppBreadcrumb = () => {
   const breadcrumbs = getBreadcrumbs(currentLocation)
 
   return (
-    <CBreadcrumb className="my-0">
-      <CBreadcrumbItem href="/">Home</CBreadcrumbItem>
+    <Breadcrumbs aria-label="breadcrumb" sx={{ my: 0 }}>
+      <Link
+        component={RouterLink}
+        to="/"
+        color="inherit"
+        sx={{ display: 'flex', alignItems: 'center' }}
+      >
+        <HomeIcon sx={{ mr: 0.5 }} fontSize="small" />
+        Home
+      </Link>
       {breadcrumbs.map((breadcrumb, index) => {
-        return (
-          <CBreadcrumbItem
-            {...(breadcrumb.active ? { active: true } : { href: breadcrumb.pathname })}
-            key={index}
-          >
+        return breadcrumb.active ? (
+          <Typography key={index} color="text.primary">
             {breadcrumb.name}
-          </CBreadcrumbItem>
+          </Typography>
+        ) : (
+          <Link key={index} component={RouterLink} to={breadcrumb.pathname} color="inherit">
+            {breadcrumb.name}
+          </Link>
         )
       })}
-    </CBreadcrumb>
+    </Breadcrumbs>
   )
 }
 
