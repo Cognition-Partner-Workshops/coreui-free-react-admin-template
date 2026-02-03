@@ -1,77 +1,95 @@
 import React from 'react'
-import { CButton, CCard, CCardBody, CCardHeader, CLink, CTooltip, CRow, CCol } from '@coreui/react'
-import { DocsComponents, DocsExample } from 'src/components'
+import Grid from '@mui/material/Grid'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardHeader from '@mui/material/CardHeader'
+import Typography from '@mui/material/Typography'
+import Tooltip from '@mui/material/Tooltip'
+import Button from '@mui/material/Button'
+import Box from '@mui/material/Box'
 
 const Tooltips = () => {
   return (
-    <CRow>
-      <CCol xs={12}>
-        <DocsComponents href="components/tooltip/" />
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Tooltip</strong> <small>Basic example</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">Hover over the links below to see tooltips:</p>
-            <DocsExample href="components/tooltip">
-              <p className="text-body-secondary">
-                Tight pants next level keffiyeh
-                <CTooltip content="Tooltip text">
-                  <CLink> you probably </CLink>
-                </CTooltip>
-                haven&#39;theard of them. Photo booth beard raw denim letterpress vegan messenger
-                bag stumptown. Farm-to-table seitan, mcsweeney&#39;s fixie sustainable quinoa 8-bit
-                american apparel
-                <CTooltip content="Tooltip text">
-                  <CLink> have a </CLink>
-                </CTooltip>
-                terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo
-                thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney&#39;&#39;s
-                cleanse vegan chambray. A really ironic artisan
-                <CTooltip content="Tooltip text">
-                  <CLink> whatever keytar </CLink>
-                </CTooltip>
-                scenester farm-to-table banksy Austin
-                <CTooltip content="Tooltip text">
-                  <CLink> twitter handle </CLink>
-                </CTooltip>
-                freegan cred raw denim single-origin coffee viral.
-              </p>
-            </DocsExample>
-            <p className="text-body-secondary small">
-              Hover over the buttons below to see the four tooltips directions: top, right, bottom,
-              and left. Directions are mirrored when using CoreUI in RTL.
-            </p>
-            <DocsExample href="components/tooltip">
-              <CTooltip
-                content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                placement="top"
-              >
-                <CButton color="secondary">Tooltip on top</CButton>
-              </CTooltip>
-              <CTooltip
-                content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                placement="right"
-              >
-                <CButton color="secondary">Tooltip on right</CButton>
-              </CTooltip>
-              <CTooltip
-                content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                placement="bottom"
-              >
-                <CButton color="secondary">Tooltip on bottom</CButton>
-              </CTooltip>
-              <CTooltip
-                content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                placement="left"
-              >
-                <CButton color="secondary">Tooltip on left</CButton>
-              </CTooltip>
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
+    <Grid container spacing={3}>
+      <Grid size={12}>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader title="Tooltips" subheader="Basic Example" />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              Tooltips display informative text when users hover over, focus on, or tap an element.
+            </Typography>
+            <Tooltip title="Tooltip on top">
+              <Button variant="contained">Hover me</Button>
+            </Tooltip>
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid size={12}>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader title="Tooltips" subheader="Positioned tooltips" />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              The Tooltip has 12 placement choices. They don&apos;t have directional arrows;
+              instead, they rely on motion emanating from the source to convey direction.
+            </Typography>
+            <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+              <Tooltip title="Top" placement="top">
+                <Button variant="outlined">Top</Button>
+              </Tooltip>
+              <Tooltip title="Top Start" placement="top-start">
+                <Button variant="outlined">Top Start</Button>
+              </Tooltip>
+              <Tooltip title="Top End" placement="top-end">
+                <Button variant="outlined">Top End</Button>
+              </Tooltip>
+              <Tooltip title="Bottom" placement="bottom">
+                <Button variant="outlined">Bottom</Button>
+              </Tooltip>
+              <Tooltip title="Bottom Start" placement="bottom-start">
+                <Button variant="outlined">Bottom Start</Button>
+              </Tooltip>
+              <Tooltip title="Bottom End" placement="bottom-end">
+                <Button variant="outlined">Bottom End</Button>
+              </Tooltip>
+              <Tooltip title="Left" placement="left">
+                <Button variant="outlined">Left</Button>
+              </Tooltip>
+              <Tooltip title="Left Start" placement="left-start">
+                <Button variant="outlined">Left Start</Button>
+              </Tooltip>
+              <Tooltip title="Left End" placement="left-end">
+                <Button variant="outlined">Left End</Button>
+              </Tooltip>
+              <Tooltip title="Right" placement="right">
+                <Button variant="outlined">Right</Button>
+              </Tooltip>
+              <Tooltip title="Right Start" placement="right-start">
+                <Button variant="outlined">Right Start</Button>
+              </Tooltip>
+              <Tooltip title="Right End" placement="right-end">
+                <Button variant="outlined">Right End</Button>
+              </Tooltip>
+            </Box>
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid size={12}>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader title="Tooltips" subheader="Arrow tooltips" />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              You can use the arrow prop to give your tooltip an arrow indicating which element it
+              refers to.
+            </Typography>
+            <Box sx={{ display: 'flex', gap: 1 }}>
+              <Tooltip title="Add" arrow>
+                <Button variant="contained">Arrow</Button>
+              </Tooltip>
+            </Box>
+          </CardContent>
+        </Card>
+      </Grid>
+    </Grid>
   )
 }
 

@@ -1,90 +1,150 @@
-import React, { useEffect, useState, createRef } from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
-import { CRow, CCol, CCard, CCardHeader, CCardBody } from '@coreui/react'
-import { rgbToHex } from '@coreui/utils'
-import { DocsLink } from 'src/components'
+import React from 'react'
+import Grid from '@mui/material/Grid'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardHeader from '@mui/material/CardHeader'
+import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box'
+import { useTheme } from '@mui/material/styles'
 
-const ThemeView = () => {
-  const [color, setColor] = useState('rgb(255, 255, 255)')
-  const ref = createRef()
-
-  useEffect(() => {
-    const el = ref.current.parentNode.firstChild
-    const varColor = window.getComputedStyle(el).getPropertyValue('background-color')
-    setColor(varColor)
-  }, [ref])
-
-  return (
-    <table className="table w-100" ref={ref}>
-      <tbody>
-        <tr>
-          <td className="text-body-secondary">HEX:</td>
-          <td className="font-weight-bold">{rgbToHex(color)}</td>
-        </tr>
-        <tr>
-          <td className="text-body-secondary">RGB:</td>
-          <td className="font-weight-bold">{color}</td>
-        </tr>
-      </tbody>
-    </table>
-  )
-}
-
-const ThemeColor = ({ className, children }) => {
-  const classes = classNames(className, 'theme-color w-75 rounded mb-3')
-  return (
-    <CCol xs={12} sm={6} md={4} xl={2} className="mb-4">
-      <div className={classes} style={{ paddingTop: '75%' }}></div>
-      {children}
-      <ThemeView />
-    </CCol>
-  )
-}
-
-ThemeColor.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-}
+const ColorBox = ({ color, name, hex }) => (
+  <Box
+    sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      mb: 2,
+    }}
+  >
+    <Box
+      sx={{
+        width: '100%',
+        height: 100,
+        bgcolor: color,
+        borderRadius: 1,
+        mb: 1,
+      }}
+    />
+    <Typography variant="subtitle2">{name}</Typography>
+    <Typography variant="caption" color="text.secondary">
+      {hex}
+    </Typography>
+  </Box>
+)
 
 const Colors = () => {
+  const theme = useTheme()
+
   return (
-    <>
-      <CCard className="mb-4">
-        <CCardHeader>
-          Theme colors
-          <DocsLink href="https://coreui.io/docs/utilities/colors/" />
-        </CCardHeader>
-        <CCardBody>
-          <CRow>
-            <ThemeColor className="bg-primary">
-              <h6>Brand Primary Color</h6>
-            </ThemeColor>
-            <ThemeColor className="bg-secondary">
-              <h6>Brand Secondary Color</h6>
-            </ThemeColor>
-            <ThemeColor className="bg-success">
-              <h6>Brand Success Color</h6>
-            </ThemeColor>
-            <ThemeColor className="bg-danger">
-              <h6>Brand Danger Color</h6>
-            </ThemeColor>
-            <ThemeColor className="bg-warning">
-              <h6>Brand Warning Color</h6>
-            </ThemeColor>
-            <ThemeColor className="bg-info">
-              <h6>Brand Info Color</h6>
-            </ThemeColor>
-            <ThemeColor className="bg-light">
-              <h6>Brand Light Color</h6>
-            </ThemeColor>
-            <ThemeColor className="bg-dark">
-              <h6>Brand Dark Color</h6>
-            </ThemeColor>
-          </CRow>
-        </CCardBody>
-      </CCard>
-    </>
+    <Grid container spacing={3}>
+      <Grid size={12}>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader title="Theme Colors" subheader="Primary Palette" />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              Material UI uses a color system that supports both light and dark themes.
+            </Typography>
+            <Grid container spacing={2}>
+              <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }}>
+                <ColorBox color="primary.main" name="Primary" hex={theme.palette.primary.main} />
+              </Grid>
+              <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }}>
+                <ColorBox
+                  color="primary.light"
+                  name="Primary Light"
+                  hex={theme.palette.primary.light}
+                />
+              </Grid>
+              <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }}>
+                <ColorBox
+                  color="primary.dark"
+                  name="Primary Dark"
+                  hex={theme.palette.primary.dark}
+                />
+              </Grid>
+              <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }}>
+                <ColorBox
+                  color="secondary.main"
+                  name="Secondary"
+                  hex={theme.palette.secondary.main}
+                />
+              </Grid>
+              <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }}>
+                <ColorBox
+                  color="secondary.light"
+                  name="Secondary Light"
+                  hex={theme.palette.secondary.light}
+                />
+              </Grid>
+              <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }}>
+                <ColorBox
+                  color="secondary.dark"
+                  name="Secondary Dark"
+                  hex={theme.palette.secondary.dark}
+                />
+              </Grid>
+            </Grid>
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid size={12}>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader title="Theme Colors" subheader="Status Colors" />
+          <CardContent>
+            <Grid container spacing={2}>
+              <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }}>
+                <ColorBox color="success.main" name="Success" hex={theme.palette.success.main} />
+              </Grid>
+              <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }}>
+                <ColorBox color="info.main" name="Info" hex={theme.palette.info.main} />
+              </Grid>
+              <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }}>
+                <ColorBox color="warning.main" name="Warning" hex={theme.palette.warning.main} />
+              </Grid>
+              <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }}>
+                <ColorBox color="error.main" name="Error" hex={theme.palette.error.main} />
+              </Grid>
+            </Grid>
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid size={12}>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader title="Theme Colors" subheader="Grey Palette" />
+          <CardContent>
+            <Grid container spacing={2}>
+              <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }}>
+                <ColorBox color="grey.100" name="Grey 100" hex="#f5f5f5" />
+              </Grid>
+              <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }}>
+                <ColorBox color="grey.200" name="Grey 200" hex="#eeeeee" />
+              </Grid>
+              <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }}>
+                <ColorBox color="grey.300" name="Grey 300" hex="#e0e0e0" />
+              </Grid>
+              <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }}>
+                <ColorBox color="grey.400" name="Grey 400" hex="#bdbdbd" />
+              </Grid>
+              <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }}>
+                <ColorBox color="grey.500" name="Grey 500" hex="#9e9e9e" />
+              </Grid>
+              <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }}>
+                <ColorBox color="grey.600" name="Grey 600" hex="#757575" />
+              </Grid>
+              <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }}>
+                <ColorBox color="grey.700" name="Grey 700" hex="#616161" />
+              </Grid>
+              <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }}>
+                <ColorBox color="grey.800" name="Grey 800" hex="#424242" />
+              </Grid>
+              <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }}>
+                <ColorBox color="grey.900" name="Grey 900" hex="#212121" />
+              </Grid>
+            </Grid>
+          </CardContent>
+        </Card>
+      </Grid>
+    </Grid>
   )
 }
 
