@@ -1,34 +1,75 @@
 import React from 'react'
-import { CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react'
-import CIcon from '@coreui/icons-react'
-import { brandSet } from '@coreui/icons'
-import { DocsIcons } from 'src/components'
+import Grid from '@mui/material/Grid'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardHeader from '@mui/material/CardHeader'
+import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box'
+import FacebookIcon from '@mui/icons-material/Facebook'
+import TwitterIcon from '@mui/icons-material/Twitter'
+import LinkedInIcon from '@mui/icons-material/LinkedIn'
+import GitHubIcon from '@mui/icons-material/GitHub'
+import InstagramIcon from '@mui/icons-material/Instagram'
+import YouTubeIcon from '@mui/icons-material/YouTube'
+import GoogleIcon from '@mui/icons-material/Google'
+import AppleIcon from '@mui/icons-material/Apple'
 
-const toKebabCase = (str) => {
-  return str.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase()
-}
+const Brands = () => {
+  const brandIcons = [
+    { icon: <FacebookIcon sx={{ fontSize: 40 }} />, name: 'Facebook' },
+    { icon: <TwitterIcon sx={{ fontSize: 40 }} />, name: 'Twitter' },
+    { icon: <LinkedInIcon sx={{ fontSize: 40 }} />, name: 'LinkedIn' },
+    { icon: <GitHubIcon sx={{ fontSize: 40 }} />, name: 'GitHub' },
+    { icon: <InstagramIcon sx={{ fontSize: 40 }} />, name: 'Instagram' },
+    { icon: <YouTubeIcon sx={{ fontSize: 40 }} />, name: 'YouTube' },
+    { icon: <GoogleIcon sx={{ fontSize: 40 }} />, name: 'Google' },
+    { icon: <AppleIcon sx={{ fontSize: 40 }} />, name: 'Apple' },
+  ]
 
-export const getIconsView = (iconset) => {
-  return Object.entries(iconset).map(([name, value]) => (
-    <CCol className="mb-5" xs={6} sm={4} md={3} xl={2} key={name}>
-      <CIcon icon={value} size="xxl" />
-      <div>{toKebabCase(name)}</div>
-    </CCol>
-  ))
-}
-
-const CoreUIIcons = () => {
   return (
-    <>
-      <DocsIcons />
-      <CCard className="mb-4">
-        <CCardHeader>Brand Icons</CCardHeader>
-        <CCardBody>
-          <CRow className="text-center">{getIconsView(brandSet)}</CRow>
-        </CCardBody>
-      </CCard>
-    </>
+    <Grid container spacing={3}>
+      <Grid item xs={12}>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader title={<strong>Brand Icons</strong>} />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              MUI provides some brand icons. For more comprehensive brand icons, consider using{' '}
+              <a
+                href="https://react-icons.github.io/react-icons/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                react-icons
+              </a>
+              .
+            </Typography>
+            <Grid container spacing={2}>
+              {brandIcons.map(({ icon, name }) => (
+                <Grid item xs={6} sm={4} md={3} lg={2} key={name}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      p: 2,
+                      border: 1,
+                      borderColor: 'divider',
+                      borderRadius: 1,
+                    }}
+                  >
+                    {icon}
+                    <Typography variant="caption" sx={{ mt: 1 }}>
+                      {name}
+                    </Typography>
+                  </Box>
+                </Grid>
+              ))}
+            </Grid>
+          </CardContent>
+        </Card>
+      </Grid>
+    </Grid>
   )
 }
 
-export default CoreUIIcons
+export default Brands

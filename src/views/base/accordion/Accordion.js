@@ -1,177 +1,176 @@
 import React from 'react'
-import {
-  CCard,
-  CCardBody,
-  CCardHeader,
-  CCol,
-  CRow,
-  CAccordion,
-  CAccordionBody,
-  CAccordionHeader,
-  CAccordionItem,
-} from '@coreui/react'
+import Grid from '@mui/material/Grid'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardHeader from '@mui/material/CardHeader'
+import Typography from '@mui/material/Typography'
+import MuiAccordion from '@mui/material/Accordion'
+import AccordionSummary from '@mui/material/AccordionSummary'
+import AccordionDetails from '@mui/material/AccordionDetails'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { DocsComponents, DocsExample } from 'src/components'
 
 const Accordion = () => {
+  const [expanded, setExpanded] = React.useState('panel2')
+
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false)
+  }
+
   return (
-    <CRow>
-      <CCol xs={12}>
+    <Grid container spacing={3}>
+      <Grid item xs={12}>
         <DocsComponents href="components/accordion/" />
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Accordion</strong>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
+        <Card sx={{ mb: 4 }}>
+          <CardHeader title={<strong>React Accordion</strong>} />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
               Click the accordions below to expand/collapse the accordion content.
-            </p>
+            </Typography>
             <DocsExample href="components/accordion">
-              <CAccordion activeItemKey={2}>
-                <CAccordionItem itemKey={1}>
-                  <CAccordionHeader>Accordion Item #1</CAccordionHeader>
-                  <CAccordionBody>
-                    <strong>This is the first item&#39;s accordion body.</strong> It is hidden by
+              <MuiAccordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography>Accordion Item #1</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography>
+                    <strong>This is the first item&apos;s accordion body.</strong> It is hidden by
                     default, until the collapse plugin adds the appropriate classes that we use to
                     style each element. These classes control the overall appearance, as well as the
-                    showing and hiding via CSS transitions. You can modify any of this with custom
-                    CSS or overriding our default variables. It&#39;s also worth noting that just
-                    about any HTML can go within the <code>.accordion-body</code>, though the
-                    transition does limit overflow.
-                  </CAccordionBody>
-                </CAccordionItem>
-                <CAccordionItem itemKey={2}>
-                  <CAccordionHeader>Accordion Item #2</CAccordionHeader>
-                  <CAccordionBody>
-                    <strong>This is the second item&#39;s accordion body.</strong> It is hidden by
+                    showing and hiding via CSS transitions.
+                  </Typography>
+                </AccordionDetails>
+              </MuiAccordion>
+              <MuiAccordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography>Accordion Item #2</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography>
+                    <strong>This is the second item&apos;s accordion body.</strong> It is hidden by
                     default, until the collapse plugin adds the appropriate classes that we use to
                     style each element. These classes control the overall appearance, as well as the
-                    showing and hiding via CSS transitions. You can modify any of this with custom
-                    CSS or overriding our default variables. It&#39;s also worth noting that just
-                    about any HTML can go within the <code>.accordion-body</code>, though the
-                    transition does limit overflow.
-                  </CAccordionBody>
-                </CAccordionItem>
-                <CAccordionItem itemKey={3}>
-                  <CAccordionHeader>Accordion Item #3</CAccordionHeader>
-                  <CAccordionBody>
-                    <strong>This is the second item&#39;s accordion body.</strong> It is hidden by
+                    showing and hiding via CSS transitions.
+                  </Typography>
+                </AccordionDetails>
+              </MuiAccordion>
+              <MuiAccordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography>Accordion Item #3</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography>
+                    <strong>This is the third item&apos;s accordion body.</strong> It is hidden by
                     default, until the collapse plugin adds the appropriate classes that we use to
                     style each element. These classes control the overall appearance, as well as the
-                    showing and hiding via CSS transitions. You can modify any of this with custom
-                    CSS or overriding our default variables. It&#39;s also worth noting that just
-                    about any HTML can go within the <code>.accordion-body</code>, though the
-                    transition does limit overflow.
-                  </CAccordionBody>
-                </CAccordionItem>
-              </CAccordion>
+                    showing and hiding via CSS transitions.
+                  </Typography>
+                </AccordionDetails>
+              </MuiAccordion>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Accordion</strong> <small>Flush</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Add <code>flush</code> to remove the default <code>background-color</code>, some
-              borders, and some rounded corners to render accordions edge-to-edge with their parent
-              container.
-            </p>
+          </CardContent>
+        </Card>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader
+            title={
+              <>
+                <strong>React Accordion</strong> <small>Flush</small>
+              </>
+            }
+          />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              Add <code>disableGutters</code> and <code>square</code> props to remove padding and
+              rounded corners to render accordions edge-to-edge with their parent container.
+            </Typography>
             <DocsExample href="components/accordion#flush">
-              <CAccordion flush>
-                <CAccordionItem itemKey={1}>
-                  <CAccordionHeader>Accordion Item #1</CAccordionHeader>
-                  <CAccordionBody>
-                    <strong>This is the first item&#39;s accordion body.</strong> It is hidden by
-                    default, until the collapse plugin adds the appropriate classes that we use to
-                    style each element. These classes control the overall appearance, as well as the
-                    showing and hiding via CSS transitions. You can modify any of this with custom
-                    CSS or overriding our default variables. It&#39;s also worth noting that just
-                    about any HTML can go within the <code>.accordion-body</code>, though the
-                    transition does limit overflow.
-                  </CAccordionBody>
-                </CAccordionItem>
-                <CAccordionItem itemKey={2}>
-                  <CAccordionHeader>Accordion Item #2</CAccordionHeader>
-                  <CAccordionBody>
-                    <strong>This is the second item&#39;s accordion body.</strong> It is hidden by
-                    default, until the collapse plugin adds the appropriate classes that we use to
-                    style each element. These classes control the overall appearance, as well as the
-                    showing and hiding via CSS transitions. You can modify any of this with custom
-                    CSS or overriding our default variables. It&#39;s also worth noting that just
-                    about any HTML can go within the <code>.accordion-body</code>, though the
-                    transition does limit overflow.
-                  </CAccordionBody>
-                </CAccordionItem>
-                <CAccordionItem itemKey={3}>
-                  <CAccordionHeader>Accordion Item #3</CAccordionHeader>
-                  <CAccordionBody>
-                    <strong>This is the second item&#39;s accordion body.</strong> It is hidden by
-                    default, until the collapse plugin adds the appropriate classes that we use to
-                    style each element. These classes control the overall appearance, as well as the
-                    showing and hiding via CSS transitions. You can modify any of this with custom
-                    CSS or overriding our default variables. It&#39;s also worth noting that just
-                    about any HTML can go within the <code>.accordion-body</code>, though the
-                    transition does limit overflow.
-                  </CAccordionBody>
-                </CAccordionItem>
-              </CAccordion>
+              <MuiAccordion disableGutters square>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography>Accordion Item #1</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography>
+                    <strong>This is the first item&apos;s accordion body.</strong> It is hidden by
+                    default, until the collapse plugin adds the appropriate classes.
+                  </Typography>
+                </AccordionDetails>
+              </MuiAccordion>
+              <MuiAccordion disableGutters square>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography>Accordion Item #2</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography>
+                    <strong>This is the second item&apos;s accordion body.</strong> It is hidden by
+                    default, until the collapse plugin adds the appropriate classes.
+                  </Typography>
+                </AccordionDetails>
+              </MuiAccordion>
+              <MuiAccordion disableGutters square>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography>Accordion Item #3</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography>
+                    <strong>This is the third item&apos;s accordion body.</strong> It is hidden by
+                    default, until the collapse plugin adds the appropriate classes.
+                  </Typography>
+                </AccordionDetails>
+              </MuiAccordion>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Accordion</strong> <small>Always open</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Add <code>alwaysOpen</code> property to make accordion items stay open when another
-              item is opened.
-            </p>
+          </CardContent>
+        </Card>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader
+            title={
+              <>
+                <strong>React Accordion</strong> <small>Always open</small>
+              </>
+            }
+          />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              Multiple accordions can be open at the same time by managing state independently.
+            </Typography>
             <DocsExample href="components/accordion#flush">
-              <CAccordion alwaysOpen>
-                <CAccordionItem itemKey={1}>
-                  <CAccordionHeader>Accordion Item #1</CAccordionHeader>
-                  <CAccordionBody>
-                    <strong>This is the first item&#39;s accordion body.</strong> It is hidden by
-                    default, until the collapse plugin adds the appropriate classes that we use to
-                    style each element. These classes control the overall appearance, as well as the
-                    showing and hiding via CSS transitions. You can modify any of this with custom
-                    CSS or overriding our default variables. It&#39;s also worth noting that just
-                    about any HTML can go within the <code>.accordion-body</code>, though the
-                    transition does limit overflow.
-                  </CAccordionBody>
-                </CAccordionItem>
-                <CAccordionItem itemKey={2}>
-                  <CAccordionHeader>Accordion Item #2</CAccordionHeader>
-                  <CAccordionBody>
-                    <strong>This is the second item&#39;s accordion body.</strong> It is hidden by
-                    default, until the collapse plugin adds the appropriate classes that we use to
-                    style each element. These classes control the overall appearance, as well as the
-                    showing and hiding via CSS transitions. You can modify any of this with custom
-                    CSS or overriding our default variables. It&#39;s also worth noting that just
-                    about any HTML can go within the <code>.accordion-body</code>, though the
-                    transition does limit overflow.
-                  </CAccordionBody>
-                </CAccordionItem>
-                <CAccordionItem itemKey={3}>
-                  <CAccordionHeader>Accordion Item #3</CAccordionHeader>
-                  <CAccordionBody>
-                    <strong>This is the second item&#39;s accordion body.</strong> It is hidden by
-                    default, until the collapse plugin adds the appropriate classes that we use to
-                    style each element. These classes control the overall appearance, as well as the
-                    showing and hiding via CSS transitions. You can modify any of this with custom
-                    CSS or overriding our default variables. It&#39;s also worth noting that just
-                    about any HTML can go within the <code>.accordion-body</code>, though the
-                    transition does limit overflow.
-                  </CAccordionBody>
-                </CAccordionItem>
-              </CAccordion>
+              <MuiAccordion defaultExpanded>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography>Accordion Item #1</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography>
+                    <strong>This is the first item&apos;s accordion body.</strong> It is hidden by
+                    default, until the collapse plugin adds the appropriate classes.
+                  </Typography>
+                </AccordionDetails>
+              </MuiAccordion>
+              <MuiAccordion defaultExpanded>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography>Accordion Item #2</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography>
+                    <strong>This is the second item&apos;s accordion body.</strong> It is hidden by
+                    default, until the collapse plugin adds the appropriate classes.
+                  </Typography>
+                </AccordionDetails>
+              </MuiAccordion>
+              <MuiAccordion>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography>Accordion Item #3</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography>
+                    <strong>This is the third item&apos;s accordion body.</strong> It is hidden by
+                    default, until the collapse plugin adds the appropriate classes.
+                  </Typography>
+                </AccordionDetails>
+              </MuiAccordion>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
+          </CardContent>
+        </Card>
+      </Grid>
+    </Grid>
   )
 }
 

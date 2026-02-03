@@ -1,9 +1,11 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
+import Breadcrumbs from '@mui/material/Breadcrumbs'
+import MuiLink from '@mui/material/Link'
+import Typography from '@mui/material/Typography'
+import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 
 import routes from '../routes'
-
-import { CBreadcrumb, CBreadcrumbItem } from '@coreui/react'
 
 const AppBreadcrumb = () => {
   const currentLocation = useLocation().pathname
@@ -32,19 +34,32 @@ const AppBreadcrumb = () => {
   const breadcrumbs = getBreadcrumbs(currentLocation)
 
   return (
-    <CBreadcrumb className="my-0">
-      <CBreadcrumbItem href="/">Home</CBreadcrumbItem>
+    <Breadcrumbs
+      separator={<NavigateNextIcon fontSize="small" />}
+      aria-label="breadcrumb"
+      sx={{ my: 0 }}
+    >
+      <MuiLink component={Link} to="/" underline="hover" color="inherit">
+        Home
+      </MuiLink>
       {breadcrumbs.map((breadcrumb, index) => {
-        return (
-          <CBreadcrumbItem
-            {...(breadcrumb.active ? { active: true } : { href: breadcrumb.pathname })}
+        return breadcrumb.active ? (
+          <Typography key={index} color="text.primary">
+            {breadcrumb.name}
+          </Typography>
+        ) : (
+          <MuiLink
             key={index}
+            component={Link}
+            to={breadcrumb.pathname}
+            underline="hover"
+            color="inherit"
           >
             {breadcrumb.name}
-          </CBreadcrumbItem>
+          </MuiLink>
         )
       })}
-    </CBreadcrumb>
+    </Breadcrumbs>
   )
 }
 

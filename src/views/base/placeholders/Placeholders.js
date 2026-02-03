@@ -1,196 +1,164 @@
 import React from 'react'
-import {
-  CButton,
-  CCard,
-  CCardBody,
-  CCardHeader,
-  CCardImage,
-  CCardText,
-  CCardTitle,
-  CCol,
-  CPlaceholder,
-  CRow,
-} from '@coreui/react'
+import Grid from '@mui/material/Grid'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardHeader from '@mui/material/CardHeader'
+import CardMedia from '@mui/material/CardMedia'
+import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button'
+import Skeleton from '@mui/material/Skeleton'
+import Box from '@mui/material/Box'
 import { DocsComponents, DocsExample } from 'src/components'
 
 import ReactImg from 'src/assets/images/react.jpg'
 
 const Placeholders = () => {
   return (
-    <CRow>
-      <CCol xs={12}>
+    <Grid container spacing={3}>
+      <Grid item xs={12}>
         <DocsComponents href="components/placeholder/" />
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Placeholder</strong>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
+        <Card sx={{ mb: 4 }}>
+          <CardHeader title={<strong>React Placeholder</strong>} />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
               In the example below, we take a typical card component and recreate it with
-              placeholders applied to create a &#34;loading card&#34;. Size and proportions are the
-              same between the two.
-            </p>
+              placeholders applied to create a &quot;loading card&quot;. Size and proportions are
+              the same between the two.
+            </Typography>
             <DocsExample href="components/placeholder">
-              <div className="d-flex justify-content-around p-3">
-                <CCard style={{ width: '18rem' }}>
-                  <CCardImage orientation="top" src={ReactImg} />
-                  <CCardBody>
-                    <CCardTitle>Card title</CCardTitle>
-                    <CCardText>
+              <Box sx={{ display: 'flex', justifyContent: 'space-around', p: 3, gap: 2 }}>
+                <Card sx={{ width: 288 }}>
+                  <CardMedia component="img" height="180" image={ReactImg} alt="React" />
+                  <CardContent>
+                    <Typography variant="h6">Card title</Typography>
+                    <Typography variant="body2" color="text.secondary">
                       Some quick example text to build on the card title and make up the bulk of the
-                      card&#39;s content.
-                    </CCardText>
-                    <CButton color="primary" href="#">
+                      card&apos;s content.
+                    </Typography>
+                    <Button variant="contained" sx={{ mt: 2 }}>
                       Go somewhere
-                    </CButton>
-                  </CCardBody>
-                </CCard>
-                <CCard style={{ width: '18rem' }}>
-                  <svg
-                    className="card-img-top"
-                    width="100%"
-                    height="180"
-                    xmlns="http://www.w3.org/2000/svg"
-                    role="img"
-                    aria-label="Placeholder"
-                    preserveAspectRatio="xMidYMid slice"
-                    focusable="false"
-                  >
-                    <title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#868e96"></rect>
-                  </svg>
-                  <CCardBody>
-                    <CPlaceholder as={CCardTitle} animation="glow" xs={7}>
-                      <CPlaceholder xs={6} />
-                    </CPlaceholder>
-                    <CPlaceholder as={CCardText} animation="glow">
-                      <CPlaceholder xs={7} />
-                      <CPlaceholder xs={4} />
-                      <CPlaceholder xs={4} />
-                      <CPlaceholder xs={6} />
-                      <CPlaceholder xs={8} />
-                    </CPlaceholder>
-                    <CPlaceholder
-                      color="primary"
-                      as={CButton}
-                      disabled
-                      href="#"
-                      tabIndex={-1}
-                      xs={6}
-                    ></CPlaceholder>
-                  </CCardBody>
-                </CCard>
-              </div>
+                    </Button>
+                  </CardContent>
+                </Card>
+                <Card sx={{ width: 288 }}>
+                  <Skeleton variant="rectangular" height={180} />
+                  <CardContent>
+                    <Skeleton variant="text" width="60%" />
+                    <Skeleton variant="text" />
+                    <Skeleton variant="text" />
+                    <Skeleton variant="text" width="80%" />
+                    <Skeleton variant="rectangular" width={100} height={36} sx={{ mt: 2 }} />
+                  </CardContent>
+                </Card>
+              </Box>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Placeholder</strong>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Create placeholders with the <code>&lt;CPlaceholder&gt;</code> component and a grid
-              column propx (e.g., <code>xs={6}</code>) to set the <code>width</code>. They can
-              replace the text inside an element or be added as a modifier class to an existing
-              component.
-            </p>
+          </CardContent>
+        </Card>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader title={<strong>React Placeholder</strong>} />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              Create placeholders with the Skeleton component to set the width. They can replace the
+              text inside an element or be added as a modifier class to an existing component.
+            </Typography>
             <DocsExample href="components/placeholder">
-              <p aria-hidden="true">
-                <CPlaceholder xs={6} />
-              </p>
-              <CPlaceholder
-                color="primary"
-                as={CButton}
-                aria-hidden="true"
-                disabled
-                href="#"
-                tabIndex={-1}
-                xs={4}
-              ></CPlaceholder>
+              <Skeleton variant="text" width="50%" />
+              <Skeleton variant="rectangular" width={100} height={36} sx={{ mt: 2 }} />
             </DocsExample>
-          </CCardBody>
-        </CCard>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Placeholder</strong> <small> Width</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              You can change the <code>width</code> through grid column classes, width utilities, or
-              inline styles.
-            </p>
+          </CardContent>
+        </Card>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader
+            title={
+              <>
+                <strong>React Placeholder</strong> <small>Width</small>
+              </>
+            }
+          />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              You can change the width through width utilities or inline styles.
+            </Typography>
             <DocsExample href="components/placeholder#width">
-              <CPlaceholder xs={6} />
-              <CPlaceholder className="w-75" />
-              <CPlaceholder style={{ width: '30%' }} />
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+                <Skeleton variant="text" width="50%" />
+                <Skeleton variant="text" width="75%" />
+                <Skeleton variant="text" width="30%" />
+              </Box>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Placeholder</strong> <small> Color</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              By default, the <code>&lt;CPlaceholder&gt;</code> uses <code>currentColor</code>. This
-              can be overridden with a custom color or utility class.
-            </p>
+          </CardContent>
+        </Card>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader
+            title={
+              <>
+                <strong>React Placeholder</strong> <small>Color</small>
+              </>
+            }
+          />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              By default, the Skeleton uses the theme colors. This can be overridden with custom
+              colors.
+            </Typography>
             <DocsExample href="components/placeholder#color">
-              <CPlaceholder xs={12} />
-
-              <CPlaceholder color="primary" xs={12} />
-              <CPlaceholder color="secondary" xs={12} />
-              <CPlaceholder color="success" xs={12} />
-              <CPlaceholder color="danger" xs={12} />
-              <CPlaceholder color="warning" xs={12} />
-              <CPlaceholder color="info" xs={12} />
-              <CPlaceholder color="light" xs={12} />
-              <CPlaceholder color="dark" xs={12} />
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+                <Skeleton variant="text" />
+                <Skeleton variant="text" sx={{ bgcolor: 'primary.light' }} />
+                <Skeleton variant="text" sx={{ bgcolor: 'secondary.light' }} />
+                <Skeleton variant="text" sx={{ bgcolor: 'success.light' }} />
+                <Skeleton variant="text" sx={{ bgcolor: 'error.light' }} />
+                <Skeleton variant="text" sx={{ bgcolor: 'warning.light' }} />
+                <Skeleton variant="text" sx={{ bgcolor: 'info.light' }} />
+              </Box>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Placeholder</strong> <small> Sizing</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              The size of <code>&lt;CPlaceholder&gt;</code>s are based on the typographic style of
-              the parent element. Customize them with <code>size</code> prop: <code>lg</code>,{' '}
-              <code>sm</code>, or <code>xs</code>.
-            </p>
+          </CardContent>
+        </Card>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader
+            title={
+              <>
+                <strong>React Placeholder</strong> <small>Sizing</small>
+              </>
+            }
+          />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              The size of Skeletons can be customized with height prop.
+            </Typography>
             <DocsExample href="components/placeholder#sizing">
-              <CPlaceholder xs={12} size="lg" />
-              <CPlaceholder xs={12} />
-              <CPlaceholder xs={12} size="sm" />
-              <CPlaceholder xs={12} size="xs" />
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+                <Skeleton variant="text" height={40} />
+                <Skeleton variant="text" height={30} />
+                <Skeleton variant="text" height={20} />
+                <Skeleton variant="text" height={10} />
+              </Box>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Placeholder</strong> <small> Animation</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Animate placeholders with <code>animation=&#34;glow&#34;</code> or{' '}
-              <code>animation=&#34;wave&#34;</code> to better convey the perception of something
-              being <em>actively</em> loaded.
-            </p>
+          </CardContent>
+        </Card>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader
+            title={
+              <>
+                <strong>React Placeholder</strong> <small>Animation</small>
+              </>
+            }
+          />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              Animate placeholders with animation=&quot;pulse&quot; or animation=&quot;wave&quot; to
+              better convey the perception of something being actively loaded.
+            </Typography>
             <DocsExample href="components/placeholder#animation">
-              <CPlaceholder as="p" animation="glow">
-                <CPlaceholder xs={12} />
-              </CPlaceholder>
-
-              <CPlaceholder as="p" animation="wave">
-                <CPlaceholder xs={12} />
-              </CPlaceholder>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                <Skeleton variant="text" animation="pulse" />
+                <Skeleton variant="text" animation="wave" />
+              </Box>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
+          </CardContent>
+        </Card>
+      </Grid>
+    </Grid>
   )
 }
 

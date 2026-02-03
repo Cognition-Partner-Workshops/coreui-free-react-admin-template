@@ -1,18 +1,34 @@
 import React from 'react'
+import Box from '@mui/material/Box'
+import { useSelector } from 'react-redux'
 import { AppContent, AppSidebar, AppFooter, AppHeader } from '../components/index'
 
+const drawerWidth = 256
+
 const DefaultLayout = () => {
+  const sidebarShow = useSelector((state) => state.sidebarShow)
+
   return (
-    <div>
+    <Box sx={{ display: 'flex' }}>
       <AppSidebar />
-      <div className="wrapper d-flex flex-column min-vh-100">
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          marginLeft: { sm: sidebarShow ? 0 : `-${drawerWidth}px` },
+          transition: 'margin 0.3s ease',
+        }}
+      >
         <AppHeader />
-        <div className="body flex-grow-1">
+        <Box sx={{ flexGrow: 1, p: 3 }}>
           <AppContent />
-        </div>
+        </Box>
         <AppFooter />
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }
 

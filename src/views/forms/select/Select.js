@@ -1,99 +1,91 @@
 import React from 'react'
-import { CCard, CCardBody, CCardHeader, CCol, CFormSelect, CRow } from '@coreui/react'
+import Grid from '@mui/material/Grid'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardHeader from '@mui/material/CardHeader'
+import Typography from '@mui/material/Typography'
+import TextField from '@mui/material/TextField'
+import MenuItem from '@mui/material/MenuItem'
+import Box from '@mui/material/Box'
 import { DocsComponents, DocsExample } from 'src/components'
 
 const Select = () => {
   return (
-    <CRow>
-      <CCol xs={12}>
+    <Grid container spacing={3}>
+      <Grid item xs={12}>
         <DocsComponents href="forms/select/" />
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Select</strong> <small>Default</small>
-          </CCardHeader>
-          <CCardBody>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader
+            title={
+              <>
+                <strong>React Select</strong> <small>Default</small>
+              </>
+            }
+          />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              Use MUI TextField with select prop for select inputs.
+            </Typography>
             <DocsExample href="forms/select">
-              <CFormSelect aria-label="Default select example">
-                <option>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </CFormSelect>
+              <TextField select label="Open this select menu" defaultValue="" fullWidth>
+                <MenuItem value="">Open this select menu</MenuItem>
+                <MenuItem value="1">One</MenuItem>
+                <MenuItem value="2">Two</MenuItem>
+                <MenuItem value="3">Three</MenuItem>
+              </TextField>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Select</strong> <small>Sizing</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              You may also choose from small and large custom selects to match our similarly sized
-              text inputs.
-            </p>
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid item xs={12}>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader
+            title={
+              <>
+                <strong>React Select</strong> <small>Sizing</small>
+              </>
+            }
+          />
+          <CardContent>
             <DocsExample href="forms/select#sizing">
-              <CFormSelect size="lg" className="mb-3" aria-label="Large select example">
-                <option>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </CFormSelect>
-              <CFormSelect size="sm" className="mb-3" aria-label="Small select example">
-                <option>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </CFormSelect>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                <TextField select size="small" label="Small select" defaultValue="1" fullWidth>
+                  <MenuItem value="1">One</MenuItem>
+                  <MenuItem value="2">Two</MenuItem>
+                  <MenuItem value="3">Three</MenuItem>
+                </TextField>
+                <TextField select label="Default select" defaultValue="1" fullWidth>
+                  <MenuItem value="1">One</MenuItem>
+                  <MenuItem value="2">Two</MenuItem>
+                  <MenuItem value="3">Three</MenuItem>
+                </TextField>
+              </Box>
             </DocsExample>
-            <p className="text-body-secondary small">
-              The <code>multiple</code> attribute is also supported:
-            </p>
-            <DocsExample href="forms/select#sizing">
-              <CFormSelect size="lg" multiple aria-label="Multiple select example">
-                <option>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </CFormSelect>
-            </DocsExample>
-            <p className="text-body-secondary small">
-              As is the <code>htmlSize</code> property:
-            </p>
-            <DocsExample href="forms/select#sizing">
-              <CFormSelect size="lg" multiple aria-label="Multiple select example">
-                <option>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </CFormSelect>
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Select</strong> <small>Disabled</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Add the <code>disabled</code> boolean attribute on a select to give it a grayed out
-              appearance and remove pointer events.
-            </p>
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid item xs={12}>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader
+            title={
+              <>
+                <strong>React Select</strong> <small>Disabled</small>
+              </>
+            }
+          />
+          <CardContent>
             <DocsExample href="forms/select#disabled">
-              <CFormSelect aria-label="Disabled select example" disabled>
-                <option>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </CFormSelect>
+              <TextField select label="Disabled select" defaultValue="" disabled fullWidth>
+                <MenuItem value="">Open this select menu</MenuItem>
+                <MenuItem value="1">One</MenuItem>
+                <MenuItem value="2">Two</MenuItem>
+                <MenuItem value="3">Three</MenuItem>
+              </TextField>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
+          </CardContent>
+        </Card>
+      </Grid>
+    </Grid>
   )
 }
 

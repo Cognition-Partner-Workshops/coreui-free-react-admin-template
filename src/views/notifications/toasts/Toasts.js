@@ -1,252 +1,95 @@
-import React, { useRef, useState } from 'react'
-import {
-  CCard,
-  CCardHeader,
-  CCardBody,
-  CButton,
-  CRow,
-  CCol,
-  CToast,
-  CToastBody,
-  CToastClose,
-  CToastHeader,
-  CToaster,
-} from '@coreui/react'
+import React, { useState } from 'react'
+import Grid from '@mui/material/Grid'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardHeader from '@mui/material/CardHeader'
+import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button'
+import Snackbar from '@mui/material/Snackbar'
+import Alert from '@mui/material/Alert'
+import Box from '@mui/material/Box'
 import { DocsComponents, DocsExample } from 'src/components'
 
-const ExampleToast = () => {
-  const [toast, addToast] = useState(0)
-  const toaster = useRef()
-  const exampleToast = (
-    <CToast>
-      <CToastHeader closeButton>
-        <svg
-          className="rounded me-2"
-          width="20"
-          height="20"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="xMidYMid slice"
-          focusable="false"
-          role="img"
-        >
-          <rect width="100%" height="100%" fill="#007aff"></rect>
-        </svg>
-        <strong className="me-auto">CoreUI for React.js</strong>
-        <small>7 min ago</small>
-      </CToastHeader>
-      <CToastBody>Hello, world! This is a toast message.</CToastBody>
-    </CToast>
-  )
-  return (
-    <>
-      <CButton color="primary" onClick={() => addToast(exampleToast)}>
-        Send a toast
-      </CButton>
-      <CToaster ref={toaster} push={toast} placement="top-end" />
-    </>
-  )
-}
-
 const Toasts = () => {
+  const [open, setOpen] = useState(false)
+  const [openSuccess, setOpenSuccess] = useState(false)
+  const [openError, setOpenError] = useState(false)
+
   return (
-    <CRow>
-      <CCol xs={12}>
+    <Grid container spacing={3}>
+      <Grid item xs={12}>
         <DocsComponents href="components/toast/" />
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Toast</strong> <small>Basic</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Toasts are as flexible as you need and have very little required markup. At a minimum,
-              we require a single element to contain your “toasted” content and strongly encourage a
-              dismiss button.
-            </p>
-            <DocsExample href="components/toast">
-              <CToast autohide={false} visible={true}>
-                <CToastHeader closeButton>
-                  <svg
-                    className="rounded me-2"
-                    width="20"
-                    height="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="xMidYMid slice"
-                    focusable="false"
-                    role="img"
-                  >
-                    <rect width="100%" height="100%" fill="#007aff"></rect>
-                  </svg>
-                  <strong className="me-auto">CoreUI for React.js</strong>
-                  <small>7 min ago</small>
-                </CToastHeader>
-                <CToastBody>Hello, world! This is a toast message.</CToastBody>
-              </CToast>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader
+            title={
+              <>
+                <strong>React Toast</strong> <small>Basic</small>
+              </>
+            }
+          />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              Use MUI Snackbar for toast notifications.
+            </Typography>
+            <DocsExample href="components/toast#basic">
+              <Button variant="contained" onClick={() => setOpen(true)}>
+                Show Toast
+              </Button>
+              <Snackbar
+                open={open}
+                autoHideDuration={6000}
+                onClose={() => setOpen(false)}
+                message="This is a toast message"
+              />
             </DocsExample>
-            <DocsExample href="components/toast">{ExampleToast()}</DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Toast</strong> <small>Translucent</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Toasts are slightly translucent to blend in with what&#39;s below them.
-            </p>
-            <DocsExample href="components/toast#translucent" tabContentClassName="bg-dark">
-              <CToast autohide={false} visible={true}>
-                <CToastHeader closeButton>
-                  <svg
-                    className="rounded me-2"
-                    width="20"
-                    height="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="xMidYMid slice"
-                    focusable="false"
-                    role="img"
-                  >
-                    <rect width="100%" height="100%" fill="#007aff"></rect>
-                  </svg>
-                  <strong className="me-auto">CoreUI for React.js</strong>
-                  <small>7 min ago</small>
-                </CToastHeader>
-                <CToastBody>Hello, world! This is a toast message.</CToastBody>
-              </CToast>
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Toast</strong> <small>Stacking</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              You can stack toasts by wrapping them in a toast container, which will vertically add
-              some spacing.
-            </p>
-            <DocsExample href="components/toast#stacking">
-              <CToaster className="position-static">
-                <CToast autohide={false} visible={true}>
-                  <CToastHeader closeButton>
-                    <svg
-                      className="rounded me-2"
-                      width="20"
-                      height="20"
-                      xmlns="http://www.w3.org/2000/svg"
-                      preserveAspectRatio="xMidYMid slice"
-                      focusable="false"
-                      role="img"
-                    >
-                      <rect width="100%" height="100%" fill="#007aff"></rect>
-                    </svg>
-                    <strong className="me-auto">CoreUI for React.js</strong>
-                    <small>7 min ago</small>
-                  </CToastHeader>
-                  <CToastBody>Hello, world! This is a toast message.</CToastBody>
-                </CToast>
-                <CToast autohide={false} visible={true}>
-                  <CToastHeader closeButton>
-                    <svg
-                      className="rounded me-2"
-                      width="20"
-                      height="20"
-                      xmlns="http://www.w3.org/2000/svg"
-                      preserveAspectRatio="xMidYMid slice"
-                      focusable="false"
-                      role="img"
-                    >
-                      <rect width="100%" height="100%" fill="#007aff"></rect>
-                    </svg>
-                    <strong className="me-auto">CoreUI for React.js</strong>
-                    <small>7 min ago</small>
-                  </CToastHeader>
-                  <CToastBody>Hello, world! This is a toast message.</CToastBody>
-                </CToast>
-              </CToaster>
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Toast</strong> <small>Custom content</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Customize your toasts by removing sub-components, tweaking them with{' '}
-              <a href="https://coreui.io/docs/utilities/api">utilities</a>, or by adding your own
-              markup. Here we&#39;ve created a simpler toast by removing the default{' '}
-              <code>&lt;CToastHeader&gt;</code>, adding a custom hide icon from{' '}
-              <a href="https://coreui.io/icons/">CoreUI Icons</a>, and using some{' '}
-              <a href="https://coreui.io/docs/utilities/flex">flexbox utilities</a> to adjust the
-              layout.
-            </p>
-            <DocsExample href="components/toast#custom-content">
-              <CToast autohide={false} className="align-items-center" visible={true}>
-                <div className="d-flex">
-                  <CToastBody>Hello, world! This is a toast message.</CToastBody>
-                  <CToastClose className="me-2 m-auto" />
-                </div>
-              </CToast>
-            </DocsExample>
-            <p className="text-body-secondary small">
-              Alternatively, you can also add additional controls and components to toasts.
-            </p>
-            <DocsExample href="components/toast#custom-content">
-              <CToast autohide={false} visible={true}>
-                <CToastBody>
-                  Hello, world! This is a toast message.
-                  <div className="mt-2 pt-2 border-top">
-                    <CButton type="button" color="primary" size="sm">
-                      Take action
-                    </CButton>
-                    <CToastClose as={CButton} color="secondary" size="sm" className="ms-1">
-                      Close
-                    </CToastClose>
-                  </div>
-                </CToastBody>
-              </CToast>
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Toast</strong> <small>Custom content</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Building on the above example, you can create different toast color schemes with our{' '}
-              <a href="https://coreui.io/docs/utilities/colors">color</a> and{' '}
-              <a href="https://coreui.io/docs/utilities/background">background</a> utilities. Here
-              we&#39;ve set <code>color=&#34;primary&#34;</code> and added <code>.text-white</code>{' '}
-              class to the <code>&lt;Ctoast&gt;</code>, and then set <code>white</code> property to
-              our close button. For a crisp edge, we remove the default border with{' '}
-              <code>.border-0</code>.
-            </p>
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid item xs={12}>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader
+            title={
+              <>
+                <strong>React Toast</strong> <small>With Alert</small>
+              </>
+            }
+          />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              Combine Snackbar with Alert for colored toasts.
+            </Typography>
             <DocsExample href="components/toast#color-schemes">
-              <CToast
-                autohide={false}
-                color="primary"
-                className="text-white align-items-center"
-                visible={true}
+              <Box sx={{ display: 'flex', gap: 1 }}>
+                <Button variant="contained" color="success" onClick={() => setOpenSuccess(true)}>
+                  Success Toast
+                </Button>
+                <Button variant="contained" color="error" onClick={() => setOpenError(true)}>
+                  Error Toast
+                </Button>
+              </Box>
+              <Snackbar
+                open={openSuccess}
+                autoHideDuration={6000}
+                onClose={() => setOpenSuccess(false)}
               >
-                <div className="d-flex">
-                  <CToastBody>Hello, world! This is a toast message.</CToastBody>
-                  <CToastClose className="me-2 m-auto" white />
-                </div>
-              </CToast>
+                <Alert onClose={() => setOpenSuccess(false)} severity="success">
+                  Success! This is a success toast.
+                </Alert>
+              </Snackbar>
+              <Snackbar
+                open={openError}
+                autoHideDuration={6000}
+                onClose={() => setOpenError(false)}
+              >
+                <Alert onClose={() => setOpenError(false)} severity="error">
+                  Error! This is an error toast.
+                </Alert>
+              </Snackbar>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
+          </CardContent>
+        </Card>
+      </Grid>
+    </Grid>
   )
 }
 
