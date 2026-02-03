@@ -1,143 +1,126 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import {
-  CContainer,
-  CDropdown,
-  CDropdownItem,
-  CDropdownMenu,
-  CDropdownToggle,
-  CHeader,
-  CHeaderNav,
-  CHeaderToggler,
-  CNavLink,
-  CNavItem,
-  useColorModes,
-} from '@coreui/react'
-import CIcon from '@coreui/icons-react'
-import {
-  cilBell,
-  cilContrast,
-  cilEnvelopeOpen,
-  cilList,
-  cilMenu,
-  cilMoon,
-  cilSun,
-} from '@coreui/icons'
+import AppBar from '@mui/material/AppBar'
+import Toolbar from '@mui/material/Toolbar'
+import IconButton from '@mui/material/IconButton'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import Menu from '@mui/material/Menu'
+import MenuItem from '@mui/material/MenuItem'
+import Divider from '@mui/material/Divider'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import MenuIcon from '@mui/icons-material/Menu'
+import NotificationsIcon from '@mui/icons-material/Notifications'
+import ListIcon from '@mui/icons-material/List'
+import EmailIcon from '@mui/icons-material/Email'
+import LightModeIcon from '@mui/icons-material/LightMode'
+import DarkModeIcon from '@mui/icons-material/DarkMode'
+import ContrastIcon from '@mui/icons-material/Contrast'
 
 import { AppBreadcrumb } from './index'
 import { AppHeaderDropdown } from './header/index'
 
-const AppHeader = () => {
-  const headerRef = useRef()
-  const { colorMode, setColorMode } = useColorModes('coreui-free-react-admin-template-theme')
+const drawerWidth = 256
 
+const AppHeader = () => {
   const dispatch = useDispatch()
   const sidebarShow = useSelector((state) => state.sidebarShow)
+  const theme = useSelector((state) => state.theme)
 
-  useEffect(() => {
-    const handleScroll = () => {
-      headerRef.current &&
-        headerRef.current.classList.toggle('shadow-sm', document.documentElement.scrollTop > 0)
-    }
+  const [themeAnchorEl, setThemeAnchorEl] = useState(null)
+  const themeMenuOpen = Boolean(themeAnchorEl)
 
-    document.addEventListener('scroll', handleScroll)
-    return () => document.removeEventListener('scroll', handleScroll)
-  }, [])
+  const handleThemeClick = (event) => {
+    setThemeAnchorEl(event.currentTarget)
+  }
+
+  const handleThemeClose = () => {
+    setThemeAnchorEl(null)
+  }
+
+  const handleThemeChange = (newTheme) => {
+    dispatch({ type: 'set', theme: newTheme })
+    handleThemeClose()
+  }
 
   return (
-    <CHeader position="sticky" className="mb-4 p-0" ref={headerRef}>
-      <CContainer className="border-bottom px-4" fluid>
-        <CHeaderToggler
+    <AppBar
+      position="sticky"
+      color="default"
+      sx={{
+        bgcolor: 'background.paper',
+        borderBottom: 1,
+        borderColor: 'divider',
+      }}
+    >
+      <Toolbar>
+        <IconButton
+          edge="start"
+          color="inherit"
+          aria-label="toggle sidebar"
           onClick={() => dispatch({ type: 'set', sidebarShow: !sidebarShow })}
-          style={{ marginInlineStart: '-14px' }}
+          sx={{ mr: 2 }}
         >
-          <CIcon icon={cilMenu} size="lg" />
-        </CHeaderToggler>
-        <CHeaderNav className="d-none d-md-flex">
-          <CNavItem>
-            <CNavLink to="/dashboard" as={NavLink}>
-              Dashboard
-            </CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink href="#">Users</CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink href="#">Settings</CNavLink>
-          </CNavItem>
-        </CHeaderNav>
-        <CHeaderNav className="ms-auto">
-          <CNavItem>
-            <CNavLink href="#">
-              <CIcon icon={cilBell} size="lg" />
-            </CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink href="#">
-              <CIcon icon={cilList} size="lg" />
-            </CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink href="#">
-              <CIcon icon={cilEnvelopeOpen} size="lg" />
-            </CNavLink>
-          </CNavItem>
-        </CHeaderNav>
-        <CHeaderNav>
-          <li className="nav-item py-1">
-            <div className="vr h-100 mx-2 text-body text-opacity-75"></div>
-          </li>
-          <CDropdown variant="nav-item" placement="bottom-end">
-            <CDropdownToggle caret={false}>
-              {colorMode === 'dark' ? (
-                <CIcon icon={cilMoon} size="lg" />
-              ) : colorMode === 'auto' ? (
-                <CIcon icon={cilContrast} size="lg" />
-              ) : (
-                <CIcon icon={cilSun} size="lg" />
-              )}
-            </CDropdownToggle>
-            <CDropdownMenu>
-              <CDropdownItem
-                active={colorMode === 'light'}
-                className="d-flex align-items-center"
-                as="button"
-                type="button"
-                onClick={() => setColorMode('light')}
-              >
-                <CIcon className="me-2" icon={cilSun} size="lg" /> Light
-              </CDropdownItem>
-              <CDropdownItem
-                active={colorMode === 'dark'}
-                className="d-flex align-items-center"
-                as="button"
-                type="button"
-                onClick={() => setColorMode('dark')}
-              >
-                <CIcon className="me-2" icon={cilMoon} size="lg" /> Dark
-              </CDropdownItem>
-              <CDropdownItem
-                active={colorMode === 'auto'}
-                className="d-flex align-items-center"
-                as="button"
-                type="button"
-                onClick={() => setColorMode('auto')}
-              >
-                <CIcon className="me-2" icon={cilContrast} size="lg" /> Auto
-              </CDropdownItem>
-            </CDropdownMenu>
-          </CDropdown>
-          <li className="nav-item py-1">
-            <div className="vr h-100 mx-2 text-body text-opacity-75"></div>
-          </li>
+          <MenuIcon />
+        </IconButton>
+
+        <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
+          <Button component={NavLink} to="/dashboard" color="inherit">
+            Dashboard
+          </Button>
+          <Button color="inherit">Users</Button>
+          <Button color="inherit">Settings</Button>
+        </Box>
+
+        <Box sx={{ flexGrow: 1 }} />
+
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <IconButton color="inherit">
+            <NotificationsIcon />
+          </IconButton>
+          <IconButton color="inherit">
+            <ListIcon />
+          </IconButton>
+          <IconButton color="inherit">
+            <EmailIcon />
+          </IconButton>
+
+          <Divider orientation="vertical" flexItem sx={{ mx: 1 }} />
+
+          <IconButton color="inherit" onClick={handleThemeClick}>
+            {theme === 'dark' ? <DarkModeIcon /> : <LightModeIcon />}
+          </IconButton>
+          <Menu
+            anchorEl={themeAnchorEl}
+            open={themeMenuOpen}
+            onClose={handleThemeClose}
+            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+          >
+            <MenuItem selected={theme === 'light'} onClick={() => handleThemeChange('light')}>
+              <ListItemIcon>
+                <LightModeIcon fontSize="small" />
+              </ListItemIcon>
+              Light
+            </MenuItem>
+            <MenuItem selected={theme === 'dark'} onClick={() => handleThemeChange('dark')}>
+              <ListItemIcon>
+                <DarkModeIcon fontSize="small" />
+              </ListItemIcon>
+              Dark
+            </MenuItem>
+          </Menu>
+
+          <Divider orientation="vertical" flexItem sx={{ mx: 1 }} />
+
           <AppHeaderDropdown />
-        </CHeaderNav>
-      </CContainer>
-      <CContainer className="px-4" fluid>
+        </Box>
+      </Toolbar>
+      <Box sx={{ px: 3, py: 1, borderTop: 1, borderColor: 'divider' }}>
         <AppBreadcrumb />
-      </CContainer>
-    </CHeader>
+      </Box>
+    </AppBar>
   )
 }
 

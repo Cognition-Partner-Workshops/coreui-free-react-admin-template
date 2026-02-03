@@ -1,74 +1,37 @@
 import React from 'react'
-import {
-  CBreadcrumb,
-  CBreadcrumbItem,
-  CCard,
-  CCardBody,
-  CCardHeader,
-  CCol,
-  CRow,
-  CLink,
-} from '@coreui/react'
-import { DocsComponents, DocsExample } from 'src/components'
+import Card from '@mui/material/Card'
+import CardHeader from '@mui/material/CardHeader'
+import CardContent from '@mui/material/CardContent'
+import MuiBreadcrumbs from '@mui/material/Breadcrumbs'
+import Link from '@mui/material/Link'
+import Typography from '@mui/material/Typography'
+
+import { DocsExample } from 'src/components'
 
 const Breadcrumbs = () => {
   return (
-    <CRow>
-      <CCol xs={12}>
-        <DocsComponents href="components/breadcrumb/" />
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Breadcrumb</strong>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              The breadcrumb navigation provides links back to each previous page the user navigated
-              through and shows the current location in a website or an application. You don’t have
-              to add separators, because they automatically added in CSS through{' '}
-              <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::before">
-                {' '}
-                <code>::before</code>
-              </a>{' '}
-              and{' '}
-              <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/content">
-                {' '}
-                <code>content</code>
-              </a>
-              .
-            </p>
-            <DocsExample href="components/breadcrumb">
-              <CBreadcrumb>
-                <CBreadcrumbItem>
-                  <CLink href="#">Home</CLink>
-                </CBreadcrumbItem>
-                <CBreadcrumbItem active>Library</CBreadcrumbItem>
-              </CBreadcrumb>
-              <CBreadcrumb>
-                <CBreadcrumbItem>
-                  <CLink href="#">Home</CLink>
-                </CBreadcrumbItem>
-                <CBreadcrumbItem>
-                  <CLink href="#">Library</CLink>
-                </CBreadcrumbItem>
-                <CBreadcrumbItem active>Data</CBreadcrumbItem>
-              </CBreadcrumb>
-              <CBreadcrumb>
-                <CBreadcrumbItem>
-                  <CLink href="#">Home</CLink>
-                </CBreadcrumbItem>
-                <CBreadcrumbItem>
-                  <CLink href="#">Library</CLink>
-                </CBreadcrumbItem>
-                <CBreadcrumbItem>
-                  <CLink href="#">Data</CLink>
-                </CBreadcrumbItem>
-                <CBreadcrumbItem active>Bootstrap</CBreadcrumbItem>
-              </CBreadcrumb>
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
+    <Card sx={{ mb: 3 }}>
+      <CardHeader title="Breadcrumbs" />
+      <CardContent>
+        <DocsExample href="components/breadcrumb">
+          <MuiBreadcrumbs aria-label="breadcrumb">
+            <Link underline="hover" color="inherit" href="#">
+              Home
+            </Link>
+            <Typography color="text.primary">Library</Typography>
+          </MuiBreadcrumbs>
+          <MuiBreadcrumbs aria-label="breadcrumb" sx={{ mt: 2 }}>
+            <Link underline="hover" color="inherit" href="#">
+              Home
+            </Link>
+            <Link underline="hover" color="inherit" href="#">
+              Library
+            </Link>
+            <Typography color="text.primary">Data</Typography>
+          </MuiBreadcrumbs>
+        </DocsExample>
+      </CardContent>
+    </Card>
   )
 }
 

@@ -1,58 +1,95 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-
-import {
-  CCloseButton,
-  CSidebar,
-  CSidebarBrand,
-  CSidebarFooter,
-  CSidebarHeader,
-  CSidebarToggler,
-} from '@coreui/react'
-import CIcon from '@coreui/icons-react'
+import { Link } from 'react-router-dom'
+import Drawer from '@mui/material/Drawer'
+import Box from '@mui/material/Box'
+import IconButton from '@mui/material/IconButton'
+import Typography from '@mui/material/Typography'
+import Divider from '@mui/material/Divider'
+import CloseIcon from '@mui/icons-material/Close'
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
+import useMediaQuery from '@mui/material/useMediaQuery'
+import { useTheme } from '@mui/material/styles'
 
 import { AppSidebarNav } from './AppSidebarNav'
-
-import { logo } from 'src/assets/brand/logo'
-import { sygnet } from 'src/assets/brand/sygnet'
-
-// sidebar nav config
 import navigation from '../_nav'
 
+const drawerWidth = 256
+
 const AppSidebar = () => {
+  const muiTheme = useTheme()
+  const isMobile = useMediaQuery(muiTheme.breakpoints.down('sm'))
   const dispatch = useDispatch()
-  const unfoldable = useSelector((state) => state.sidebarUnfoldable)
   const sidebarShow = useSelector((state) => state.sidebarShow)
 
+  const handleClose = () => {
+    dispatch({ type: 'set', sidebarShow: false })
+  }
+
+  const drawerContent = (
+    <>
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          p: 2,
+          borderBottom: 1,
+          borderColor: 'divider',
+        }}
+      >
+        <Typography
+          variant="h6"
+          component={Link}
+          to="/"
+          sx={{
+            textDecoration: 'none',
+            color: 'inherit',
+            fontWeight: 'bold',
+          }}
+        >
+          CoreUI React
+        </Typography>
+        {isMobile && (
+          <IconButton onClick={handleClose} size="small">
+            <CloseIcon />
+          </IconButton>
+        )}
+      </Box>
+      <AppSidebarNav items={navigation} />
+      <Box
+        sx={{
+          borderTop: 1,
+          borderColor: 'divider',
+          p: 1,
+          display: { xs: 'none', lg: 'flex' },
+          justifyContent: 'flex-end',
+        }}
+      >
+        <IconButton onClick={handleClose} size="small">
+          <ChevronLeftIcon />
+        </IconButton>
+      </Box>
+    </>
+  )
+
   return (
-    <CSidebar
-      className="border-end"
-      colorScheme="dark"
-      position="fixed"
-      unfoldable={unfoldable}
-      visible={sidebarShow}
-      onVisibleChange={(visible) => {
-        dispatch({ type: 'set', sidebarShow: visible })
+    <Drawer
+      variant={isMobile ? 'temporary' : 'persistent'}
+      open={sidebarShow}
+      onClose={handleClose}
+      sx={{
+        width: drawerWidth,
+        flexShrink: 0,
+        '& .MuiDrawer-paper': {
+          width: drawerWidth,
+          boxSizing: 'border-box',
+          bgcolor: 'background.paper',
+        },
       }}
     >
-      <CSidebarHeader className="border-bottom">
-        <CSidebarBrand to="/">
-          <CIcon customClassName="sidebar-brand-full" icon={logo} height={32} />
-          <CIcon customClassName="sidebar-brand-narrow" icon={sygnet} height={32} />
-        </CSidebarBrand>
-        <CCloseButton
-          className="d-lg-none"
-          dark
-          onClick={() => dispatch({ type: 'set', sidebarShow: false })}
-        />
-      </CSidebarHeader>
-      <AppSidebarNav items={navigation} />
-      <CSidebarFooter className="border-top d-none d-lg-flex">
-        <CSidebarToggler
-          onClick={() => dispatch({ type: 'set', sidebarUnfoldable: !unfoldable })}
-        />
-      </CSidebarFooter>
-    </CSidebar>
+      {drawerContent}
+    </Drawer>
   )
 }
 

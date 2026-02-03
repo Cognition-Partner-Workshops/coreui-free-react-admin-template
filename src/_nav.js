@@ -1,506 +1,152 @@
 import React from 'react'
-import CIcon from '@coreui/icons-react'
-import {
-  cilBell,
-  cilCalculator,
-  cilChartPie,
-  cilCursor,
-  cilDescription,
-  cilDrop,
-  cilExternalLink,
-  cilNotes,
-  cilPencil,
-  cilPuzzle,
-  cilSpeedometer,
-  cilStar,
-} from '@coreui/icons'
-import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
+import DashboardIcon from '@mui/icons-material/Dashboard'
+import ColorLensIcon from '@mui/icons-material/ColorLens'
+import TextFieldsIcon from '@mui/icons-material/TextFields'
+import ExtensionIcon from '@mui/icons-material/Extension'
+import TouchAppIcon from '@mui/icons-material/TouchApp'
+import NotesIcon from '@mui/icons-material/Notes'
+import PieChartIcon from '@mui/icons-material/PieChart'
+import StarIcon from '@mui/icons-material/Star'
+import NotificationsIcon from '@mui/icons-material/Notifications'
+import WidgetsIcon from '@mui/icons-material/Widgets'
+import DescriptionIcon from '@mui/icons-material/Description'
+import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 
 const _nav = [
   {
-    component: CNavItem,
+    type: 'item',
     name: 'Dashboard',
     to: '/dashboard',
-    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+    icon: DashboardIcon,
     badge: {
       color: 'info',
       text: 'NEW',
     },
   },
   {
-    component: CNavTitle,
+    type: 'title',
     name: 'Theme',
   },
   {
-    component: CNavItem,
+    type: 'item',
     name: 'Colors',
     to: '/theme/colors',
-    icon: <CIcon icon={cilDrop} customClassName="nav-icon" />,
+    icon: ColorLensIcon,
   },
   {
-    component: CNavItem,
+    type: 'item',
     name: 'Typography',
     to: '/theme/typography',
-    icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
+    icon: TextFieldsIcon,
   },
   {
-    component: CNavTitle,
+    type: 'title',
     name: 'Components',
   },
   {
-    component: CNavGroup,
+    type: 'group',
     name: 'Base',
-    to: '/base',
-    icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
+    icon: ExtensionIcon,
     items: [
-      {
-        component: CNavItem,
-        name: 'Accordion',
-        to: '/base/accordion',
-      },
-      {
-        component: CNavItem,
-        name: 'Breadcrumb',
-        to: '/base/breadcrumbs',
-      },
-      {
-        component: CNavItem,
-        name: (
-          <React.Fragment>
-            {'Calendar'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
-          </React.Fragment>
-        ),
-        href: 'https://coreui.io/react/docs/components/calendar/',
-        badge: {
-          color: 'danger',
-          text: 'PRO',
-        },
-      },
-      {
-        component: CNavItem,
-        name: 'Cards',
-        to: '/base/cards',
-      },
-      {
-        component: CNavItem,
-        name: 'Carousel',
-        to: '/base/carousels',
-      },
-      {
-        component: CNavItem,
-        name: 'Collapse',
-        to: '/base/collapses',
-      },
-      {
-        component: CNavItem,
-        name: 'List group',
-        to: '/base/list-groups',
-      },
-      {
-        component: CNavItem,
-        name: 'Navs & Tabs',
-        to: '/base/navs',
-      },
-      {
-        component: CNavItem,
-        name: 'Pagination',
-        to: '/base/paginations',
-      },
-      {
-        component: CNavItem,
-        name: 'Placeholders',
-        to: '/base/placeholders',
-      },
-      {
-        component: CNavItem,
-        name: 'Popovers',
-        to: '/base/popovers',
-      },
-      {
-        component: CNavItem,
-        name: 'Progress',
-        to: '/base/progress',
-      },
-      {
-        component: CNavItem,
-        name: 'Smart Pagination',
-        href: 'https://coreui.io/react/docs/components/smart-pagination/',
-        badge: {
-          color: 'danger',
-          text: 'PRO',
-        },
-      },
-      {
-        component: CNavItem,
-        name: (
-          <React.Fragment>
-            {'Smart Table'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
-          </React.Fragment>
-        ),
-        href: 'https://coreui.io/react/docs/components/smart-table/',
-        badge: {
-          color: 'danger',
-          text: 'PRO',
-        },
-      },
-      {
-        component: CNavItem,
-        name: 'Spinners',
-        to: '/base/spinners',
-      },
-      {
-        component: CNavItem,
-        name: 'Tables',
-        to: '/base/tables',
-      },
-      {
-        component: CNavItem,
-        name: 'Tabs',
-        to: '/base/tabs',
-      },
-      {
-        component: CNavItem,
-        name: 'Tooltips',
-        to: '/base/tooltips',
-      },
-      {
-        component: CNavItem,
-        name: (
-          <React.Fragment>
-            {'Virtual Scroller'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
-          </React.Fragment>
-        ),
-        href: 'https://coreui.io/react/docs/components/virtual-scroller/',
-        badge: {
-          color: 'danger',
-          text: 'PRO',
-        },
-      },
+      { type: 'item', name: 'Accordion', to: '/base/accordion' },
+      { type: 'item', name: 'Breadcrumb', to: '/base/breadcrumbs' },
+      { type: 'item', name: 'Cards', to: '/base/cards' },
+      { type: 'item', name: 'Carousel', to: '/base/carousels' },
+      { type: 'item', name: 'Collapse', to: '/base/collapses' },
+      { type: 'item', name: 'List group', to: '/base/list-groups' },
+      { type: 'item', name: 'Navs & Tabs', to: '/base/navs' },
+      { type: 'item', name: 'Pagination', to: '/base/paginations' },
+      { type: 'item', name: 'Placeholders', to: '/base/placeholders' },
+      { type: 'item', name: 'Popovers', to: '/base/popovers' },
+      { type: 'item', name: 'Progress', to: '/base/progress' },
+      { type: 'item', name: 'Spinners', to: '/base/spinners' },
+      { type: 'item', name: 'Tables', to: '/base/tables' },
+      { type: 'item', name: 'Tabs', to: '/base/tabs' },
+      { type: 'item', name: 'Tooltips', to: '/base/tooltips' },
     ],
   },
   {
-    component: CNavGroup,
+    type: 'group',
     name: 'Buttons',
-    to: '/buttons',
-    icon: <CIcon icon={cilCursor} customClassName="nav-icon" />,
+    icon: TouchAppIcon,
     items: [
-      {
-        component: CNavItem,
-        name: 'Buttons',
-        to: '/buttons/buttons',
-      },
-      {
-        component: CNavItem,
-        name: 'Buttons groups',
-        to: '/buttons/button-groups',
-      },
-      {
-        component: CNavItem,
-        name: 'Dropdowns',
-        to: '/buttons/dropdowns',
-      },
-      {
-        component: CNavItem,
-        name: (
-          <React.Fragment>
-            {'Loading Button'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
-          </React.Fragment>
-        ),
-        href: 'https://coreui.io/react/docs/components/loading-button/',
-        badge: {
-          color: 'danger',
-          text: 'PRO',
-        },
-      },
+      { type: 'item', name: 'Buttons', to: '/buttons/buttons' },
+      { type: 'item', name: 'Button groups', to: '/buttons/button-groups' },
+      { type: 'item', name: 'Dropdowns', to: '/buttons/dropdowns' },
     ],
   },
   {
-    component: CNavGroup,
+    type: 'group',
     name: 'Forms',
-    icon: <CIcon icon={cilNotes} customClassName="nav-icon" />,
+    icon: NotesIcon,
     items: [
-      {
-        component: CNavItem,
-        name: (
-          <React.Fragment>
-            {'Autocomplete'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
-          </React.Fragment>
-        ),
-        href: 'https://coreui.io/react/docs/forms/autocomplete/',
-        badge: {
-          color: 'danger',
-          text: 'PRO',
-        },
-      },
-      {
-        component: CNavItem,
-        name: 'Checks & Radios',
-        to: '/forms/checks-radios',
-      },
-      {
-        component: CNavItem,
-        name: (
-          <React.Fragment>
-            {'Date Picker'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
-          </React.Fragment>
-        ),
-        href: 'https://coreui.io/react/docs/forms/date-picker/',
-        badge: {
-          color: 'danger',
-          text: 'PRO',
-        },
-      },
-      {
-        component: CNavItem,
-        name: 'Date Range Picker',
-        href: 'https://coreui.io/react/docs/forms/date-range-picker/',
-        badge: {
-          color: 'danger',
-          text: 'PRO',
-        },
-      },
-      {
-        component: CNavItem,
-        name: 'Floating Labels',
-        to: '/forms/floating-labels',
-      },
-      {
-        component: CNavItem,
-        name: 'Form Control',
-        to: '/forms/form-control',
-      },
-      {
-        component: CNavItem,
-        name: 'Input Group',
-        to: '/forms/input-group',
-      },
-      {
-        component: CNavItem,
-        name: (
-          <React.Fragment>
-            {'Multi Select'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
-          </React.Fragment>
-        ),
-        href: 'https://coreui.io/react/docs/forms/multi-select/',
-        badge: {
-          color: 'danger',
-          text: 'PRO',
-        },
-      },
-      {
-        component: CNavItem,
-        name: (
-          <React.Fragment>
-            {'OTP Input'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
-          </React.Fragment>
-        ),
-        href: 'https://coreui.io/react/docs/forms/one-time-password-input/',
-        badge: {
-          color: 'danger',
-          text: 'PRO',
-        },
-      },
-      {
-        component: CNavItem,
-        name: (
-          <React.Fragment>
-            {'Password Input'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
-          </React.Fragment>
-        ),
-        href: 'https://coreui.io/react/docs/forms/password-input/',
-        badge: {
-          color: 'danger',
-          text: 'PRO',
-        },
-      },
-      {
-        component: CNavItem,
-        name: 'Range',
-        to: '/forms/range',
-      },
-      {
-        component: CNavItem,
-        name: (
-          <React.Fragment>
-            {'Range Slider'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
-          </React.Fragment>
-        ),
-        href: 'https://coreui.io/react/docs/forms/range-slider/',
-        badge: {
-          color: 'danger',
-          text: 'PRO',
-        },
-      },
-      {
-        component: CNavItem,
-        name: (
-          <React.Fragment>
-            {'Rating'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
-          </React.Fragment>
-        ),
-        href: 'https://coreui.io/react/docs/forms/rating/',
-        badge: {
-          color: 'danger',
-          text: 'PRO',
-        },
-      },
-      {
-        component: CNavItem,
-        name: 'Select',
-        to: '/forms/select',
-      },
-      {
-        component: CNavItem,
-        name: (
-          <React.Fragment>
-            {'Stepper'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
-          </React.Fragment>
-        ),
-        href: 'https://coreui.io/react/docs/forms/stepper/',
-        badge: {
-          color: 'danger',
-          text: 'PRO',
-        },
-      },
-      {
-        component: CNavItem,
-        name: (
-          <React.Fragment>
-            {'Time Picker'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
-          </React.Fragment>
-        ),
-        href: 'https://coreui.io/react/docs/forms/time-picker/',
-        badge: {
-          color: 'danger',
-          text: 'PRO',
-        },
-      },
-      {
-        component: CNavItem,
-        name: 'Layout',
-        to: '/forms/layout',
-      },
-      {
-        component: CNavItem,
-        name: 'Validation',
-        to: '/forms/validation',
-      },
+      { type: 'item', name: 'Checks & Radios', to: '/forms/checks-radios' },
+      { type: 'item', name: 'Floating Labels', to: '/forms/floating-labels' },
+      { type: 'item', name: 'Form Control', to: '/forms/form-control' },
+      { type: 'item', name: 'Input Group', to: '/forms/input-group' },
+      { type: 'item', name: 'Range', to: '/forms/range' },
+      { type: 'item', name: 'Select', to: '/forms/select' },
+      { type: 'item', name: 'Layout', to: '/forms/layout' },
+      { type: 'item', name: 'Validation', to: '/forms/validation' },
     ],
   },
   {
-    component: CNavItem,
+    type: 'item',
     name: 'Charts',
     to: '/charts',
-    icon: <CIcon icon={cilChartPie} customClassName="nav-icon" />,
+    icon: PieChartIcon,
   },
   {
-    component: CNavGroup,
+    type: 'group',
     name: 'Icons',
-    icon: <CIcon icon={cilStar} customClassName="nav-icon" />,
+    icon: StarIcon,
     items: [
-      {
-        component: CNavItem,
-        name: 'CoreUI Free',
-        to: '/icons/coreui-icons',
-      },
-      {
-        component: CNavItem,
-        name: 'CoreUI Flags',
-        to: '/icons/flags',
-      },
-      {
-        component: CNavItem,
-        name: 'CoreUI Brands',
-        to: '/icons/brands',
-      },
+      { type: 'item', name: 'Material Icons', to: '/icons/coreui-icons' },
+      { type: 'item', name: 'Flags', to: '/icons/flags' },
+      { type: 'item', name: 'Brands', to: '/icons/brands' },
     ],
   },
   {
-    component: CNavGroup,
+    type: 'group',
     name: 'Notifications',
-    icon: <CIcon icon={cilBell} customClassName="nav-icon" />,
+    icon: NotificationsIcon,
     items: [
-      {
-        component: CNavItem,
-        name: 'Alerts',
-        to: '/notifications/alerts',
-      },
-      {
-        component: CNavItem,
-        name: 'Badges',
-        to: '/notifications/badges',
-      },
-      {
-        component: CNavItem,
-        name: 'Modal',
-        to: '/notifications/modals',
-      },
-      {
-        component: CNavItem,
-        name: 'Toasts',
-        to: '/notifications/toasts',
-      },
+      { type: 'item', name: 'Alerts', to: '/notifications/alerts' },
+      { type: 'item', name: 'Badges', to: '/notifications/badges' },
+      { type: 'item', name: 'Modal', to: '/notifications/modals' },
+      { type: 'item', name: 'Toasts', to: '/notifications/toasts' },
     ],
   },
   {
-    component: CNavItem,
+    type: 'item',
     name: 'Widgets',
     to: '/widgets',
-    icon: <CIcon icon={cilCalculator} customClassName="nav-icon" />,
+    icon: WidgetsIcon,
     badge: {
       color: 'info',
       text: 'NEW',
     },
   },
   {
-    component: CNavTitle,
+    type: 'title',
     name: 'Extras',
   },
   {
-    component: CNavGroup,
+    type: 'group',
     name: 'Pages',
-    icon: <CIcon icon={cilStar} customClassName="nav-icon" />,
+    icon: StarIcon,
     items: [
-      {
-        component: CNavItem,
-        name: 'Login',
-        to: '/login',
-      },
-      {
-        component: CNavItem,
-        name: 'Register',
-        to: '/register',
-      },
-      {
-        component: CNavItem,
-        name: 'Error 404',
-        to: '/404',
-      },
-      {
-        component: CNavItem,
-        name: 'Error 500',
-        to: '/500',
-      },
+      { type: 'item', name: 'Login', to: '/login' },
+      { type: 'item', name: 'Register', to: '/register' },
+      { type: 'item', name: 'Error 404', to: '/404' },
+      { type: 'item', name: 'Error 500', to: '/500' },
     ],
   },
   {
-    component: CNavItem,
+    type: 'item',
     name: 'Docs',
     href: 'https://coreui.io/react/docs/templates/installation/',
-    icon: <CIcon icon={cilDescription} customClassName="nav-icon" />,
+    icon: DescriptionIcon,
   },
 ]
 

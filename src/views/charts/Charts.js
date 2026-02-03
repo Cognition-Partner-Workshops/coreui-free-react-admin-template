@@ -1,182 +1,126 @@
 import React from 'react'
-import { CCard, CCardBody, CCol, CCardHeader, CRow } from '@coreui/react'
+import Card from '@mui/material/Card'
+import CardHeader from '@mui/material/CardHeader'
+import CardContent from '@mui/material/CardContent'
+import Grid from '@mui/material/Grid'
+import { useTheme } from '@mui/material/styles'
+import { Line, Bar, Doughnut, Pie, Radar, PolarArea } from 'react-chartjs-2'
 import {
-  CChartBar,
-  CChartDoughnut,
-  CChartLine,
-  CChartPie,
-  CChartPolarArea,
-  CChartRadar,
-} from '@coreui/react-chartjs'
-import { DocsLink } from 'src/components'
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  BarElement,
+  ArcElement,
+  RadialLinearScale,
+  Filler,
+  Tooltip,
+  Legend,
+} from 'chart.js'
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  BarElement,
+  ArcElement,
+  RadialLinearScale,
+  Filler,
+  Tooltip,
+  Legend,
+)
 
 const Charts = () => {
-  const random = () => Math.round(Math.random() * 100)
+  const theme = useTheme()
+  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July']
+
+  const lineData = {
+    labels,
+    datasets: [
+      {
+        label: 'Dataset 1',
+        backgroundColor: theme.palette.primary.main,
+        borderColor: theme.palette.primary.main,
+        data: [40, 20, 12, 39, 10, 40, 39],
+        fill: false,
+      },
+      {
+        label: 'Dataset 2',
+        backgroundColor: theme.palette.secondary.main,
+        borderColor: theme.palette.secondary.main,
+        data: [50, 12, 28, 29, 7, 25, 12],
+        fill: false,
+      },
+    ],
+  }
+
+  const barData = {
+    labels,
+    datasets: [
+      {
+        label: 'Dataset 1',
+        backgroundColor: theme.palette.info.main,
+        data: [40, 20, 12, 39, 10, 40, 39],
+      },
+      {
+        label: 'Dataset 2',
+        backgroundColor: theme.palette.error.main,
+        data: [50, 12, 28, 29, 7, 25, 12],
+      },
+    ],
+  }
+
+  const doughnutData = {
+    labels: ['Red', 'Green', 'Yellow'],
+    datasets: [
+      {
+        data: [300, 50, 100],
+        backgroundColor: [
+          theme.palette.error.main,
+          theme.palette.success.main,
+          theme.palette.warning.main,
+        ],
+      },
+    ],
+  }
 
   return (
-    <CRow>
-      <CCol xs={12}></CCol>
-      <CCol xs={6}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            Bar Chart <DocsLink name="chart" />
-          </CCardHeader>
-          <CCardBody>
-            <CChartBar
-              data={{
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                datasets: [
-                  {
-                    label: 'GitHub Commits',
-                    backgroundColor: '#f87979',
-                    data: [40, 20, 12, 39, 10, 40, 39, 80, 40],
-                  },
-                ],
-              }}
-              labels="months"
-            />
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={6}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            Line Chart <DocsLink name="chart" />
-          </CCardHeader>
-          <CCardBody>
-            <CChartLine
-              data={{
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                datasets: [
-                  {
-                    label: 'My First dataset',
-                    backgroundColor: 'rgba(220, 220, 220, 0.2)',
-                    borderColor: 'rgba(220, 220, 220, 1)',
-                    pointBackgroundColor: 'rgba(220, 220, 220, 1)',
-                    pointBorderColor: '#fff',
-                    data: [random(), random(), random(), random(), random(), random(), random()],
-                  },
-                  {
-                    label: 'My Second dataset',
-                    backgroundColor: 'rgba(151, 187, 205, 0.2)',
-                    borderColor: 'rgba(151, 187, 205, 1)',
-                    pointBackgroundColor: 'rgba(151, 187, 205, 1)',
-                    pointBorderColor: '#fff',
-                    data: [random(), random(), random(), random(), random(), random(), random()],
-                  },
-                ],
-              }}
-            />
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={6}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            Doughnut Chart <DocsLink name="chart" />
-          </CCardHeader>
-          <CCardBody>
-            <CChartDoughnut
-              data={{
-                labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
-                datasets: [
-                  {
-                    backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
-                    data: [40, 20, 80, 10],
-                  },
-                ],
-              }}
-            />
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={6}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            Pie Chart <DocsLink name="chart" />{' '}
-          </CCardHeader>
-          <CCardBody>
-            <CChartPie
-              data={{
-                labels: ['Red', 'Green', 'Yellow'],
-                datasets: [
-                  {
-                    data: [300, 50, 100],
-                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-                    hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-                  },
-                ],
-              }}
-            />
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={6}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            Polar Area Chart
-            <DocsLink name="chart" />
-          </CCardHeader>
-          <CCardBody>
-            <CChartPolarArea
-              data={{
-                labels: ['Red', 'Green', 'Yellow', 'Grey', 'Blue'],
-                datasets: [
-                  {
-                    data: [11, 16, 7, 3, 14],
-                    backgroundColor: ['#FF6384', '#4BC0C0', '#FFCE56', '#E7E9ED', '#36A2EB'],
-                  },
-                ],
-              }}
-            />
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={6}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            Radar Chart <DocsLink name="chart" />
-          </CCardHeader>
-          <CCardBody>
-            <CChartRadar
-              data={{
-                labels: [
-                  'Eating',
-                  'Drinking',
-                  'Sleeping',
-                  'Designing',
-                  'Coding',
-                  'Cycling',
-                  'Running',
-                ],
-                datasets: [
-                  {
-                    label: 'My First dataset',
-                    backgroundColor: 'rgba(220, 220, 220, 0.2)',
-                    borderColor: 'rgba(220, 220, 220, 1)',
-                    pointBackgroundColor: 'rgba(220, 220, 220, 1)',
-                    pointBorderColor: '#fff',
-                    pointHighlightFill: '#fff',
-                    pointHighlightStroke: 'rgba(220, 220, 220, 1)',
-                    data: [65, 59, 90, 81, 56, 55, 40],
-                  },
-                  {
-                    label: 'My Second dataset',
-                    backgroundColor: 'rgba(151, 187, 205, 0.2)',
-                    borderColor: 'rgba(151, 187, 205, 1)',
-                    pointBackgroundColor: 'rgba(151, 187, 205, 1)',
-                    pointBorderColor: '#fff',
-                    pointHighlightFill: '#fff',
-                    pointHighlightStroke: 'rgba(151, 187, 205, 1)',
-                    data: [28, 48, 40, 19, 96, 27, 100],
-                  },
-                ],
-              }}
-            />
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
+    <Grid container spacing={3}>
+      <Grid size={{ xs: 12, md: 6 }}>
+        <Card>
+          <CardHeader title="Line Chart" />
+          <CardContent>
+            <Line data={lineData} />
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid size={{ xs: 12, md: 6 }}>
+        <Card>
+          <CardHeader title="Bar Chart" />
+          <CardContent>
+            <Bar data={barData} />
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid size={{ xs: 12, md: 6 }}>
+        <Card>
+          <CardHeader title="Doughnut Chart" />
+          <CardContent>
+            <Doughnut data={doughnutData} />
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid size={{ xs: 12, md: 6 }}>
+        <Card>
+          <CardHeader title="Pie Chart" />
+          <CardContent>
+            <Pie data={doughnutData} />
+          </CardContent>
+        </Card>
+      </Grid>
+    </Grid>
   )
 }
 

@@ -1,90 +1,50 @@
-import React, { useEffect, useState, createRef } from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
-import { CRow, CCol, CCard, CCardHeader, CCardBody } from '@coreui/react'
-import { rgbToHex } from '@coreui/utils'
-import { DocsLink } from 'src/components'
-
-const ThemeView = () => {
-  const [color, setColor] = useState('rgb(255, 255, 255)')
-  const ref = createRef()
-
-  useEffect(() => {
-    const el = ref.current.parentNode.firstChild
-    const varColor = window.getComputedStyle(el).getPropertyValue('background-color')
-    setColor(varColor)
-  }, [ref])
-
-  return (
-    <table className="table w-100" ref={ref}>
-      <tbody>
-        <tr>
-          <td className="text-body-secondary">HEX:</td>
-          <td className="font-weight-bold">{rgbToHex(color)}</td>
-        </tr>
-        <tr>
-          <td className="text-body-secondary">RGB:</td>
-          <td className="font-weight-bold">{color}</td>
-        </tr>
-      </tbody>
-    </table>
-  )
-}
-
-const ThemeColor = ({ className, children }) => {
-  const classes = classNames(className, 'theme-color w-75 rounded mb-3')
-  return (
-    <CCol xs={12} sm={6} md={4} xl={2} className="mb-4">
-      <div className={classes} style={{ paddingTop: '75%' }}></div>
-      {children}
-      <ThemeView />
-    </CCol>
-  )
-}
-
-ThemeColor.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-}
+import React from 'react'
+import Card from '@mui/material/Card'
+import CardHeader from '@mui/material/CardHeader'
+import CardContent from '@mui/material/CardContent'
+import Grid from '@mui/material/Grid'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import { useTheme } from '@mui/material/styles'
 
 const Colors = () => {
+  const theme = useTheme()
+
+  const colors = [
+    { name: 'Primary', color: theme.palette.primary.main },
+    { name: 'Secondary', color: theme.palette.secondary.main },
+    { name: 'Success', color: theme.palette.success.main },
+    { name: 'Error', color: theme.palette.error.main },
+    { name: 'Warning', color: theme.palette.warning.main },
+    { name: 'Info', color: theme.palette.info.main },
+  ]
+
   return (
-    <>
-      <CCard className="mb-4">
-        <CCardHeader>
-          Theme colors
-          <DocsLink href="https://coreui.io/docs/utilities/colors/" />
-        </CCardHeader>
-        <CCardBody>
-          <CRow>
-            <ThemeColor className="bg-primary">
-              <h6>Brand Primary Color</h6>
-            </ThemeColor>
-            <ThemeColor className="bg-secondary">
-              <h6>Brand Secondary Color</h6>
-            </ThemeColor>
-            <ThemeColor className="bg-success">
-              <h6>Brand Success Color</h6>
-            </ThemeColor>
-            <ThemeColor className="bg-danger">
-              <h6>Brand Danger Color</h6>
-            </ThemeColor>
-            <ThemeColor className="bg-warning">
-              <h6>Brand Warning Color</h6>
-            </ThemeColor>
-            <ThemeColor className="bg-info">
-              <h6>Brand Info Color</h6>
-            </ThemeColor>
-            <ThemeColor className="bg-light">
-              <h6>Brand Light Color</h6>
-            </ThemeColor>
-            <ThemeColor className="bg-dark">
-              <h6>Brand Dark Color</h6>
-            </ThemeColor>
-          </CRow>
-        </CCardBody>
-      </CCard>
-    </>
+    <Card sx={{ mb: 3 }}>
+      <CardHeader title="Theme Colors" subheader="MUI theme palette colors" />
+      <CardContent>
+        <Grid container spacing={2}>
+          {colors.map((item, index) => (
+            <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2 }} key={index}>
+              <Box
+                sx={{
+                  bgcolor: item.color,
+                  color: 'white',
+                  p: 3,
+                  borderRadius: 1,
+                  textAlign: 'center',
+                }}
+              >
+                <Typography variant="subtitle1" fontWeight="bold">
+                  {item.name}
+                </Typography>
+                <Typography variant="caption">{item.color}</Typography>
+              </Box>
+            </Grid>
+          ))}
+        </Grid>
+      </CardContent>
+    </Card>
   )
 }
 

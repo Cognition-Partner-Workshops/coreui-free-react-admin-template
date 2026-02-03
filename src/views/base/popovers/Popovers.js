@@ -1,71 +1,48 @@
 import React from 'react'
-import { CButton, CCard, CCardBody, CCardHeader, CPopover, CRow, CCol } from '@coreui/react'
-import { DocsComponents, DocsExample } from 'src/components'
+import Card from '@mui/material/Card'
+import CardHeader from '@mui/material/CardHeader'
+import CardContent from '@mui/material/CardContent'
+import Button from '@mui/material/Button'
+import Popover from '@mui/material/Popover'
+import Typography from '@mui/material/Typography'
+import Stack from '@mui/material/Stack'
+
+import { DocsExample } from 'src/components'
 
 const Popovers = () => {
+  const [anchorEl, setAnchorEl] = React.useState(null)
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+
+  const open = Boolean(anchorEl)
+
   return (
-    <CRow>
-      <CCol xs={12}>
-        <DocsComponents href="components/popover/" />
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Popover</strong> <small>Basic example</small>
-          </CCardHeader>
-          <CCardBody>
-            <DocsExample href="components/popover">
-              <CPopover
-                title="Popover title"
-                content="And here’s some amazing content. It’s very engaging. Right?"
-                placement="right"
-              >
-                <CButton color="danger" size="lg">
-                  Click to toggle popover
-                </CButton>
-              </CPopover>
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Popover</strong> <small>Four directions</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Four options are available: top, right, bottom, and left aligned. Directions are
-              mirrored when using CoreUI for React in RTL.
-            </p>
-            <DocsExample href="components/popover#four-directions">
-              <CPopover
-                content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                placement="top"
-              >
-                <CButton color="secondary">Popover on top</CButton>
-              </CPopover>
-              <CPopover
-                content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                placement="right"
-              >
-                <CButton color="secondary">Popover on right</CButton>
-              </CPopover>
-              <CPopover
-                content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                placement="bottom"
-              >
-                <CButton color="secondary">Popover on bottom</CButton>
-              </CPopover>
-              <CPopover
-                content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                placement="left"
-              >
-                <CButton color="secondary">Popover on left</CButton>
-              </CPopover>
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
+    <Card sx={{ mb: 3 }}>
+      <CardHeader title="Popovers" />
+      <CardContent>
+        <DocsExample href="components/popover">
+          <Stack direction="row" spacing={2}>
+            <Button variant="contained" onClick={handleClick}>
+              Click to toggle popover
+            </Button>
+            <Popover
+              open={open}
+              anchorEl={anchorEl}
+              onClose={handleClose}
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+            >
+              <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+            </Popover>
+          </Stack>
+        </DocsExample>
+      </CardContent>
+    </Card>
   )
 }
 
