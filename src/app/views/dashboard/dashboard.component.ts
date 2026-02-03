@@ -576,9 +576,11 @@ interface TableItem {
     }
     
     .brand-label {
+      display: block;
       font-size: 11px;
       color: #768192;
       text-transform: uppercase;
+      margin-top: 4px;
     }
     
     .brand-divider {
