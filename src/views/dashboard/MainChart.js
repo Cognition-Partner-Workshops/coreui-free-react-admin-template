@@ -3,6 +3,28 @@ import React, { useEffect, useRef } from 'react'
 import { CChartLine } from '@coreui/react-chartjs'
 import { getStyle } from '@coreui/utils'
 
+const random = (min = 0, max = 100) => Math.floor(Math.random() * (max - min + 1)) + min
+const chartData = {
+  firstDataset: [
+    random(50, 200),
+    random(50, 200),
+    random(50, 200),
+    random(50, 200),
+    random(50, 200),
+    random(50, 200),
+    random(50, 200),
+  ],
+  secondDataset: [
+    random(50, 200),
+    random(50, 200),
+    random(50, 200),
+    random(50, 200),
+    random(50, 200),
+    random(50, 200),
+    random(50, 200),
+  ],
+}
+
 const MainChart = () => {
   const chartRef = useRef(null)
 
@@ -30,8 +52,6 @@ const MainChart = () => {
       document.documentElement.removeEventListener('ColorSchemeChange', handleColorSchemeChange)
   }, [chartRef])
 
-  const random = (min = 0, max = 100) => Math.floor(Math.random() * (max - min + 1)) + min
-
   return (
     <>
       <CChartLine
@@ -46,15 +66,7 @@ const MainChart = () => {
               borderColor: getStyle('--cui-info'),
               pointHoverBackgroundColor: getStyle('--cui-info'),
               borderWidth: 2,
-              data: [
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-              ],
+              data: chartData.firstDataset,
               fill: true,
             },
             {
@@ -63,15 +75,7 @@ const MainChart = () => {
               borderColor: getStyle('--cui-success'),
               pointHoverBackgroundColor: getStyle('--cui-success'),
               borderWidth: 2,
-              data: [
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-              ],
+              data: chartData.secondDataset,
             },
             {
               label: 'My Third dataset',

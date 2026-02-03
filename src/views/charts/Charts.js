@@ -10,9 +10,13 @@ import {
 } from '@coreui/react-chartjs'
 import { DocsLink } from 'src/components'
 
-const Charts = () => {
-  const random = () => Math.round(Math.random() * 100)
+const random = () => Math.round(Math.random() * 100)
+const lineChartData = {
+  firstDataset: [random(), random(), random(), random(), random(), random(), random()],
+  secondDataset: [random(), random(), random(), random(), random(), random(), random()],
+}
 
+const Charts = () => {
   return (
     <CRow>
       <CCol xs={12}></CCol>
@@ -54,7 +58,7 @@ const Charts = () => {
                     borderColor: 'rgba(220, 220, 220, 1)',
                     pointBackgroundColor: 'rgba(220, 220, 220, 1)',
                     pointBorderColor: '#fff',
-                    data: [random(), random(), random(), random(), random(), random(), random()],
+                    data: lineChartData.firstDataset,
                   },
                   {
                     label: 'My Second dataset',
@@ -62,7 +66,7 @@ const Charts = () => {
                     borderColor: 'rgba(151, 187, 205, 1)',
                     pointBackgroundColor: 'rgba(151, 187, 205, 1)',
                     pointBorderColor: '#fff',
-                    data: [random(), random(), random(), random(), random(), random(), random()],
+                    data: lineChartData.secondDataset,
                   },
                 ],
               }}
