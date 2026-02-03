@@ -1,70 +1,139 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useState } from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import ListItemButton from '@mui/material/ListItemButton'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import ListItemText from '@mui/material/ListItemText'
+import Collapse from '@mui/material/Collapse'
+import Chip from '@mui/material/Chip'
+import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box'
+import ExpandLess from '@mui/icons-material/ExpandLess'
+import ExpandMore from '@mui/icons-material/ExpandMore'
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
 
-import SimpleBar from 'simplebar-react'
-import 'simplebar-react/dist/simplebar.min.css'
+const NavGroup = ({ item, index }) => {
+  const [open, setOpen] = useState(false)
+  const { name, icon, items: children } = item
 
-import { CBadge, CNavLink, CSidebarNav } from '@coreui/react'
-
-export const AppSidebarNav = ({ items }) => {
-  const navLink = (name, icon, badge, indent = false) => {
-    return (
-      <>
-        {icon
-          ? icon
-          : indent && (
-              <span className="nav-icon">
-                <span className="nav-icon-bullet"></span>
-              </span>
-            )}
-        {name && name}
-        {badge && (
-          <CBadge color={badge.color} className="ms-auto" size="sm">
-            {badge.text}
-          </CBadge>
-        )}
-      </>
-    )
-  }
-
-  const navItem = (item, index, indent = false) => {
-    const { component, name, badge, icon, ...rest } = item
-    const Component = component
-    return (
-      <Component as="div" key={index}>
-        {rest.to || rest.href ? (
-          <CNavLink
-            {...(rest.to && { as: NavLink })}
-            {...(rest.href && { target: '_blank', rel: 'noopener noreferrer' })}
-            {...rest}
-          >
-            {navLink(name, icon, badge, indent)}
-          </CNavLink>
-        ) : (
-          navLink(name, icon, badge, indent)
-        )}
-      </Component>
-    )
-  }
-
-  const navGroup = (item, index) => {
-    const { component, name, icon, items, to, ...rest } = item
-    const Component = component
-    return (
-      <Component compact as="div" key={index} toggler={navLink(name, icon)} {...rest}>
-        {items?.map((item, index) =>
-          item.items ? navGroup(item, index) : navItem(item, index, true),
-        )}
-      </Component>
-    )
+  const handleClick = () => {
+    setOpen(!open)
   }
 
   return (
-    <CSidebarNav as={SimpleBar}>
-      {items &&
-        items.map((item, index) => (item.items ? navGroup(item, index) : navItem(item, index)))}
-    </CSidebarNav>
+    <>
+      <ListItemButton onClick={handleClick} sx={{ pl: 2 }}>
+        {icon && <ListItemIcon sx={{ color: 'inherit', minWidth: 40 }}>{icon}</ListItemIcon>}
+        <ListItemText primary={name} />
+        {open ? <ExpandLess /> : <ExpandMore />}
+      </ListItemButton>
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          {children?.map((child, idx) =>
+            child.items ? (
+              <NavGroup key={idx} item={child} index={idx} />
+            ) : (
+              <NavItem key={idx} item={child} index={idx} indent />
+            ),
+          )}
+        </List>
+      </Collapse>
+    </>
+  )
+}
+
+NavGroup.propTypes = {
+  item: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired,
+}
+
+const NavItem = ({ item, index, indent = false }) => {
+  const location = useLocation()
+  const { name, badge, icon, to, href } = item
+  const isActive = to && location.pathname === to
+
+  if (item.component?.name === 'CNavTitle') {
+    return (
+      <Typography
+        variant="overline"
+        sx={{
+          px: 2,
+          pt: 2,
+          pb: 1,
+          display: 'block',
+          color: 'grey.500',
+          fontWeight: 'bold',
+        }}
+      >
+        {name}
+      </Typography>
+    )
+  }
+
+  const linkProps = to
+    ? { component: NavLink, to }
+    : href
+      ? { component: 'a', href, target: '_blank', rel: 'noopener noreferrer' }
+      : {}
+
+  return (
+    <ListItem disablePadding>
+      <ListItemButton
+        {...linkProps}
+        selected={isActive}
+        sx={{
+          pl: indent ? 4 : 2,
+          '&.Mui-selected': {
+            bgcolor: 'primary.main',
+            '&:hover': {
+              bgcolor: 'primary.dark',
+            },
+          },
+        }}
+      >
+        {icon ? (
+          <ListItemIcon sx={{ color: 'inherit', minWidth: 40 }}>{icon}</ListItemIcon>
+        ) : indent ? (
+          <ListItemIcon sx={{ color: 'inherit', minWidth: 40 }}>
+            <FiberManualRecordIcon sx={{ fontSize: 8 }} />
+          </ListItemIcon>
+        ) : null}
+        <ListItemText primary={name} />
+        {badge && (
+          <Chip
+            label={badge.text}
+            size="small"
+            color={badge.color === 'info' ? 'info' : badge.color === 'danger' ? 'error' : 'primary'}
+            sx={{ ml: 1 }}
+          />
+        )}
+      </ListItemButton>
+    </ListItem>
+  )
+}
+
+NavItem.propTypes = {
+  item: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired,
+  indent: PropTypes.bool,
+}
+
+export const AppSidebarNav = ({ items }) => {
+  return (
+    <Box sx={{ overflow: 'auto', flexGrow: 1 }}>
+      <List>
+        {items &&
+          items.map((item, index) =>
+            item.items ? (
+              <NavGroup key={index} item={item} index={index} />
+            ) : (
+              <NavItem key={index} item={item} index={index} />
+            ),
+          )}
+      </List>
+    </Box>
   )
 }
 

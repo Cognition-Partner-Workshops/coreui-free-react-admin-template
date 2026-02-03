@@ -1,22 +1,43 @@
 import React from 'react'
-import { CFooter } from '@coreui/react'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import Link from '@mui/material/Link'
 
 const AppFooter = () => {
   return (
-    <CFooter className="px-4">
-      <div>
-        <a href="https://coreui.io" target="_blank" rel="noopener noreferrer">
-          CoreUI
-        </a>
-        <span className="ms-1">&copy; 2025 creativeLabs.</span>
-      </div>
-      <div className="ms-auto">
-        <span className="me-1">Powered by</span>
-        <a href="https://coreui.io/react" target="_blank" rel="noopener noreferrer">
-          CoreUI React Admin &amp; Dashboard Template
-        </a>
-      </div>
-    </CFooter>
+    <Box
+      component="footer"
+      sx={{
+        py: 2,
+        px: 3,
+        mt: 'auto',
+        borderTop: 1,
+        borderColor: 'divider',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        gap: 1,
+      }}
+    >
+      <Typography variant="body2" color="text.secondary">
+        <Link href="https://mui.com" target="_blank" rel="noopener noreferrer" color="inherit">
+          Material UI
+        </Link>{' '}
+        &copy; 2025 creativeLabs.
+      </Typography>
+      <Typography variant="body2" color="text.secondary">
+        Powered by{' '}
+        <Link
+          href="https://mui.com/material-ui/"
+          target="_blank"
+          rel="noopener noreferrer"
+          color="inherit"
+        >
+          Material UI React Admin Template
+        </Link>
+      </Typography>
+    </Box>
   )
 }
 

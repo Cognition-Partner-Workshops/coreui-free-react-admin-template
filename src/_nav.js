@@ -1,27 +1,27 @@
 import React from 'react'
-import CIcon from '@coreui/icons-react'
-import {
-  cilBell,
-  cilCalculator,
-  cilChartPie,
-  cilCursor,
-  cilDescription,
-  cilDrop,
-  cilExternalLink,
-  cilNotes,
-  cilPencil,
-  cilPuzzle,
-  cilSpeedometer,
-  cilStar,
-} from '@coreui/icons'
-import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
+import DashboardIcon from '@mui/icons-material/Dashboard'
+import ColorLensIcon from '@mui/icons-material/ColorLens'
+import TextFieldsIcon from '@mui/icons-material/TextFields'
+import ExtensionIcon from '@mui/icons-material/Extension'
+import MouseIcon from '@mui/icons-material/Mouse'
+import NotesIcon from '@mui/icons-material/Notes'
+import PieChartIcon from '@mui/icons-material/PieChart'
+import StarIcon from '@mui/icons-material/Star'
+import NotificationsIcon from '@mui/icons-material/Notifications'
+import CalculateIcon from '@mui/icons-material/Calculate'
+import DescriptionIcon from '@mui/icons-material/Description'
+import OpenInNewIcon from '@mui/icons-material/OpenInNew'
+
+const CNavItem = { name: 'CNavItem' }
+const CNavGroup = { name: 'CNavGroup' }
+const CNavTitle = { name: 'CNavTitle' }
 
 const _nav = [
   {
     component: CNavItem,
     name: 'Dashboard',
     to: '/dashboard',
-    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+    icon: <DashboardIcon fontSize="small" />,
     badge: {
       color: 'info',
       text: 'NEW',
@@ -35,13 +35,13 @@ const _nav = [
     component: CNavItem,
     name: 'Colors',
     to: '/theme/colors',
-    icon: <CIcon icon={cilDrop} customClassName="nav-icon" />,
+    icon: <ColorLensIcon fontSize="small" />,
   },
   {
     component: CNavItem,
     name: 'Typography',
     to: '/theme/typography',
-    icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
+    icon: <TextFieldsIcon fontSize="small" />,
   },
   {
     component: CNavTitle,
@@ -51,7 +51,7 @@ const _nav = [
     component: CNavGroup,
     name: 'Base',
     to: '/base',
-    icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
+    icon: <ExtensionIcon fontSize="small" />,
     items: [
       {
         component: CNavItem,
@@ -68,7 +68,7 @@ const _nav = [
         name: (
           <React.Fragment>
             {'Calendar'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
+            <OpenInNewIcon sx={{ fontSize: 14, ml: 1 }} />
           </React.Fragment>
         ),
         href: 'https://coreui.io/react/docs/components/calendar/',
@@ -136,7 +136,7 @@ const _nav = [
         name: (
           <React.Fragment>
             {'Smart Table'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
+            <OpenInNewIcon sx={{ fontSize: 14, ml: 1 }} />
           </React.Fragment>
         ),
         href: 'https://coreui.io/react/docs/components/smart-table/',
@@ -170,7 +170,7 @@ const _nav = [
         name: (
           <React.Fragment>
             {'Virtual Scroller'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
+            <OpenInNewIcon sx={{ fontSize: 14, ml: 1 }} />
           </React.Fragment>
         ),
         href: 'https://coreui.io/react/docs/components/virtual-scroller/',
@@ -185,7 +185,7 @@ const _nav = [
     component: CNavGroup,
     name: 'Buttons',
     to: '/buttons',
-    icon: <CIcon icon={cilCursor} customClassName="nav-icon" />,
+    icon: <MouseIcon fontSize="small" />,
     items: [
       {
         component: CNavItem,
@@ -207,7 +207,7 @@ const _nav = [
         name: (
           <React.Fragment>
             {'Loading Button'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
+            <OpenInNewIcon sx={{ fontSize: 14, ml: 1 }} />
           </React.Fragment>
         ),
         href: 'https://coreui.io/react/docs/components/loading-button/',
@@ -221,14 +221,14 @@ const _nav = [
   {
     component: CNavGroup,
     name: 'Forms',
-    icon: <CIcon icon={cilNotes} customClassName="nav-icon" />,
+    icon: <NotesIcon fontSize="small" />,
     items: [
       {
         component: CNavItem,
         name: (
           <React.Fragment>
             {'Autocomplete'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
+            <OpenInNewIcon sx={{ fontSize: 14, ml: 1 }} />
           </React.Fragment>
         ),
         href: 'https://coreui.io/react/docs/forms/autocomplete/',
@@ -247,7 +247,7 @@ const _nav = [
         name: (
           <React.Fragment>
             {'Date Picker'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
+            <OpenInNewIcon sx={{ fontSize: 14, ml: 1 }} />
           </React.Fragment>
         ),
         href: 'https://coreui.io/react/docs/forms/date-picker/',
@@ -285,7 +285,7 @@ const _nav = [
         name: (
           <React.Fragment>
             {'Multi Select'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
+            <OpenInNewIcon sx={{ fontSize: 14, ml: 1 }} />
           </React.Fragment>
         ),
         href: 'https://coreui.io/react/docs/forms/multi-select/',
@@ -299,7 +299,7 @@ const _nav = [
         name: (
           <React.Fragment>
             {'OTP Input'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
+            <OpenInNewIcon sx={{ fontSize: 14, ml: 1 }} />
           </React.Fragment>
         ),
         href: 'https://coreui.io/react/docs/forms/one-time-password-input/',
@@ -313,7 +313,7 @@ const _nav = [
         name: (
           <React.Fragment>
             {'Password Input'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
+            <OpenInNewIcon sx={{ fontSize: 14, ml: 1 }} />
           </React.Fragment>
         ),
         href: 'https://coreui.io/react/docs/forms/password-input/',
@@ -332,7 +332,7 @@ const _nav = [
         name: (
           <React.Fragment>
             {'Range Slider'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
+            <OpenInNewIcon sx={{ fontSize: 14, ml: 1 }} />
           </React.Fragment>
         ),
         href: 'https://coreui.io/react/docs/forms/range-slider/',
@@ -346,7 +346,7 @@ const _nav = [
         name: (
           <React.Fragment>
             {'Rating'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
+            <OpenInNewIcon sx={{ fontSize: 14, ml: 1 }} />
           </React.Fragment>
         ),
         href: 'https://coreui.io/react/docs/forms/rating/',
@@ -365,7 +365,7 @@ const _nav = [
         name: (
           <React.Fragment>
             {'Stepper'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
+            <OpenInNewIcon sx={{ fontSize: 14, ml: 1 }} />
           </React.Fragment>
         ),
         href: 'https://coreui.io/react/docs/forms/stepper/',
@@ -379,7 +379,7 @@ const _nav = [
         name: (
           <React.Fragment>
             {'Time Picker'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
+            <OpenInNewIcon sx={{ fontSize: 14, ml: 1 }} />
           </React.Fragment>
         ),
         href: 'https://coreui.io/react/docs/forms/time-picker/',
@@ -404,26 +404,26 @@ const _nav = [
     component: CNavItem,
     name: 'Charts',
     to: '/charts',
-    icon: <CIcon icon={cilChartPie} customClassName="nav-icon" />,
+    icon: <PieChartIcon fontSize="small" />,
   },
   {
     component: CNavGroup,
     name: 'Icons',
-    icon: <CIcon icon={cilStar} customClassName="nav-icon" />,
+    icon: <StarIcon fontSize="small" />,
     items: [
       {
         component: CNavItem,
-        name: 'CoreUI Free',
+        name: 'Material Icons',
         to: '/icons/coreui-icons',
       },
       {
         component: CNavItem,
-        name: 'CoreUI Flags',
+        name: 'Flags',
         to: '/icons/flags',
       },
       {
         component: CNavItem,
-        name: 'CoreUI Brands',
+        name: 'Brands',
         to: '/icons/brands',
       },
     ],
@@ -431,7 +431,7 @@ const _nav = [
   {
     component: CNavGroup,
     name: 'Notifications',
-    icon: <CIcon icon={cilBell} customClassName="nav-icon" />,
+    icon: <NotificationsIcon fontSize="small" />,
     items: [
       {
         component: CNavItem,
@@ -459,7 +459,7 @@ const _nav = [
     component: CNavItem,
     name: 'Widgets',
     to: '/widgets',
-    icon: <CIcon icon={cilCalculator} customClassName="nav-icon" />,
+    icon: <CalculateIcon fontSize="small" />,
     badge: {
       color: 'info',
       text: 'NEW',
@@ -472,7 +472,7 @@ const _nav = [
   {
     component: CNavGroup,
     name: 'Pages',
-    icon: <CIcon icon={cilStar} customClassName="nav-icon" />,
+    icon: <StarIcon fontSize="small" />,
     items: [
       {
         component: CNavItem,
@@ -499,8 +499,8 @@ const _nav = [
   {
     component: CNavItem,
     name: 'Docs',
-    href: 'https://coreui.io/react/docs/templates/installation/',
-    icon: <CIcon icon={cilDescription} customClassName="nav-icon" />,
+    href: 'https://mui.com/material-ui/getting-started/',
+    icon: <DescriptionIcon fontSize="small" />,
   },
 ]
 
