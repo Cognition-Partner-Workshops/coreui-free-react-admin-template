@@ -11,6 +11,7 @@ import {
   cilNotes,
   cilPencil,
   cilPuzzle,
+  cilShieldAlt,
   cilSpeedometer,
   cilStar,
 } from '@coreui/icons'
@@ -501,6 +502,22 @@ const _nav = [
     name: 'Docs',
     href: 'https://coreui.io/react/docs/templates/installation/',
     icon: <CIcon icon={cilDescription} customClassName="nav-icon" />,
+  },
+  {
+    component: CNavTitle,
+    name: 'Admin',
+  },
+  {
+    component: CNavGroup,
+    name: 'Admin',
+    icon: <CIcon icon={cilShieldAlt} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'Roles',
+        to: '/admin/roles',
+      },
+    ],
   },
 ]
 
