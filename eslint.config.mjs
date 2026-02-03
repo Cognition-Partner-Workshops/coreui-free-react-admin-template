@@ -1,6 +1,7 @@
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import eslintPluginReact from 'eslint-plugin-react'
 import eslintPluginReactHooks from 'eslint-plugin-react-hooks'
+import eslintPluginSecurity from 'eslint-plugin-security'
 import globals from 'globals'
 
 export default [
@@ -12,6 +13,7 @@ export default [
     plugins: {
       eslintPluginReact,
       'react-hooks': eslintPluginReactHooks,
+      security: eslintPluginSecurity,
     },
     languageOptions: {
       globals: {
@@ -33,6 +35,7 @@ export default [
     },
     rules: {
       ...eslintPluginReactHooks.configs.recommended.rules,
+      ...eslintPluginSecurity.configs.recommended.rules,
     },
   },
   eslintPluginPrettierRecommended,

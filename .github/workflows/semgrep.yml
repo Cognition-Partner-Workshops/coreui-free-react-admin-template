@@ -1,0 +1,43 @@
+name: Semgrep SAST
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+  schedule:
+    - cron: '0 0 * * 0'  # Run weekly on Sundays
+
+jobs:
+  semgrep:
+    name: Semgrep Security Scan
+    runs-on: ubuntu-latest
+    container:
+      image: semgrep/semgrep
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Semgrep scan
+        run: semgrep scan --config=auto --error --json --output=semgrep-results.json src/ || true
+
+      - name: Upload Semgrep results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: semgrep-results
+          path: semgrep-results.json
+          retention-days: 30
+
+      - name: Run Semgrep with security rulesets
+        run: |
+          semgrep scan \
+            --config=p/javascript \
+            --config=p/react \
+            --config=p/security-audit \
+            --error \
+            src/
