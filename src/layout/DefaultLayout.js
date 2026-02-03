@@ -1,18 +1,30 @@
 import React from 'react'
+import Box from '@mui/material/Box'
 import { AppContent, AppSidebar, AppFooter, AppHeader } from '../components/index'
+
+const drawerWidth = 256
 
 const DefaultLayout = () => {
   return (
-    <div>
-      <AppSidebar />
-      <div className="wrapper d-flex flex-column min-vh-100">
-        <AppHeader />
-        <div className="body flex-grow-1">
+    <Box sx={{ display: 'flex' }}>
+      <AppSidebar drawerWidth={drawerWidth} />
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          minHeight: '100vh',
+          width: { sm: `calc(100% - ${drawerWidth}px)` },
+        }}
+      >
+        <AppHeader drawerWidth={drawerWidth} />
+        <Box sx={{ flexGrow: 1, p: 3 }}>
           <AppContent />
-        </div>
+        </Box>
         <AppFooter />
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }
 
