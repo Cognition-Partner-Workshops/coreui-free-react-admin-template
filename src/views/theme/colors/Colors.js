@@ -48,7 +48,7 @@ const ThemeView = () => {
 
 const ThemeColor = ({ bgcolor, children }) => {
   return (
-    <Grid item xs={12} sm={6} md={4} xl={2}>
+    <Grid size={{ xs: 12, sm: 6, md: 4, xl: 2 }}>
       <Box
         sx={{
           bgcolor,

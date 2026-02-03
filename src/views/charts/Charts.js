@@ -80,7 +80,7 @@ const radarData = [
 const Charts = () => {
   return (
     <Grid container spacing={3}>
-      <Grid item xs={12} md={6}>
+      <Grid size={{ xs: 12, md: 6 }}>
         <Card>
           <CardHeader title="Bar Chart" />
           <CardContent>
@@ -99,7 +99,7 @@ const Charts = () => {
           </CardContent>
         </Card>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid size={{ xs: 12, md: 6 }}>
         <Card>
           <CardHeader title="Line Chart" />
           <CardContent>
@@ -131,7 +131,7 @@ const Charts = () => {
           </CardContent>
         </Card>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid size={{ xs: 12, md: 6 }}>
         <Card>
           <CardHeader title="Doughnut Chart" />
           <CardContent>
@@ -159,7 +159,7 @@ const Charts = () => {
           </CardContent>
         </Card>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid size={{ xs: 12, md: 6 }}>
         <Card>
           <CardHeader title="Pie Chart" />
           <CardContent>
@@ -179,7 +179,7 @@ const Charts = () => {
           </CardContent>
         </Card>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid size={{ xs: 12, md: 6 }}>
         <Card>
           <CardHeader title="Polar Area Chart" />
           <CardContent>
@@ -199,7 +199,7 @@ const Charts = () => {
           </CardContent>
         </Card>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid size={{ xs: 12, md: 6 }}>
         <Card>
           <CardHeader title="Radar Chart" />
           <CardContent>

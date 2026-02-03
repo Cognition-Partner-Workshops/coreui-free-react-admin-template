@@ -70,7 +70,7 @@ const CoreUIIcons = () => {
           </Typography>
           <Grid container spacing={3}>
             {icons.map(({ icon: Icon, name }) => (
-              <Grid item xs={6} sm={4} md={3} lg={2} key={name}>
+              <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }} key={name}>
                 <Box
                   sx={{
                     display: 'flex',

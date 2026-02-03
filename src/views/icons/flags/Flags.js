@@ -38,7 +38,7 @@ const Flags = () => {
           </Typography>
           <Grid container spacing={3}>
             {countries.map((country) => (
-              <Grid item xs={6} sm={4} md={3} lg={2} key={country}>
+              <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }} key={country}>
                 <Box
                   sx={{
                     display: 'flex',

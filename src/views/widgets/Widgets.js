@@ -153,7 +153,7 @@ const Widgets = () => {
           Stats Widgets B
         </Typography>
         <Grid container spacing={2} sx={{ mb: 4 }}>
-          <Grid item xs={12} sm={6} xl={4}>
+          <Grid size={{ xs: 12, sm: 6, xl: 4 }}>
             <WidgetStatsB
               progress={{ color: 'success', value: 89.9 }}
               text="Lorem ipsum dolor sit amet enim."
@@ -161,7 +161,7 @@ const Widgets = () => {
               value="89.9%"
             />
           </Grid>
-          <Grid item xs={12} sm={6} xl={4}>
+          <Grid size={{ xs: 12, sm: 6, xl: 4 }}>
             <WidgetStatsB
               value="12.124"
               title="Widget title"
@@ -169,7 +169,7 @@ const Widgets = () => {
               text="Lorem ipsum dolor sit amet enim."
             />
           </Grid>
-          <Grid item xs={12} sm={6} xl={4}>
+          <Grid size={{ xs: 12, sm: 6, xl: 4 }}>
             <WidgetStatsB
               value="$98.111,00"
               title="Widget title"
@@ -177,7 +177,7 @@ const Widgets = () => {
               text="Lorem ipsum dolor sit amet enim."
             />
           </Grid>
-          <Grid item xs={12} sm={6} xl={4}>
+          <Grid size={{ xs: 12, sm: 6, xl: 4 }}>
             <WidgetStatsB
               value="2 TB"
               title="Widget title"
@@ -191,7 +191,7 @@ const Widgets = () => {
           Stats Widgets B (Inverse)
         </Typography>
         <Grid container spacing={2} sx={{ mb: 4 }}>
-          <Grid item xs={12} sm={6} xl={4}>
+          <Grid size={{ xs: 12, sm: 6, xl: 4 }}>
             <WidgetStatsB
               color="success"
               inverse
@@ -201,7 +201,7 @@ const Widgets = () => {
               text="Lorem ipsum dolor sit amet enim."
             />
           </Grid>
-          <Grid item xs={12} sm={6} xl={4}>
+          <Grid size={{ xs: 12, sm: 6, xl: 4 }}>
             <WidgetStatsB
               color="info"
               inverse
@@ -211,7 +211,7 @@ const Widgets = () => {
               text="Lorem ipsum dolor sit amet enim."
             />
           </Grid>
-          <Grid item xs={12} sm={6} xl={4}>
+          <Grid size={{ xs: 12, sm: 6, xl: 4 }}>
             <WidgetStatsB
               color="warning"
               inverse
@@ -221,7 +221,7 @@ const Widgets = () => {
               text="Lorem ipsum dolor sit amet enim."
             />
           </Grid>
-          <Grid item xs={12} sm={6} xl={4}>
+          <Grid size={{ xs: 12, sm: 6, xl: 4 }}>
             <WidgetStatsB
               color="primary"
               inverse
@@ -237,7 +237,7 @@ const Widgets = () => {
           Stats Widgets E (with Charts)
         </Typography>
         <Grid container spacing={2} sx={{ mb: 4 }}>
-          <Grid item xs={6} sm={4} md={3} xl={2}>
+          <Grid size={{ xs: 6, sm: 4, md: 3, xl: 2 }}>
             <WidgetStatsE
               chart={
                 <ResponsiveContainer width="100%" height="100%">
@@ -250,7 +250,7 @@ const Widgets = () => {
               value="1,123"
             />
           </Grid>
-          <Grid item xs={6} sm={4} md={3} xl={2}>
+          <Grid size={{ xs: 6, sm: 4, md: 3, xl: 2 }}>
             <WidgetStatsE
               chart={
                 <ResponsiveContainer width="100%" height="100%">
@@ -263,7 +263,7 @@ const Widgets = () => {
               value="1,123"
             />
           </Grid>
-          <Grid item xs={6} sm={4} md={3} xl={2}>
+          <Grid size={{ xs: 6, sm: 4, md: 3, xl: 2 }}>
             <WidgetStatsE
               chart={
                 <ResponsiveContainer width="100%" height="100%">
@@ -276,7 +276,7 @@ const Widgets = () => {
               value="1,123"
             />
           </Grid>
-          <Grid item xs={6} sm={4} md={3} xl={2}>
+          <Grid size={{ xs: 6, sm: 4, md: 3, xl: 2 }}>
             <WidgetStatsE
               chart={
                 <ResponsiveContainer width="100%" height="100%">
@@ -295,7 +295,7 @@ const Widgets = () => {
           Stats Widgets F
         </Typography>
         <Grid container spacing={2} sx={{ mb: 4 }}>
-          <Grid item xs={12} sm={6} xl={4}>
+          <Grid size={{ xs: 12, sm: 6, xl: 4 }}>
             <WidgetStatsF
               icon={<SettingsIcon />}
               title="income"
@@ -303,10 +303,10 @@ const Widgets = () => {
               color="primary"
             />
           </Grid>
-          <Grid item xs={12} sm={6} xl={4}>
+          <Grid size={{ xs: 12, sm: 6, xl: 4 }}>
             <WidgetStatsF icon={<PersonIcon />} title="income" value="$1.999,50" color="info" />
           </Grid>
-          <Grid item xs={12} sm={6} xl={4}>
+          <Grid size={{ xs: 12, sm: 6, xl: 4 }}>
             <WidgetStatsF
               icon={<NightlightIcon />}
               title="income"
@@ -314,7 +314,7 @@ const Widgets = () => {
               color="warning"
             />
           </Grid>
-          <Grid item xs={12} sm={6} xl={4}>
+          <Grid size={{ xs: 12, sm: 6, xl: 4 }}>
             <WidgetStatsF
               icon={<NotificationsIcon />}
               title="income"
@@ -328,7 +328,7 @@ const Widgets = () => {
           Stats Widgets F (with Footer)
         </Typography>
         <Grid container spacing={2} sx={{ mb: 4 }}>
-          <Grid item xs={12} sm={6} xl={4}>
+          <Grid size={{ xs: 12, sm: 6, xl: 4 }}>
             <WidgetStatsF
               icon={<SettingsIcon />}
               title="income"
@@ -346,7 +346,7 @@ const Widgets = () => {
               }
             />
           </Grid>
-          <Grid item xs={12} sm={6} xl={4}>
+          <Grid size={{ xs: 12, sm: 6, xl: 4 }}>
             <WidgetStatsF
               icon={<LaptopIcon />}
               title="income"
@@ -384,7 +384,7 @@ const Widgets = () => {
           Stats Widgets C
         </Typography>
         <Grid container spacing={2} sx={{ mb: 4 }}>
-          <Grid item xs={6} lg={4} xl={2}>
+          <Grid size={{ xs: 6, lg: 4, xl: 2 }}>
             <WidgetStatsC
               icon={<PeopleIcon sx={{ fontSize: 36 }} />}
               value="87.500"
@@ -392,7 +392,7 @@ const Widgets = () => {
               progress={{ color: 'info', value: 75 }}
             />
           </Grid>
-          <Grid item xs={6} lg={4} xl={2}>
+          <Grid size={{ xs: 6, lg: 4, xl: 2 }}>
             <WidgetStatsC
               icon={<PersonAddIcon sx={{ fontSize: 36 }} />}
               value="385"
@@ -400,7 +400,7 @@ const Widgets = () => {
               progress={{ color: 'success', value: 75 }}
             />
           </Grid>
-          <Grid item xs={6} lg={4} xl={2}>
+          <Grid size={{ xs: 6, lg: 4, xl: 2 }}>
             <WidgetStatsC
               icon={<ShoppingBasketIcon sx={{ fontSize: 36 }} />}
               value="1238"
@@ -408,7 +408,7 @@ const Widgets = () => {
               progress={{ color: 'warning', value: 75 }}
             />
           </Grid>
-          <Grid item xs={6} lg={4} xl={2}>
+          <Grid size={{ xs: 6, lg: 4, xl: 2 }}>
             <WidgetStatsC
               icon={<PieChartIcon sx={{ fontSize: 36 }} />}
               value="28%"
@@ -416,7 +416,7 @@ const Widgets = () => {
               progress={{ color: 'primary', value: 75 }}
             />
           </Grid>
-          <Grid item xs={6} lg={4} xl={2}>
+          <Grid size={{ xs: 6, lg: 4, xl: 2 }}>
             <WidgetStatsC
               icon={<SpeedIcon sx={{ fontSize: 36 }} />}
               value="5:34:11"
@@ -424,7 +424,7 @@ const Widgets = () => {
               progress={{ color: 'error', value: 75 }}
             />
           </Grid>
-          <Grid item xs={6} lg={4} xl={2}>
+          <Grid size={{ xs: 6, lg: 4, xl: 2 }}>
             <WidgetStatsC
               icon={<ChatIcon sx={{ fontSize: 36 }} />}
               value="972"
@@ -438,7 +438,7 @@ const Widgets = () => {
           Stats Widgets C (Inverse)
         </Typography>
         <Grid container spacing={2}>
-          <Grid item xs={6} lg={4} xl={2}>
+          <Grid size={{ xs: 6, lg: 4, xl: 2 }}>
             <WidgetStatsC
               color="info"
               icon={<PeopleIcon sx={{ fontSize: 36 }} />}
@@ -448,7 +448,7 @@ const Widgets = () => {
               progress={{ value: 75 }}
             />
           </Grid>
-          <Grid item xs={6} lg={4} xl={2}>
+          <Grid size={{ xs: 6, lg: 4, xl: 2 }}>
             <WidgetStatsC
               color="success"
               icon={<PersonAddIcon sx={{ fontSize: 36 }} />}
@@ -458,7 +458,7 @@ const Widgets = () => {
               progress={{ value: 75 }}
             />
           </Grid>
-          <Grid item xs={6} lg={4} xl={2}>
+          <Grid size={{ xs: 6, lg: 4, xl: 2 }}>
             <WidgetStatsC
               color="warning"
               icon={<ShoppingBasketIcon sx={{ fontSize: 36 }} />}
@@ -468,7 +468,7 @@ const Widgets = () => {
               progress={{ value: 75 }}
             />
           </Grid>
-          <Grid item xs={6} lg={4} xl={2}>
+          <Grid size={{ xs: 6, lg: 4, xl: 2 }}>
             <WidgetStatsC
               color="primary"
               icon={<PieChartIcon sx={{ fontSize: 36 }} />}
@@ -478,7 +478,7 @@ const Widgets = () => {
               progress={{ value: 75 }}
             />
           </Grid>
-          <Grid item xs={6} lg={4} xl={2}>
+          <Grid size={{ xs: 6, lg: 4, xl: 2 }}>
             <WidgetStatsC
               color="error"
               icon={<SpeedIcon sx={{ fontSize: 36 }} />}
@@ -488,7 +488,7 @@ const Widgets = () => {
               progress={{ value: 75 }}
             />
           </Grid>
-          <Grid item xs={6} lg={4} xl={2}>
+          <Grid size={{ xs: 6, lg: 4, xl: 2 }}>
             <WidgetStatsC
               color="info"
               icon={<ChatIcon sx={{ fontSize: 36 }} />}
