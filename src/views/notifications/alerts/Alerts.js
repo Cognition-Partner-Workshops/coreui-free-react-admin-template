@@ -1,145 +1,83 @@
 import React from 'react'
-import {
-  CAlert,
-  CAlertHeading,
-  CAlertLink,
-  CCard,
-  CCardBody,
-  CCardHeader,
-  CCol,
-  CRow,
-} from '@coreui/react'
-import { DocsComponents, DocsExample } from 'src/components'
+import Typography from '@mui/material/Typography'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import Alert from '@mui/material/Alert'
+import AlertTitle from '@mui/material/AlertTitle'
+import Stack from '@mui/material/Stack'
 
 const Alerts = () => {
   return (
-    <CRow>
-      <CCol xs={12}>
-        <DocsComponents href="components/alert/" />
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Alert</strong>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              React Alert is prepared for any length of text, as well as an optional close button.
-              For a styling, use one of the <strong>required</strong> contextual <code>color</code>{' '}
-              props (e.g., <code>primary</code>). For inline dismissal, use the{' '}
-              <a href="https://coreui.io/react/docs/components/alert#dismissing">dismissing prop</a>
-              .
-            </p>
-            <DocsExample href="components/alert">
-              <CAlert color="primary">A simple primary alert—check it out!</CAlert>
-              <CAlert color="secondary">A simple secondary alert—check it out!</CAlert>
-              <CAlert color="success">A simple success alert—check it out!</CAlert>
-              <CAlert color="danger">A simple danger alert—check it out!</CAlert>
-              <CAlert color="warning">A simple warning alert—check it out!</CAlert>
-              <CAlert color="info">A simple info alert—check it out!</CAlert>
-              <CAlert color="light">A simple light alert—check it out!</CAlert>
-              <CAlert color="dark">A simple dark alert—check it out!</CAlert>
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Alert</strong> <small>Link color</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Use the <code>&lt;CAlertLink&gt;</code> component to immediately give matching colored
-              links inside any alert.
-            </p>
-            <DocsExample href="components/alert#link-color">
-              <CAlert color="primary">
-                A simple primary alert with <CAlertLink href="#">an example link</CAlertLink>. Give
-                it a click if you like.
-              </CAlert>
-              <CAlert color="secondary">
-                A simple secondary alert with <CAlertLink href="#">an example link</CAlertLink>.
-                Give it a click if you like.
-              </CAlert>
-              <CAlert color="success">
-                A simple success alert with <CAlertLink href="#">an example link</CAlertLink>. Give
-                it a click if you like.
-              </CAlert>
-              <CAlert color="danger">
-                A simple danger alert with <CAlertLink href="#">an example link</CAlertLink>. Give
-                it a click if you like.
-              </CAlert>
-              <CAlert color="warning">
-                A simple warning alert with <CAlertLink href="#">an example link</CAlertLink>. Give
-                it a click if you like.
-              </CAlert>
-              <CAlert color="info">
-                A simple info alert with <CAlertLink href="#">an example link</CAlertLink>. Give it
-                a click if you like.
-              </CAlert>
-              <CAlert color="light">
-                A simple light alert with <CAlertLink href="#">an example link</CAlertLink>. Give it
-                a click if you like.
-              </CAlert>
-              <CAlert color="dark">
-                A simple dark alert with <CAlertLink href="#">an example link</CAlertLink>. Give it
-                a click if you like.
-              </CAlert>
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Alert</strong> <small>Additional content</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Alert can also incorporate supplementary components &amp; elements like heading,
-              paragraph, and divider.
-            </p>
-            <DocsExample href="components/alert#additional-content">
-              <CAlert color="success">
-                <CAlertHeading as="h4">Well done!</CAlertHeading>
-                <p>
-                  Aww yeah, you successfully read this important alert message. This example text is
-                  going to run a bit longer so that you can see how spacing within an alert works
-                  with this kind of content.
-                </p>
-                <hr />
-                <p className="mb-0">
-                  Whenever you need to, be sure to use margin utilities to keep things nice and
-                  tidy.
-                </p>
-              </CAlert>
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Alert</strong> <small>Dismissing</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Alerts can also be easily dismissed. Just add the <code>dismissible</code> prop.
-            </p>
-            <DocsExample href="components/alert#dismissing">
-              <CAlert
-                color="warning"
-                dismissible
-                onClose={() => {
-                  alert('👋 Well, hi there! Thanks for dismissing me.')
-                }}
-              >
-                <strong>Go right ahead</strong> and click that dimiss over there on the right.
-              </CAlert>
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
+    <>
+      <Typography variant="h4" gutterBottom>
+        Alerts
+      </Typography>
+      <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+        Provide contextual feedback messages for typical user actions.
+      </Typography>
+
+      <Card>
+        <CardContent>
+          <Typography variant="h6" gutterBottom>
+            Basic Alerts
+          </Typography>
+          <Stack spacing={2}>
+            <Alert severity="success">This is a success alert.</Alert>
+            <Alert severity="info">This is an info alert.</Alert>
+            <Alert severity="warning">This is a warning alert.</Alert>
+            <Alert severity="error">This is an error alert.</Alert>
+          </Stack>
+        </CardContent>
+      </Card>
+
+      <Card sx={{ mt: 3 }}>
+        <CardContent>
+          <Typography variant="h6" gutterBottom>
+            Alerts with Titles
+          </Typography>
+          <Stack spacing={2}>
+            <Alert severity="success">
+              <AlertTitle>Success</AlertTitle>
+              This is a success alert with a title.
+            </Alert>
+            <Alert severity="info">
+              <AlertTitle>Info</AlertTitle>
+              This is an info alert with a title.
+            </Alert>
+            <Alert severity="warning">
+              <AlertTitle>Warning</AlertTitle>
+              This is a warning alert with a title.
+            </Alert>
+            <Alert severity="error">
+              <AlertTitle>Error</AlertTitle>
+              This is an error alert with a title.
+            </Alert>
+          </Stack>
+        </CardContent>
+      </Card>
+
+      <Card sx={{ mt: 3 }}>
+        <CardContent>
+          <Typography variant="h6" gutterBottom>
+            Outlined Alerts
+          </Typography>
+          <Stack spacing={2}>
+            <Alert variant="outlined" severity="success">
+              This is an outlined success alert.
+            </Alert>
+            <Alert variant="outlined" severity="info">
+              This is an outlined info alert.
+            </Alert>
+            <Alert variant="outlined" severity="warning">
+              This is an outlined warning alert.
+            </Alert>
+            <Alert variant="outlined" severity="error">
+              This is an outlined error alert.
+            </Alert>
+          </Stack>
+        </CardContent>
+      </Card>
+    </>
   )
 }
 

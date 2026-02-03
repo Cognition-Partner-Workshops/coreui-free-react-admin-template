@@ -1,74 +1,57 @@
 import React from 'react'
-import {
-  CBreadcrumb,
-  CBreadcrumbItem,
-  CCard,
-  CCardBody,
-  CCardHeader,
-  CCol,
-  CRow,
-  CLink,
-} from '@coreui/react'
-import { DocsComponents, DocsExample } from 'src/components'
+import Typography from '@mui/material/Typography'
+import MuiBreadcrumbs from '@mui/material/Breadcrumbs'
+import Link from '@mui/material/Link'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
 
 const Breadcrumbs = () => {
   return (
-    <CRow>
-      <CCol xs={12}>
-        <DocsComponents href="components/breadcrumb/" />
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Breadcrumb</strong>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              The breadcrumb navigation provides links back to each previous page the user navigated
-              through and shows the current location in a website or an application. You don’t have
-              to add separators, because they automatically added in CSS through{' '}
-              <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::before">
-                {' '}
-                <code>::before</code>
-              </a>{' '}
-              and{' '}
-              <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/content">
-                {' '}
-                <code>content</code>
-              </a>
-              .
-            </p>
-            <DocsExample href="components/breadcrumb">
-              <CBreadcrumb>
-                <CBreadcrumbItem>
-                  <CLink href="#">Home</CLink>
-                </CBreadcrumbItem>
-                <CBreadcrumbItem active>Library</CBreadcrumbItem>
-              </CBreadcrumb>
-              <CBreadcrumb>
-                <CBreadcrumbItem>
-                  <CLink href="#">Home</CLink>
-                </CBreadcrumbItem>
-                <CBreadcrumbItem>
-                  <CLink href="#">Library</CLink>
-                </CBreadcrumbItem>
-                <CBreadcrumbItem active>Data</CBreadcrumbItem>
-              </CBreadcrumb>
-              <CBreadcrumb>
-                <CBreadcrumbItem>
-                  <CLink href="#">Home</CLink>
-                </CBreadcrumbItem>
-                <CBreadcrumbItem>
-                  <CLink href="#">Library</CLink>
-                </CBreadcrumbItem>
-                <CBreadcrumbItem>
-                  <CLink href="#">Data</CLink>
-                </CBreadcrumbItem>
-                <CBreadcrumbItem active>Bootstrap</CBreadcrumbItem>
-              </CBreadcrumb>
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
+    <>
+      <Typography variant="h4" gutterBottom>
+        Breadcrumbs
+      </Typography>
+      <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+        Indicate the current page location within a navigational hierarchy.
+      </Typography>
+
+      <Card>
+        <CardContent>
+          <Typography variant="h6" gutterBottom>
+            Basic Breadcrumbs
+          </Typography>
+          <MuiBreadcrumbs aria-label="breadcrumb" sx={{ mb: 2 }}>
+            <Link underline="hover" color="inherit" href="#">
+              Home
+            </Link>
+            <Typography color="text.primary">Library</Typography>
+          </MuiBreadcrumbs>
+
+          <MuiBreadcrumbs aria-label="breadcrumb" sx={{ mb: 2 }}>
+            <Link underline="hover" color="inherit" href="#">
+              Home
+            </Link>
+            <Link underline="hover" color="inherit" href="#">
+              Library
+            </Link>
+            <Typography color="text.primary">Data</Typography>
+          </MuiBreadcrumbs>
+
+          <MuiBreadcrumbs aria-label="breadcrumb">
+            <Link underline="hover" color="inherit" href="#">
+              Home
+            </Link>
+            <Link underline="hover" color="inherit" href="#">
+              Library
+            </Link>
+            <Link underline="hover" color="inherit" href="#">
+              Data
+            </Link>
+            <Typography color="text.primary">Bootstrap</Typography>
+          </MuiBreadcrumbs>
+        </CardContent>
+      </Card>
+    </>
   )
 }
 

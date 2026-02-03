@@ -1,14 +1,20 @@
 import React, { Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { CContainer, CSpinner } from '@coreui/react'
-
-// routes config
+import Container from '@mui/material/Container'
+import CircularProgress from '@mui/material/CircularProgress'
+import Box from '@mui/material/Box'
 import routes from '../routes'
 
 const AppContent = () => {
   return (
-    <CContainer className="px-4" lg>
-      <Suspense fallback={<CSpinner color="primary" />}>
+    <Container maxWidth="xl">
+      <Suspense
+        fallback={
+          <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
+            <CircularProgress color="primary" />
+          </Box>
+        }
+      >
         <Routes>
           {routes.map((route, idx) => {
             return (
@@ -26,7 +32,7 @@ const AppContent = () => {
           <Route path="/" element={<Navigate to="dashboard" replace />} />
         </Routes>
       </Suspense>
-    </CContainer>
+    </Container>
   )
 }
 

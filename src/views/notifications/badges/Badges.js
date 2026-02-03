@@ -1,124 +1,87 @@
 import React from 'react'
-import { CButton, CCard, CCardBody, CCardHeader, CCol, CBadge, CRow } from '@coreui/react'
-import { DocsComponents, DocsExample } from 'src/components'
+import Typography from '@mui/material/Typography'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import Badge from '@mui/material/Badge'
+import Chip from '@mui/material/Chip'
+import Stack from '@mui/material/Stack'
+import MailIcon from '@mui/icons-material/Mail'
+import Button from '@mui/material/Button'
 
 const Badges = () => {
   return (
-    <CRow>
-      <CCol xs={12}>
-        <DocsComponents href="components/badge/" />
-      </CCol>
-      <CCol lg={6}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Badges</strong> <small>Dismissing</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Bootstrap badge scale to suit the size of the parent element by using relative font
-              sizing and <code>em</code> units.
-            </p>
-            <DocsExample href="components/badge">
-              <h1>
-                Example heading <CBadge color="secondary">New</CBadge>
-              </h1>
-              <h2>
-                Example heading <CBadge color="secondary">New</CBadge>
-              </h2>
-              <h3>
-                Example heading <CBadge color="secondary">New</CBadge>
-              </h3>
-              <h4>
-                Example heading <CBadge color="secondary">New</CBadge>
-              </h4>
-              <h5>
-                Example heading <CBadge color="secondary">New</CBadge>
-              </h5>
-              <h6>
-                Example heading <CBadge color="secondary">New</CBadge>
-              </h6>
-            </DocsExample>
-            <p className="text-body-secondary small">
-              Badges can be used as part of links or buttons to provide a counter.
-            </p>
-            <DocsExample href="components/badge">
-              <CButton color="primary">
-                Notifications <CBadge color="secondary">4</CBadge>
-              </CButton>
-            </DocsExample>
-            <p className="text-body-secondary small">
-              Remark that depending on how you use them, badges may be complicated for users of
-              screen readers and related assistive technologies.
-            </p>
-            <p className="text-body-secondary small">
-              Unless the context is clear, consider including additional context with a visually
-              hidden piece of additional text.
-            </p>
-            <DocsExample href="components/badge">
-              <CButton color="primary">
-                Profile <CBadge color="secondary">9</CBadge>
-                <span className="visually-hidden">unread messages</span>
-              </CButton>
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol lg={6}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Badges</strong> <small>Contextual variations</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Add any of the below-mentioned <code>color</code> props to modify the presentation of
-              a badge.
-            </p>
-            <DocsExample href="components/badge#contextual-variations">
-              <CBadge color="primary">primary</CBadge>
-              <CBadge color="success">success</CBadge>
-              <CBadge color="danger">danger</CBadge>
-              <CBadge color="warning">warning</CBadge>
-              <CBadge color="info">info</CBadge>
-              <CBadge color="light">light</CBadge>
-              <CBadge color="dark">dark</CBadge>
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Badges</strong> <small>Pill badges</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Apply the <code>shape=&#34;rounded-pill&#34;</code> prop to make badges rounded.
-            </p>
-            <DocsExample href="components/badge#pill-badges">
-              <CBadge color="primary" shape="rounded-pill">
-                primary
-              </CBadge>
-              <CBadge color="success" shape="rounded-pill">
-                success
-              </CBadge>
-              <CBadge color="danger" shape="rounded-pill">
-                danger
-              </CBadge>
-              <CBadge color="warning" shape="rounded-pill">
-                warning
-              </CBadge>
-              <CBadge color="info" shape="rounded-pill">
-                info
-              </CBadge>
-              <CBadge color="light" shape="rounded-pill">
-                light
-              </CBadge>
-              <CBadge color="dark" shape="rounded-pill">
-                dark
-              </CBadge>
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
+    <>
+      <Typography variant="h4" gutterBottom>
+        Badges
+      </Typography>
+      <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+        Small count and labeling component.
+      </Typography>
+
+      <Card>
+        <CardContent>
+          <Typography variant="h6" gutterBottom>
+            Badge on Icons
+          </Typography>
+          <Stack direction="row" spacing={4}>
+            <Badge badgeContent={4} color="primary">
+              <MailIcon />
+            </Badge>
+            <Badge badgeContent={10} color="secondary">
+              <MailIcon />
+            </Badge>
+            <Badge badgeContent={100} color="error">
+              <MailIcon />
+            </Badge>
+          </Stack>
+        </CardContent>
+      </Card>
+
+      <Card sx={{ mt: 3 }}>
+        <CardContent>
+          <Typography variant="h6" gutterBottom>
+            Chips (Labels)
+          </Typography>
+          <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+            <Chip label="Primary" color="primary" />
+            <Chip label="Secondary" color="secondary" />
+            <Chip label="Success" color="success" />
+            <Chip label="Error" color="error" />
+            <Chip label="Warning" color="warning" />
+            <Chip label="Info" color="info" />
+          </Stack>
+        </CardContent>
+      </Card>
+
+      <Card sx={{ mt: 3 }}>
+        <CardContent>
+          <Typography variant="h6" gutterBottom>
+            Outlined Chips
+          </Typography>
+          <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+            <Chip label="Primary" color="primary" variant="outlined" />
+            <Chip label="Secondary" color="secondary" variant="outlined" />
+            <Chip label="Success" color="success" variant="outlined" />
+            <Chip label="Error" color="error" variant="outlined" />
+            <Chip label="Warning" color="warning" variant="outlined" />
+            <Chip label="Info" color="info" variant="outlined" />
+          </Stack>
+        </CardContent>
+      </Card>
+
+      <Card sx={{ mt: 3 }}>
+        <CardContent>
+          <Typography variant="h6" gutterBottom>
+            Badge on Buttons
+          </Typography>
+          <Stack direction="row" spacing={2}>
+            <Badge badgeContent={4} color="secondary">
+              <Button variant="contained">Notifications</Button>
+            </Badge>
+          </Stack>
+        </CardContent>
+      </Card>
+    </>
   )
 }
 

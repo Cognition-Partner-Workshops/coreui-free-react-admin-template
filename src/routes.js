@@ -39,9 +39,7 @@ const Validation = React.lazy(() => import('./views/forms/validation/Validation'
 const Charts = React.lazy(() => import('./views/charts/Charts'))
 
 // Icons
-const CoreUIIcons = React.lazy(() => import('./views/icons/coreui-icons/CoreUIIcons'))
-const Flags = React.lazy(() => import('./views/icons/flags/Flags'))
-const Brands = React.lazy(() => import('./views/icons/brands/Brands'))
+const MaterialIcons = React.lazy(() => import('./views/icons/material-icons/MaterialIcons'))
 
 // Notifications
 const Alerts = React.lazy(() => import('./views/notifications/alerts/Alerts'))
@@ -87,10 +85,8 @@ const routes = [
   { path: '/forms/floating-labels', name: 'Floating Labels', element: FloatingLabels },
   { path: '/forms/layout', name: 'Layout', element: Layout },
   { path: '/forms/validation', name: 'Validation', element: Validation },
-  { path: '/icons', exact: true, name: 'Icons', element: CoreUIIcons },
-  { path: '/icons/coreui-icons', name: 'CoreUI Icons', element: CoreUIIcons },
-  { path: '/icons/flags', name: 'Flags', element: Flags },
-  { path: '/icons/brands', name: 'Brands', element: Brands },
+  { path: '/icons', exact: true, name: 'Icons', element: MaterialIcons },
+  { path: '/icons/material-icons', name: 'Material Icons', element: MaterialIcons },
   { path: '/notifications', name: 'Notifications', element: Alerts, exact: true },
   { path: '/notifications/alerts', name: 'Alerts', element: Alerts },
   { path: '/notifications/badges', name: 'Badges', element: Badges },

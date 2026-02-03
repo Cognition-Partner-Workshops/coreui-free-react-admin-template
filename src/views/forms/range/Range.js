@@ -1,82 +1,45 @@
 import React from 'react'
-import { CCard, CCardBody, CCardHeader, CCol, CFormLabel, CFormRange, CRow } from '@coreui/react'
-import { DocsComponents, DocsExample } from 'src/components'
+import Typography from '@mui/material/Typography'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import Slider from '@mui/material/Slider'
+import Stack from '@mui/material/Stack'
 
 const Range = () => {
   return (
-    <CRow>
-      <CCol xs={12}>
-        <DocsComponents href="forms/range/" />
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Range</strong> <small></small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Create custom <code>&lt;input type=&#34;range&#34;&gt;</code> controls with{' '}
-              <code>&lt;CFormRange&gt;</code>.
-            </p>
-            <DocsExample href="forms/range" tabContentClassName="bg-opacity-10">
-              <CFormLabel htmlFor="customRange1">Example range</CFormLabel>
-              <CFormRange id="customRange1" />
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Range</strong> <small>Disabled</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Add the <code>disabled</code> boolean attribute on an input to give it a grayed out
-              appearance and remove pointer events.
-            </p>
-            <DocsExample href="forms/range#disabled" tabContentClassName="bg-opacity-10">
-              <CFormLabel htmlFor="disabledRange">Disabled range</CFormLabel>
-              <CFormRange id="disabledRange" disabled />
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Range</strong> <small>Min and max</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Range inputs have implicit values for <code>min</code> and <code>max</code>—
-              <code>0</code> and <code>100</code>, respectively. You may specify new values for
-              those using the <code>min</code> and <code>max</code> attributes.
-            </p>
-            <DocsExample href="forms/range#min-and-max" tabContentClassName="bg-opacity-10">
-              <CFormLabel htmlFor="customRange2">Example range</CFormLabel>
-              <CFormRange min={0} max={5} defaultValue="3" id="customRange2" />
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Range</strong> <small>Steps</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              By default, range inputs &#34;snap&#34; to integer values. To change this, you can
-              specify a <code>step</code> value. In the example below, we double the number of steps
-              by using <code>step=&#34;0.5&#34;</code>.
-            </p>
-            <DocsExample href="forms/range#steps" tabContentClassName="bg-opacity-10">
-              <CFormLabel htmlFor="customRange3">Example range</CFormLabel>
-              <CFormRange min={0} max={5} step={0.5} defaultValue="3" id="customRange3" />
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
+    <>
+      <Typography variant="h4" gutterBottom>
+        Range
+      </Typography>
+      <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+        Use MUI Slider for range inputs with custom styling.
+      </Typography>
+
+      <Card>
+        <CardContent>
+          <Typography variant="h6" gutterBottom>
+            Basic Slider
+          </Typography>
+          <Stack spacing={4} sx={{ maxWidth: 400 }}>
+            <Slider defaultValue={50} aria-label="Default" />
+            <Slider defaultValue={30} disabled aria-label="Disabled" />
+            <Slider defaultValue={[20, 40]} aria-label="Range" />
+          </Stack>
+        </CardContent>
+      </Card>
+
+      <Card sx={{ mt: 3 }}>
+        <CardContent>
+          <Typography variant="h6" gutterBottom>
+            Slider with Steps
+          </Typography>
+          <Stack spacing={4} sx={{ maxWidth: 400 }}>
+            <Slider defaultValue={30} step={10} marks min={0} max={100} />
+            <Slider defaultValue={50} step={5} marks min={0} max={100} valueLabelDisplay="auto" />
+          </Stack>
+        </CardContent>
+      </Card>
+    </>
   )
 }
 

@@ -1,71 +1,62 @@
 import React from 'react'
-import { CButton, CCard, CCardBody, CCardHeader, CPopover, CRow, CCol } from '@coreui/react'
-import { DocsComponents, DocsExample } from 'src/components'
+import Typography from '@mui/material/Typography'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import Popover from '@mui/material/Popover'
+import Button from '@mui/material/Button'
+import Box from '@mui/material/Box'
 
 const Popovers = () => {
+  const [anchorEl, setAnchorEl] = React.useState(null)
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+
+  const open = Boolean(anchorEl)
+
   return (
-    <CRow>
-      <CCol xs={12}>
-        <DocsComponents href="components/popover/" />
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Popover</strong> <small>Basic example</small>
-          </CCardHeader>
-          <CCardBody>
-            <DocsExample href="components/popover">
-              <CPopover
-                title="Popover title"
-                content="And here’s some amazing content. It’s very engaging. Right?"
-                placement="right"
-              >
-                <CButton color="danger" size="lg">
-                  Click to toggle popover
-                </CButton>
-              </CPopover>
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Popover</strong> <small>Four directions</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Four options are available: top, right, bottom, and left aligned. Directions are
-              mirrored when using CoreUI for React in RTL.
-            </p>
-            <DocsExample href="components/popover#four-directions">
-              <CPopover
-                content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                placement="top"
-              >
-                <CButton color="secondary">Popover on top</CButton>
-              </CPopover>
-              <CPopover
-                content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                placement="right"
-              >
-                <CButton color="secondary">Popover on right</CButton>
-              </CPopover>
-              <CPopover
-                content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                placement="bottom"
-              >
-                <CButton color="secondary">Popover on bottom</CButton>
-              </CPopover>
-              <CPopover
-                content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                placement="left"
-              >
-                <CButton color="secondary">Popover on left</CButton>
-              </CPopover>
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
+    <>
+      <Typography variant="h4" gutterBottom>
+        Popovers
+      </Typography>
+      <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+        Display additional information in a popover overlay.
+      </Typography>
+
+      <Card>
+        <CardContent>
+          <Typography variant="h6" gutterBottom>
+            Basic Popover
+          </Typography>
+          <Button variant="contained" onClick={handleClick}>
+            Open Popover
+          </Button>
+          <Popover
+            open={open}
+            anchorEl={anchorEl}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+          >
+            <Box sx={{ p: 2 }}>
+              <Typography variant="subtitle1" gutterBottom>
+                Popover Title
+              </Typography>
+              <Typography variant="body2">
+                And here is some amazing content. It is very engaging. Right?
+              </Typography>
+            </Box>
+          </Popover>
+        </CardContent>
+      </Card>
+    </>
   )
 }
 
