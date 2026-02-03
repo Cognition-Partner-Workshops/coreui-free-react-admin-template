@@ -15,54 +15,52 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, RouterModule, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatCheckboxModule, FormsModule],
   template: `
     <div class="login-page">
-      <mat-card class="login-card">
-        <mat-card-header>
-          <mat-card-title>Login</mat-card-title>
-          <mat-card-subtitle>Sign In to your account</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
+      <div class="card-group">
+        <div class="login-card">
+          <h1>Login</h1>
+          <p class="subtitle">Sign In to your account</p>
           <form>
             <mat-form-field appearance="outline" class="full-width">
-              <mat-label>Username</mat-label>
               <mat-icon matPrefix>person</mat-icon>
               <input matInput placeholder="Username" [(ngModel)]="username" name="username">
             </mat-form-field>
             <mat-form-field appearance="outline" class="full-width">
-              <mat-label>Password</mat-label>
               <mat-icon matPrefix>lock</mat-icon>
               <input matInput [type]="hidePassword ? 'password' : 'text'" placeholder="Password" [(ngModel)]="password" name="password">
               <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button">
                 <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
             </mat-form-field>
-            <div class="form-options">
-              <mat-checkbox>Remember me</mat-checkbox>
+            <div class="button-row">
+              <button mat-raised-button color="primary" class="login-btn" routerLink="/dashboard">Login</button>
               <a href="#" class="forgot-link">Forgot password?</a>
             </div>
-            <button mat-raised-button color="primary" class="full-width login-btn" routerLink="/dashboard">Login</button>
           </form>
-        </mat-card-content>
-      </mat-card>
-      <mat-card class="register-card">
-        <mat-card-content>
-          <h3>Sign up</h3>
-          <p>Don't have an account? Create one now to get started.</p>
-          <button mat-raised-button color="accent" routerLink="/register" class="full-width">Register Now!</button>
-        </mat-card-content>
-      </mat-card>
+        </div>
+        <div class="register-card">
+          <h2>Sign up</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <button mat-stroked-button class="register-btn" routerLink="/register">Register Now!</button>
+        </div>
+      </div>
     </div>
   `,
   styles: [`
-    .login-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; gap: 24px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 24px; flex-wrap: wrap; }
-    .login-card { width: 100%; max-width: 400px; }
-    .register-card { width: 100%; max-width: 400px; background: rgba(255,255,255,0.9); }
-    .register-card h3 { margin: 0 0 8px; }
-    .register-card p { color: rgba(0,0,0,0.6); margin-bottom: 16px; }
+    .login-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #ebedef; padding: 24px; }
+    .card-group { display: flex; box-shadow: 0 4px 20px rgba(0,0,0,0.15); border-radius: 4px; overflow: hidden; max-width: 900px; width: 100%; }
+    .login-card { flex: 1; background: #fff; padding: 40px; }
+    .login-card h1 { margin: 0 0 8px; font-size: 28px; font-weight: 400; color: #3c4b64; }
+    .login-card .subtitle { color: #768192; margin-bottom: 24px; }
+    .register-card { flex: 1; background: #5856d6; padding: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+    .register-card h2 { color: #fff; margin: 0 0 16px; font-weight: 400; }
+    .register-card p { color: rgba(255,255,255,0.8); margin-bottom: 24px; line-height: 1.6; }
+    .register-btn { color: #fff !important; border-color: #fff !important; }
     .full-width { width: 100%; }
-    .form-options { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-    .forgot-link { color: #1976d2; text-decoration: none; font-size: 14px; }
+    .button-row { display: flex; align-items: center; gap: 16px; margin-top: 8px; }
+    .login-btn { padding: 8px 24px; }
+    .forgot-link { color: #768192; text-decoration: none; font-size: 14px; }
     .forgot-link:hover { text-decoration: underline; }
-    .login-btn { padding: 12px; font-size: 16px; }
+    @media (max-width: 768px) { .card-group { flex-direction: column; } }
   `]
 })
 export class LoginComponent {

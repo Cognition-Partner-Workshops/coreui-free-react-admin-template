@@ -55,8 +55,8 @@ import { FormsModule } from '@angular/forms';
     </div>
   `,
   styles: [`
-    .register-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); padding: 24px; }
-    .register-card { width: 100%; max-width: 450px; }
+    .register-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #ebedef; padding: 24px; }
+    .register-card { width: 100%; max-width: 450px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
     .full-width { width: 100%; }
     .register-btn { padding: 12px; font-size: 16px; margin-bottom: 16px; }
     .login-link { text-align: center; color: rgba(0,0,0,0.6); }

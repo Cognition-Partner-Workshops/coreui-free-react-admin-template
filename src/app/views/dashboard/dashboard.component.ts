@@ -173,57 +173,76 @@ interface TableItem {
       <div class="brand-cards">
         <mat-card class="brand-card facebook">
           <mat-card-content>
-            <div class="brand-header">
+            <div class="brand-top">
               <mat-icon>facebook</mat-icon>
-              <div class="brand-stats">
-                <span class="brand-value">89k</span>
+            </div>
+            <div class="brand-bottom">
+              <div class="brand-stat">
+                <span class="brand-value">89K</span>
                 <span class="brand-label">friends</span>
               </div>
-            </div>
-            <div class="brand-chart">
-              <canvas baseChart
-                [data]="facebookChartData"
-                [options]="brandChartOptions"
-                [type]="'line'">
-              </canvas>
+              <div class="brand-divider"></div>
+              <div class="brand-stat">
+                <span class="brand-value">459</span>
+                <span class="brand-label">feeds</span>
+              </div>
             </div>
           </mat-card-content>
         </mat-card>
         
         <mat-card class="brand-card twitter">
           <mat-card-content>
-            <div class="brand-header">
+            <div class="brand-top">
               <mat-icon>flutter_dash</mat-icon>
-              <div class="brand-stats">
+            </div>
+            <div class="brand-bottom">
+              <div class="brand-stat">
                 <span class="brand-value">973k</span>
                 <span class="brand-label">followers</span>
               </div>
-            </div>
-            <div class="brand-chart">
-              <canvas baseChart
-                [data]="twitterChartData"
-                [options]="brandChartOptions"
-                [type]="'line'">
-              </canvas>
+              <div class="brand-divider"></div>
+              <div class="brand-stat">
+                <span class="brand-value">1.792</span>
+                <span class="brand-label">tweets</span>
+              </div>
             </div>
           </mat-card-content>
         </mat-card>
         
         <mat-card class="brand-card linkedin">
           <mat-card-content>
-            <div class="brand-header">
+            <div class="brand-top">
               <mat-icon>work</mat-icon>
-              <div class="brand-stats">
-                <span class="brand-value">500+</span>
+            </div>
+            <div class="brand-bottom">
+              <div class="brand-stat">
+                <span class="brand-value">500</span>
                 <span class="brand-label">contacts</span>
               </div>
+              <div class="brand-divider"></div>
+              <div class="brand-stat">
+                <span class="brand-value">1.292</span>
+                <span class="brand-label">feeds</span>
+              </div>
             </div>
-            <div class="brand-chart">
-              <canvas baseChart
-                [data]="linkedinChartData"
-                [options]="brandChartOptions"
-                [type]="'line'">
-              </canvas>
+          </mat-card-content>
+        </mat-card>
+        
+        <mat-card class="brand-card calendar">
+          <mat-card-content>
+            <div class="brand-top">
+              <mat-icon>event</mat-icon>
+            </div>
+            <div class="brand-bottom">
+              <div class="brand-stat">
+                <span class="brand-value">12+</span>
+                <span class="brand-label">events</span>
+              </div>
+              <div class="brand-divider"></div>
+              <div class="brand-stat">
+                <span class="brand-value">4</span>
+                <span class="brand-label">meetings</span>
+              </div>
             </div>
           </mat-card-content>
         </mat-card>
@@ -492,55 +511,80 @@ interface TableItem {
     
     .brand-cards {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 24px;
     }
     
-    @media (max-width: 900px) {
+    @media (max-width: 1200px) {
+      .brand-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 600px) {
       .brand-cards {
         grid-template-columns: 1fr;
       }
     }
     
     .brand-card {
+      overflow: hidden;
+      border-radius: 4px;
+    }
+    
+    .brand-card ::ng-deep .mat-mdc-card-content {
+      padding: 0 !important;
+    }
+    
+    .brand-top {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
       color: white;
     }
     
-    .brand-card.facebook { background: #3b5998; }
-    .brand-card.twitter { background: #00aced; }
-    .brand-card.linkedin { background: #4875b4; }
+    .brand-card.facebook .brand-top { background: #3b5998; }
+    .brand-card.twitter .brand-top { background: #00aced; }
+    .brand-card.linkedin .brand-top { background: #4875b4; }
+    .brand-card.calendar .brand-top { background: #f9b115; }
     
-    .brand-header {
+    .brand-top mat-icon {
+      font-size: 48px;
+      width: 48px;
+      height: 48px;
+    }
+    
+    .brand-bottom {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       padding: 16px;
+      background: white;
     }
     
-    .brand-header mat-icon {
-      font-size: 36px;
-      width: 36px;
-      height: 36px;
-    }
-    
-    .brand-stats {
-      text-align: right;
+    .brand-stat {
+      text-align: center;
+      flex: 1;
     }
     
     .brand-value {
       display: block;
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 600;
+      color: #3c4b64;
     }
     
     .brand-label {
-      font-size: 12px;
-      opacity: 0.8;
+      font-size: 11px;
+      color: #768192;
+      text-transform: uppercase;
     }
     
-    .brand-chart {
-      height: 70px;
-      padding: 0 16px 16px;
+    .brand-divider {
+      width: 1px;
+      height: 40px;
+      background: #d8dbe0;
     }
     
     .traffic-sales-card {
