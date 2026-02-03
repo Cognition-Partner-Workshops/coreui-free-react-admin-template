@@ -1,5 +1,12 @@
 import React, { useState } from 'react'
-import { CButton, CCard, CCardBody, CCardHeader, CCol, CCollapse, CRow } from '@coreui/react'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardHeader from '@mui/material/CardHeader'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button'
+import Collapse from '@mui/material/Collapse'
+import Box from '@mui/material/Box'
 import { DocsComponents, DocsExample } from 'src/components'
 
 const Collapses = () => {
@@ -9,127 +16,127 @@ const Collapses = () => {
   const [visibleB, setVisibleB] = useState(false)
 
   return (
-    <CRow>
-      <CCol xs={12}>
+    <Grid container spacing={3}>
+      <Grid item xs={12}>
         <DocsComponents href="components/collapse/" />
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Collapse</strong>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">You can use a link or a button component.</p>
-            <DocsExample href="components/collapse">
-              <CButton
-                color="primary"
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault()
-                  setVisible(!visible)
-                }}
-              >
-                Link
-              </CButton>
-              <CButton color="primary" onClick={() => setVisible(!visible)}>
-                Button
-              </CButton>
-              <CCollapse visible={visible}>
-                <CCard className="mt-3">
-                  <CCardBody>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader title={<strong>MUI Collapse</strong>} />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              You can use a link or a button component to toggle the collapse.
+            </Typography>
+            <DocsExample href="react-collapse">
+              <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
+                <Button variant="contained" onClick={() => setVisible(!visible)}>
+                  Toggle
+                </Button>
+              </Box>
+              <Collapse in={visible}>
+                <Card sx={{ mt: 2 }}>
+                  <CardContent>
                     Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
                     richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
                     anderson cred nesciunt sapiente ea proident.
-                  </CCardBody>
-                </CCard>
-              </CCollapse>
+                  </CardContent>
+                </Card>
+              </Collapse>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Collapse</strong> <small> Horizontal</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">You can use a link or a button component.</p>
-            <DocsExample href="components/collapse#horizontal">
-              <CButton
-                className="mb-3"
-                color="primary"
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid item xs={12}>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader
+            title={
+              <>
+                <strong>MUI Collapse</strong> <Typography component="span">Horizontal</Typography>
+              </>
+            }
+          />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              The collapse component supports horizontal collapsing with the orientation prop.
+            </Typography>
+            <DocsExample href="react-collapse#horizontal">
+              <Button
+                variant="contained"
                 onClick={() => setVisibleHorizontal(!visibleHorizontal)}
-                aria-expanded={visibleHorizontal}
-                aria-controls="collapseWidthExample"
+                sx={{ mb: 2 }}
               >
-                Button
-              </CButton>
-              <div style={{ minHeight: '120px' }}>
-                <CCollapse id="collapseWidthExample" horizontal visible={visibleHorizontal}>
-                  <CCard style={{ width: '300px' }}>
-                    <CCardBody>
-                      This is some placeholder content for a horizontal collapse. It&#39;s hidden by
-                      default and shown when triggered.
-                    </CCardBody>
-                  </CCard>
-                </CCollapse>
-              </div>
+                Toggle Horizontal
+              </Button>
+              <Box sx={{ minHeight: 120, display: 'flex' }}>
+                <Collapse in={visibleHorizontal} orientation="horizontal">
+                  <Card sx={{ width: 300 }}>
+                    <CardContent>
+                      This is some placeholder content for a horizontal collapse. It&apos;s hidden
+                      by default and shown when triggered.
+                    </CardContent>
+                  </Card>
+                </Collapse>
+              </Box>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Collapse</strong> <small> multi target</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              A <code>&lt;CButton&gt;</code> can show and hide multiple elements.
-            </p>
-            <DocsExample href="components/collapse#multiple-targets">
-              <CButton color="primary" onClick={() => setVisibleA(!visibleA)}>
-                Toggle first element
-              </CButton>
-              <CButton color="primary" onClick={() => setVisibleB(!visibleB)}>
-                Toggle second element
-              </CButton>
-              <CButton
-                color="primary"
-                onClick={() => {
-                  setVisibleA(!visibleA)
-                  setVisibleB(!visibleB)
-                }}
-              >
-                Toggle both elements
-              </CButton>
-              <CRow>
-                <CCol xs={6}>
-                  <CCollapse visible={visibleA}>
-                    <CCard className="mt-3">
-                      <CCardBody>
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid item xs={12}>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader
+            title={
+              <>
+                <strong>MUI Collapse</strong> <Typography component="span">Multi Target</Typography>
+              </>
+            }
+          />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              A Button can show and hide multiple elements.
+            </Typography>
+            <DocsExample href="react-collapse#multiple-targets">
+              <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
+                <Button variant="contained" onClick={() => setVisibleA(!visibleA)}>
+                  Toggle first
+                </Button>
+                <Button variant="contained" onClick={() => setVisibleB(!visibleB)}>
+                  Toggle second
+                </Button>
+                <Button
+                  variant="contained"
+                  onClick={() => {
+                    setVisibleA(!visibleA)
+                    setVisibleB(!visibleB)
+                  }}
+                >
+                  Toggle both
+                </Button>
+              </Box>
+              <Grid container spacing={2}>
+                <Grid item xs={6}>
+                  <Collapse in={visibleA}>
+                    <Card>
+                      <CardContent>
                         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                        richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
-                        anderson cred nesciunt sapiente ea proident.
-                      </CCardBody>
-                    </CCard>
-                  </CCollapse>
-                </CCol>
-                <CCol xs={6}>
-                  <CCollapse visible={visibleB}>
-                    <CCard className="mt-3">
-                      <CCardBody>
+                        richardson ad squid.
+                      </CardContent>
+                    </Card>
+                  </Collapse>
+                </Grid>
+                <Grid item xs={6}>
+                  <Collapse in={visibleB}>
+                    <Card>
+                      <CardContent>
                         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                        richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
-                        anderson cred nesciunt sapiente ea proident.
-                      </CCardBody>
-                    </CCard>
-                  </CCollapse>
-                </CCol>
-              </CRow>
+                        richardson ad squid.
+                      </CardContent>
+                    </Card>
+                  </Collapse>
+                </Grid>
+              </Grid>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
+          </CardContent>
+        </Card>
+      </Grid>
+    </Grid>
   )
 }
 

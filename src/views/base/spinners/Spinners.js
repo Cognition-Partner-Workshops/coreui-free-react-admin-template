@@ -1,120 +1,115 @@
 import React from 'react'
-import { CButton, CCard, CCardBody, CCardHeader, CCol, CSpinner, CRow } from '@coreui/react'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardHeader from '@mui/material/CardHeader'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+import CircularProgress from '@mui/material/CircularProgress'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
 import { DocsComponents, DocsExample } from 'src/components'
 
 const Spinners = () => {
   return (
-    <CRow>
-      <CCol xs={12}>
+    <Grid container spacing={3}>
+      <Grid item xs={12}>
         <DocsComponents href="components/spinner/" />
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Spinner</strong> <small>Border</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Use the border spinners for a lightweight loading indicator.
-            </p>
-            <DocsExample href="components/spinner">
-              <CSpinner />
+        <Card sx={{ mb: 4 }}>
+          <CardHeader title={<strong>MUI Circular Progress</strong>} />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              Circular progress indicators inform users about the status of ongoing processes.
+            </Typography>
+            <DocsExample href="react-progress#circular">
+              <Box sx={{ display: 'flex', gap: 2 }}>
+                <CircularProgress />
+              </Box>
             </DocsExample>
-            <p className="text-body-secondary small">
-              The border spinner uses <code>currentColor</code> for its <code>border-color</code>.
-              You can use any of our text color utilities on the standard spinner.
-            </p>
-            <DocsExample href="components/spinner#colors">
-              <CSpinner color="primary" />
-              <CSpinner color="secondary" />
-              <CSpinner color="success" />
-              <CSpinner color="danger" />
-              <CSpinner color="warning" />
-              <CSpinner color="info" />
-              <CSpinner color="light" />
-              <CSpinner color="dark" />
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid item xs={12}>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader
+            title={
+              <>
+                <strong>MUI Circular Progress</strong>{' '}
+                <Typography component="span">Colors</Typography>
+              </>
+            }
+          />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              Use the color prop to change the spinner color.
+            </Typography>
+            <DocsExample href="react-progress#circular-color">
+              <Box sx={{ display: 'flex', gap: 2 }}>
+                <CircularProgress color="primary" />
+                <CircularProgress color="secondary" />
+                <CircularProgress color="success" />
+                <CircularProgress color="error" />
+                <CircularProgress color="warning" />
+                <CircularProgress color="info" />
+              </Box>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Spinner</strong> <small>Growing</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              If you don&#39;tfancy a border spinner, switch to the grow spinner. While it
-              doesn&#39;t technically spin, it does repeatedly grow!
-            </p>
-            <DocsExample href="components/spinner#growing-spinner">
-              <CSpinner variant="grow" />
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid item xs={12}>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader
+            title={
+              <>
+                <strong>MUI Circular Progress</strong>{' '}
+                <Typography component="span">Sizes</Typography>
+              </>
+            }
+          />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              Use the size prop to change the spinner size.
+            </Typography>
+            <DocsExample href="react-progress#circular-size">
+              <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+                <CircularProgress size={20} />
+                <CircularProgress size={30} />
+                <CircularProgress size={40} />
+                <CircularProgress size={50} />
+              </Box>
             </DocsExample>
-            <p className="text-body-secondary small">
-              Once again, this spinner is built with <code>currentColor</code>, so you can easily
-              change its appearance. Here it is in blue, along with the supported variants.
-            </p>
-            <DocsExample href="components/spinner#growing-spinner">
-              <CSpinner color="primary" variant="grow" />
-              <CSpinner color="secondary" variant="grow" />
-              <CSpinner color="success" variant="grow" />
-              <CSpinner color="danger" variant="grow" />
-              <CSpinner color="warning" variant="grow" />
-              <CSpinner color="info" variant="grow" />
-              <CSpinner color="light" variant="grow" />
-              <CSpinner color="dark" variant="grow" />
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid item xs={12}>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader
+            title={
+              <>
+                <strong>MUI Circular Progress</strong>{' '}
+                <Typography component="span">Buttons</Typography>
+              </>
+            }
+          />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              Spinners can be used inside buttons to indicate a loading state.
+            </Typography>
+            <DocsExample href="react-progress#integration">
+              <Box sx={{ display: 'flex', gap: 2 }}>
+                <Button variant="contained" disabled>
+                  <CircularProgress size={20} sx={{ mr: 1 }} color="inherit" />
+                  Loading...
+                </Button>
+                <Button variant="outlined" disabled>
+                  <CircularProgress size={20} sx={{ mr: 1 }} />
+                  Loading...
+                </Button>
+              </Box>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Spinner</strong> <small>Size</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Add <code>size=&#34;sm&#34;</code> property to make a smaller spinner that can quickly
-              be used within other components.
-            </p>
-            <DocsExample href="components/spinner#size">
-              <CSpinner size="sm" />
-              <CSpinner size="sm" variant="grow" />
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Spinner</strong> <small>Buttons</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Use spinners within buttons to indicate an action is currently processing or taking
-              place. You may also swap the text out of the spinner element and utilize button text
-              as needed.
-            </p>
-            <DocsExample href="components/spinner#buttons">
-              <CButton color="primary" disabled>
-                <CSpinner as="span" size="sm" aria-hidden="true" />
-              </CButton>
-              <CButton color="primary" disabled>
-                <CSpinner as="span" size="sm" aria-hidden="true" />
-                Loading...
-              </CButton>
-            </DocsExample>
-            <DocsExample href="components/spinner#buttons">
-              <CButton color="primary" disabled>
-                <CSpinner as="span" size="sm" variant="grow" aria-hidden="true" />
-              </CButton>
-              <CButton color="primary" disabled>
-                <CSpinner as="span" size="sm" variant="grow" aria-hidden="true" />
-                Loading...
-              </CButton>
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
+          </CardContent>
+        </Card>
+      </Grid>
+    </Grid>
   )
 }
 

@@ -1,82 +1,107 @@
 import React from 'react'
-import { CCard, CCardBody, CCardHeader, CCol, CFormLabel, CFormRange, CRow } from '@coreui/react'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardHeader from '@mui/material/CardHeader'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+import Slider from '@mui/material/Slider'
+import Box from '@mui/material/Box'
 import { DocsComponents, DocsExample } from 'src/components'
 
 const Range = () => {
   return (
-    <CRow>
-      <CCol xs={12}>
+    <Grid container spacing={3}>
+      <Grid item xs={12}>
         <DocsComponents href="forms/range/" />
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Range</strong> <small></small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Create custom <code>&lt;input type=&#34;range&#34;&gt;</code> controls with{' '}
-              <code>&lt;CFormRange&gt;</code>.
-            </p>
-            <DocsExample href="forms/range" tabContentClassName="bg-opacity-10">
-              <CFormLabel htmlFor="customRange1">Example range</CFormLabel>
-              <CFormRange id="customRange1" />
+        <Card sx={{ mb: 4 }}>
+          <CardHeader title={<strong>MUI Slider</strong>} />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              Sliders allow users to make selections from a range of values.
+            </Typography>
+            <DocsExample href="react-slider">
+              <Box sx={{ maxWidth: 400 }}>
+                <Typography gutterBottom>Example range</Typography>
+                <Slider defaultValue={50} />
+              </Box>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Range</strong> <small>Disabled</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Add the <code>disabled</code> boolean attribute on an input to give it a grayed out
-              appearance and remove pointer events.
-            </p>
-            <DocsExample href="forms/range#disabled" tabContentClassName="bg-opacity-10">
-              <CFormLabel htmlFor="disabledRange">Disabled range</CFormLabel>
-              <CFormRange id="disabledRange" disabled />
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid item xs={12}>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader
+            title={
+              <>
+                <strong>MUI Slider</strong> <Typography component="span">Disabled</Typography>
+              </>
+            }
+          />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              Use the disabled prop to disable the slider.
+            </Typography>
+            <DocsExample href="react-slider#disabled-slider">
+              <Box sx={{ maxWidth: 400 }}>
+                <Typography gutterBottom>Disabled range</Typography>
+                <Slider defaultValue={50} disabled />
+              </Box>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Range</strong> <small>Min and max</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Range inputs have implicit values for <code>min</code> and <code>max</code>—
-              <code>0</code> and <code>100</code>, respectively. You may specify new values for
-              those using the <code>min</code> and <code>max</code> attributes.
-            </p>
-            <DocsExample href="forms/range#min-and-max" tabContentClassName="bg-opacity-10">
-              <CFormLabel htmlFor="customRange2">Example range</CFormLabel>
-              <CFormRange min={0} max={5} defaultValue="3" id="customRange2" />
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid item xs={12}>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader
+            title={
+              <>
+                <strong>MUI Slider</strong> <Typography component="span">Min and Max</Typography>
+              </>
+            }
+          />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              Use the min and max props to set the range.
+            </Typography>
+            <DocsExample href="react-slider#range-slider">
+              <Box sx={{ maxWidth: 400 }}>
+                <Typography gutterBottom>Min: 0, Max: 5</Typography>
+                <Slider defaultValue={3} min={0} max={5} marks />
+              </Box>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Range</strong> <small>Steps</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              By default, range inputs &#34;snap&#34; to integer values. To change this, you can
-              specify a <code>step</code> value. In the example below, we double the number of steps
-              by using <code>step=&#34;0.5&#34;</code>.
-            </p>
-            <DocsExample href="forms/range#steps" tabContentClassName="bg-opacity-10">
-              <CFormLabel htmlFor="customRange3">Example range</CFormLabel>
-              <CFormRange min={0} max={5} step={0.5} defaultValue="3" id="customRange3" />
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid item xs={12}>
+        <Card sx={{ mb: 4 }}>
+          <CardHeader
+            title={
+              <>
+                <strong>MUI Slider</strong> <Typography component="span">Steps</Typography>
+              </>
+            }
+          />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              Use the step prop to set the step increment.
+            </Typography>
+            <DocsExample href="react-slider#discrete-sliders">
+              <Box sx={{ maxWidth: 400 }}>
+                <Typography gutterBottom>Step: 0.5</Typography>
+                <Slider
+                  defaultValue={2.5}
+                  step={0.5}
+                  min={0}
+                  max={5}
+                  marks
+                  valueLabelDisplay="auto"
+                />
+              </Box>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
+          </CardContent>
+        </Card>
+      </Grid>
+    </Grid>
   )
 }
 

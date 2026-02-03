@@ -1,227 +1,240 @@
 import React from 'react'
-import { CCard, CCardHeader, CCardBody } from '@coreui/react'
+import Box from '@mui/material/Box'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardHeader from '@mui/material/CardHeader'
+import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableCell from '@mui/material/TableCell'
+import TableHead from '@mui/material/TableHead'
+import TableRow from '@mui/material/TableRow'
+import MuiTypography from '@mui/material/Typography'
+import Grid from '@mui/material/Grid'
 import { DocsLink } from 'src/components'
 
 const Typography = () => {
   return (
     <>
-      <CCard className="mb-4">
-        <CCardHeader>
-          Headings
-          <DocsLink href="https://coreui.io/docs/content/typography/" />
-        </CCardHeader>
-        <CCardBody>
-          <p>
-            Documentation and examples for Bootstrap typography, including global settings,
+      <Card sx={{ mb: 4 }}>
+        <CardHeader
+          title="Headings"
+          action={<DocsLink href="https://mui.com/material-ui/react-typography/" />}
+        />
+        <CardContent>
+          <MuiTypography paragraph>
+            Documentation and examples for Material UI typography, including global settings,
             headings, body text, lists, and more.
-          </p>
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Heading</th>
-                <th>Example</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <p>
-                    <code className="highlighter-rouge">&lt;h1&gt;&lt;/h1&gt;</code>
-                  </p>
-                </td>
-                <td>
-                  <span className="h1">h1. Bootstrap heading</span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p>
-                    <code className="highlighter-rouge">&lt;h2&gt;&lt;/h2&gt;</code>
-                  </p>
-                </td>
-                <td>
-                  <span className="h2">h2. Bootstrap heading</span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p>
-                    <code className="highlighter-rouge">&lt;h3&gt;&lt;/h3&gt;</code>
-                  </p>
-                </td>
-                <td>
-                  <span className="h3">h3. Bootstrap heading</span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p>
-                    <code className="highlighter-rouge">&lt;h4&gt;&lt;/h4&gt;</code>
-                  </p>
-                </td>
-                <td>
-                  <span className="h4">h4. Bootstrap heading</span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p>
-                    <code className="highlighter-rouge">&lt;h5&gt;&lt;/h5&gt;</code>
-                  </p>
-                </td>
-                <td>
-                  <span className="h5">h5. Bootstrap heading</span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p>
-                    <code className="highlighter-rouge">&lt;h6&gt;&lt;/h6&gt;</code>
-                  </p>
-                </td>
-                <td>
-                  <span className="h6">h6. Bootstrap heading</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </CCardBody>
-      </CCard>
-      <CCard className="mb-4">
-        <CCardHeader>Headings</CCardHeader>
-        <CCardBody>
-          <p>
-            <code className="highlighter-rouge">.h1</code> through
-            <code className="highlighter-rouge">.h6</code>
-            classes are also available, for when you want to match the font styling of a heading but
-            cannot use the associated HTML element.
-          </p>
-          <div className="bd-example">
-            <p className="h1">h1. Bootstrap heading</p>
-            <p className="h2">h2. Bootstrap heading</p>
-            <p className="h3">h3. Bootstrap heading</p>
-            <p className="h4">h4. Bootstrap heading</p>
-            <p className="h5">h5. Bootstrap heading</p>
-            <p className="h6">h6. Bootstrap heading</p>
-          </div>
-        </CCardBody>
-      </CCard>
-      <CCard className="mb-4">
-        <div className="card-header">Display headings</div>
-        <div className="card-body">
-          <p>
-            Traditional heading elements are designed to work best in the meat of your page content.
-            When you need a heading to stand out, consider using a <strong>display heading</strong>
-            —a larger, slightly more opinionated heading style.
-          </p>
-          <div className="bd-example bd-example-type">
-            <table className="table">
-              <tbody>
-                <tr>
-                  <td>
-                    <span className="display-1">Display 1</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span className="display-2">Display 2</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span className="display-3">Display 3</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span className="display-4">Display 4</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </CCard>
-      <CCard className="mb-4">
-        <CCardHeader>Inline text elements</CCardHeader>
-        <CCardBody>
-          <p>
-            Traditional heading elements are designed to work best in the meat of your page content.
-            When you need a heading to stand out, consider using a <strong>display heading</strong>
-            —a larger, slightly more opinionated heading style.
-          </p>
-          <div className="bd-example">
-            <p>
+          </MuiTypography>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Heading</TableCell>
+                <TableCell>Example</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow>
+                <TableCell>
+                  <code>&lt;Typography variant=&quot;h1&quot;&gt;</code>
+                </TableCell>
+                <TableCell>
+                  <MuiTypography variant="h1" sx={{ fontSize: '2.5rem' }}>
+                    h1. MUI heading
+                  </MuiTypography>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>
+                  <code>&lt;Typography variant=&quot;h2&quot;&gt;</code>
+                </TableCell>
+                <TableCell>
+                  <MuiTypography variant="h2" sx={{ fontSize: '2rem' }}>
+                    h2. MUI heading
+                  </MuiTypography>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>
+                  <code>&lt;Typography variant=&quot;h3&quot;&gt;</code>
+                </TableCell>
+                <TableCell>
+                  <MuiTypography variant="h3" sx={{ fontSize: '1.75rem' }}>
+                    h3. MUI heading
+                  </MuiTypography>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>
+                  <code>&lt;Typography variant=&quot;h4&quot;&gt;</code>
+                </TableCell>
+                <TableCell>
+                  <MuiTypography variant="h4" sx={{ fontSize: '1.5rem' }}>
+                    h4. MUI heading
+                  </MuiTypography>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>
+                  <code>&lt;Typography variant=&quot;h5&quot;&gt;</code>
+                </TableCell>
+                <TableCell>
+                  <MuiTypography variant="h5" sx={{ fontSize: '1.25rem' }}>
+                    h5. MUI heading
+                  </MuiTypography>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>
+                  <code>&lt;Typography variant=&quot;h6&quot;&gt;</code>
+                </TableCell>
+                <TableCell>
+                  <MuiTypography variant="h6" sx={{ fontSize: '1rem' }}>
+                    h6. MUI heading
+                  </MuiTypography>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </CardContent>
+      </Card>
+
+      <Card sx={{ mb: 4 }}>
+        <CardHeader title="Typography Variants" />
+        <CardContent>
+          <MuiTypography paragraph>
+            MUI provides various typography variants for different use cases.
+          </MuiTypography>
+          <Box sx={{ '& > *': { mb: 2 } }}>
+            <MuiTypography variant="h1" sx={{ fontSize: '2.5rem' }}>
+              h1. MUI heading
+            </MuiTypography>
+            <MuiTypography variant="h2" sx={{ fontSize: '2rem' }}>
+              h2. MUI heading
+            </MuiTypography>
+            <MuiTypography variant="h3" sx={{ fontSize: '1.75rem' }}>
+              h3. MUI heading
+            </MuiTypography>
+            <MuiTypography variant="h4" sx={{ fontSize: '1.5rem' }}>
+              h4. MUI heading
+            </MuiTypography>
+            <MuiTypography variant="h5" sx={{ fontSize: '1.25rem' }}>
+              h5. MUI heading
+            </MuiTypography>
+            <MuiTypography variant="h6" sx={{ fontSize: '1rem' }}>
+              h6. MUI heading
+            </MuiTypography>
+          </Box>
+        </CardContent>
+      </Card>
+
+      <Card sx={{ mb: 4 }}>
+        <CardHeader title="Body Text Variants" />
+        <CardContent>
+          <MuiTypography paragraph>
+            Use body1 and body2 variants for paragraph text with different sizes.
+          </MuiTypography>
+          <Box sx={{ '& > *': { mb: 2 } }}>
+            <MuiTypography variant="body1">
+              body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis
+              tenetur unde suscipit, quam beatae rerum inventore consectetur.
+            </MuiTypography>
+            <MuiTypography variant="body2">
+              body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis
+              tenetur unde suscipit, quam beatae rerum inventore consectetur.
+            </MuiTypography>
+            <MuiTypography variant="subtitle1">
+              subtitle1. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            </MuiTypography>
+            <MuiTypography variant="subtitle2">
+              subtitle2. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            </MuiTypography>
+            <MuiTypography variant="caption" display="block">
+              caption text
+            </MuiTypography>
+            <MuiTypography variant="overline" display="block">
+              overline text
+            </MuiTypography>
+          </Box>
+        </CardContent>
+      </Card>
+
+      <Card sx={{ mb: 4 }}>
+        <CardHeader title="Inline Text Elements" />
+        <CardContent>
+          <MuiTypography paragraph>
+            Various inline text styling options are available through standard HTML elements.
+          </MuiTypography>
+          <Box sx={{ '& > p': { mb: 1 } }}>
+            <MuiTypography>
               You can use the mark tag to <mark>highlight</mark> text.
-            </p>
-            <p>
+            </MuiTypography>
+            <MuiTypography>
               <del>This line of text is meant to be treated as deleted text.</del>
-            </p>
-            <p>
+            </MuiTypography>
+            <MuiTypography>
               <s>This line of text is meant to be treated as no longer accurate.</s>
-            </p>
-            <p>
+            </MuiTypography>
+            <MuiTypography>
               <ins>This line of text is meant to be treated as an addition to the document.</ins>
-            </p>
-            <p>
+            </MuiTypography>
+            <MuiTypography>
               <u>This line of text will render as underlined</u>
-            </p>
-            <p>
-              <small>This line of text is meant to be treated as fine print.</small>
-            </p>
-            <p>
+            </MuiTypography>
+            <MuiTypography variant="caption" display="block">
+              This line of text is meant to be treated as fine print.
+            </MuiTypography>
+            <MuiTypography>
               <strong>This line rendered as bold text.</strong>
-            </p>
-            <p>
+            </MuiTypography>
+            <MuiTypography>
               <em>This line rendered as italicized text.</em>
-            </p>
-          </div>
-        </CCardBody>
-      </CCard>
-      <CCard className="mb-4">
-        <CCardHeader>Description list alignment</CCardHeader>
-        <CCardBody>
-          <p>
-            Align terms and descriptions horizontally by using our grid system’s predefined classes
-            (or semantic mixins). For longer terms, you can optionally add a{' '}
-            <code className="highlighter-rouge">.text-truncate</code> class to truncate the text
-            with an ellipsis.
-          </p>
-          <div className="bd-example">
-            <dl className="row">
-              <dt className="col-sm-3">Description lists</dt>
-              <dd className="col-sm-9">A description list is perfect for defining terms.</dd>
+            </MuiTypography>
+          </Box>
+        </CardContent>
+      </Card>
 
-              <dt className="col-sm-3">Euismod</dt>
-              <dd className="col-sm-9">
-                <p>
-                  Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
-                </p>
-                <p>Donec id elit non mi porta gravida at eget metus.</p>
-              </dd>
-
-              <dt className="col-sm-3">Malesuada porta</dt>
-              <dd className="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>
-
-              <dt className="col-sm-3 text-truncate">Truncated term is truncated</dt>
-              <dd className="col-sm-9">
+      <Card sx={{ mb: 4 }}>
+        <CardHeader title="Description List" />
+        <CardContent>
+          <MuiTypography paragraph>
+            Use Grid components to create aligned description lists.
+          </MuiTypography>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={3}>
+              <MuiTypography fontWeight="bold">Description lists</MuiTypography>
+            </Grid>
+            <Grid item xs={12} sm={9}>
+              <MuiTypography>A description list is perfect for defining terms.</MuiTypography>
+            </Grid>
+            <Grid item xs={12} sm={3}>
+              <MuiTypography fontWeight="bold">Euismod</MuiTypography>
+            </Grid>
+            <Grid item xs={12} sm={9}>
+              <MuiTypography paragraph>
+                Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
+              </MuiTypography>
+              <MuiTypography>Donec id elit non mi porta gravida at eget metus.</MuiTypography>
+            </Grid>
+            <Grid item xs={12} sm={3}>
+              <MuiTypography fontWeight="bold">Malesuada porta</MuiTypography>
+            </Grid>
+            <Grid item xs={12} sm={9}>
+              <MuiTypography>Etiam porta sem malesuada magna mollis euismod.</MuiTypography>
+            </Grid>
+            <Grid item xs={12} sm={3}>
+              <MuiTypography fontWeight="bold" noWrap>
+                Truncated term is truncated
+              </MuiTypography>
+            </Grid>
+            <Grid item xs={12} sm={9}>
+              <MuiTypography>
                 Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
                 fermentum massa justo sit amet risus.
-              </dd>
-
-              <dt className="col-sm-3">Nesting</dt>
-              <dd className="col-sm-9">
-                <dl className="row">
-                  <dt className="col-sm-4">Nested definition list</dt>
-                  <dd className="col-sm-8">
-                    Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.
-                  </dd>
-                </dl>
-              </dd>
-            </dl>
-          </div>
-        </CCardBody>
-      </CCard>
+              </MuiTypography>
+            </Grid>
+          </Grid>
+        </CardContent>
+      </Card>
     </>
   )
 }
