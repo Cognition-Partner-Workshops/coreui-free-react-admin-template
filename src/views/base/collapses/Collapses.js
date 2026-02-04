@@ -1,135 +1,143 @@
 import React, { useState } from 'react'
-import { CButton, CCard, CCardBody, CCardHeader, CCol, CCollapse, CRow } from '@coreui/react'
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  Typography,
+  Grid,
+  Button,
+  Collapse,
+  Box,
+} from '@mui/material'
 import { DocsComponents, DocsExample } from 'src/components'
 
 const Collapses = () => {
-  const [visible, setVisible] = useState(false)
-  const [visibleHorizontal, setVisibleHorizontal] = useState(false)
-  const [visibleA, setVisibleA] = useState(false)
-  const [visibleB, setVisibleB] = useState(false)
+  const [open, setOpen] = useState(false)
+  const [multiOpen, setMultiOpen] = useState({ first: false, second: false })
 
   return (
-    <CRow>
-      <CCol xs={12}>
+    <Grid container spacing={3}>
+      <Grid size={12}>
         <DocsComponents href="components/collapse/" />
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Collapse</strong>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">You can use a link or a button component.</p>
+        <Card sx={{ mb: 3 }}>
+          <CardHeader title={<Typography variant="h6">Collapse</Typography>} />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              Toggle the visibility of content with a collapse transition.
+            </Typography>
             <DocsExample href="components/collapse">
-              <CButton
-                color="primary"
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault()
-                  setVisible(!visible)
-                }}
-              >
-                Link
-              </CButton>
-              <CButton color="primary" onClick={() => setVisible(!visible)}>
-                Button
-              </CButton>
-              <CCollapse visible={visible}>
-                <CCard className="mt-3">
-                  <CCardBody>
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                    richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
-                    anderson cred nesciunt sapiente ea proident.
-                  </CCardBody>
-                </CCard>
-              </CCollapse>
+              <Button variant="contained" onClick={() => setOpen(!open)} sx={{ mb: 2 }}>
+                Toggle Collapse
+              </Button>
+              <Collapse in={open}>
+                <Card variant="outlined">
+                  <CardContent>
+                    <Typography>
+                      Some placeholder content for the collapse component. This panel is hidden by
+                      default but revealed when the user activates the relevant trigger.
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Collapse>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Collapse</strong> <small> Horizontal</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">You can use a link or a button component.</p>
+          </CardContent>
+        </Card>
+
+        <Card sx={{ mb: 3 }}>
+          <CardHeader
+            title={
+              <Typography variant="h6">
+                Collapse{' '}
+                <Typography component="span" variant="body2" color="text.secondary">
+                  Horizontal
+                </Typography>
+              </Typography>
+            }
+          />
+          <CardContent>
             <DocsExample href="components/collapse#horizontal">
-              <CButton
-                className="mb-3"
-                color="primary"
-                onClick={() => setVisibleHorizontal(!visibleHorizontal)}
-                aria-expanded={visibleHorizontal}
-                aria-controls="collapseWidthExample"
-              >
-                Button
-              </CButton>
-              <div style={{ minHeight: '120px' }}>
-                <CCollapse id="collapseWidthExample" horizontal visible={visibleHorizontal}>
-                  <CCard style={{ width: '300px' }}>
-                    <CCardBody>
-                      This is some placeholder content for a horizontal collapse. It&#39;s hidden by
-                      default and shown when triggered.
-                    </CCardBody>
-                  </CCard>
-                </CCollapse>
-              </div>
+              <Button variant="contained" onClick={() => setOpen(!open)} sx={{ mb: 2 }}>
+                Toggle Width Collapse
+              </Button>
+              <Box sx={{ display: 'flex' }}>
+                <Collapse in={open} orientation="horizontal">
+                  <Card variant="outlined" sx={{ width: 300 }}>
+                    <CardContent>
+                      <Typography>
+                        This is some placeholder content for a horizontal collapse.
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Collapse>
+              </Box>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Collapse</strong> <small> multi target</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              A <code>&lt;CButton&gt;</code> can show and hide multiple elements.
-            </p>
+          </CardContent>
+        </Card>
+
+        <Card sx={{ mb: 3 }}>
+          <CardHeader
+            title={
+              <Typography variant="h6">
+                Collapse{' '}
+                <Typography component="span" variant="body2" color="text.secondary">
+                  Multiple targets
+                </Typography>
+              </Typography>
+            }
+          />
+          <CardContent>
             <DocsExample href="components/collapse#multiple-targets">
-              <CButton color="primary" onClick={() => setVisibleA(!visibleA)}>
-                Toggle first element
-              </CButton>
-              <CButton color="primary" onClick={() => setVisibleB(!visibleB)}>
-                Toggle second element
-              </CButton>
-              <CButton
-                color="primary"
-                onClick={() => {
-                  setVisibleA(!visibleA)
-                  setVisibleB(!visibleB)
-                }}
-              >
-                Toggle both elements
-              </CButton>
-              <CRow>
-                <CCol xs={6}>
-                  <CCollapse visible={visibleA}>
-                    <CCard className="mt-3">
-                      <CCardBody>
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                        richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
-                        anderson cred nesciunt sapiente ea proident.
-                      </CCardBody>
-                    </CCard>
-                  </CCollapse>
-                </CCol>
-                <CCol xs={6}>
-                  <CCollapse visible={visibleB}>
-                    <CCard className="mt-3">
-                      <CCardBody>
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                        richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
-                        anderson cred nesciunt sapiente ea proident.
-                      </CCardBody>
-                    </CCard>
-                  </CCollapse>
-                </CCol>
-              </CRow>
+              <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
+                <Button
+                  variant="contained"
+                  onClick={() => setMultiOpen({ ...multiOpen, first: !multiOpen.first })}
+                >
+                  Toggle First
+                </Button>
+                <Button
+                  variant="contained"
+                  onClick={() => setMultiOpen({ ...multiOpen, second: !multiOpen.second })}
+                >
+                  Toggle Second
+                </Button>
+                <Button
+                  variant="contained"
+                  onClick={() =>
+                    setMultiOpen({ first: !multiOpen.first, second: !multiOpen.second })
+                  }
+                >
+                  Toggle Both
+                </Button>
+              </Box>
+              <Grid container spacing={2}>
+                <Grid size={6}>
+                  <Collapse in={multiOpen.first}>
+                    <Card variant="outlined">
+                      <CardContent>
+                        <Typography>
+                          Some placeholder content for the first collapse component.
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Collapse>
+                </Grid>
+                <Grid size={6}>
+                  <Collapse in={multiOpen.second}>
+                    <Card variant="outlined">
+                      <CardContent>
+                        <Typography>
+                          Some placeholder content for the second collapse component.
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Collapse>
+                </Grid>
+              </Grid>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
+          </CardContent>
+        </Card>
+      </Grid>
+    </Grid>
   )
 }
 

@@ -1,182 +1,222 @@
 import React from 'react'
-import { CCard, CCardBody, CCol, CCardHeader, CRow } from '@coreui/react'
+import { useTheme } from '@mui/material/styles'
+import { Card, CardContent, CardHeader, Typography, Grid } from '@mui/material'
 import {
-  CChartBar,
-  CChartDoughnut,
-  CChartLine,
-  CChartPie,
-  CChartPolarArea,
-  CChartRadar,
-} from '@coreui/react-chartjs'
-import { DocsLink } from 'src/components'
+  LineChart,
+  Line,
+  BarChart,
+  Bar,
+  PieChart,
+  Pie,
+  Cell,
+  AreaChart,
+  Area,
+  RadarChart,
+  Radar,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from 'recharts'
+
+const lineData = [
+  { name: 'Jan', value: 65 },
+  { name: 'Feb', value: 59 },
+  { name: 'Mar', value: 80 },
+  { name: 'Apr', value: 81 },
+  { name: 'May', value: 56 },
+  { name: 'Jun', value: 55 },
+  { name: 'Jul', value: 40 },
+]
+
+const barData = [
+  { name: 'Jan', value: 65 },
+  { name: 'Feb', value: 59 },
+  { name: 'Mar', value: 80 },
+  { name: 'Apr', value: 81 },
+  { name: 'May', value: 56 },
+  { name: 'Jun', value: 55 },
+  { name: 'Jul', value: 40 },
+]
+
+const pieData = [
+  { name: 'Red', value: 300 },
+  { name: 'Blue', value: 50 },
+  { name: 'Yellow', value: 100 },
+]
+
+const radarData = [
+  { subject: 'Eating', A: 65, B: 28 },
+  { subject: 'Drinking', A: 59, B: 48 },
+  { subject: 'Sleeping', A: 90, B: 40 },
+  { subject: 'Designing', A: 81, B: 19 },
+  { subject: 'Coding', A: 56, B: 96 },
+  { subject: 'Cycling', A: 55, B: 27 },
+  { subject: 'Running', A: 40, B: 100 },
+]
 
 const Charts = () => {
-  const random = () => Math.round(Math.random() * 100)
+  const theme = useTheme()
+  const primaryColor = theme.palette.primary.main
+  const secondaryColor = theme.palette.secondary.main
+  const successColor = theme.palette.success.main
+  const warningColor = theme.palette.warning.main
+  const errorColor = theme.palette.error.main
+  const infoColor = theme.palette.info.main
+
+  const COLORS = [errorColor, primaryColor, warningColor]
 
   return (
-    <CRow>
-      <CCol xs={12}></CCol>
-      <CCol xs={6}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            Bar Chart <DocsLink name="chart" />
-          </CCardHeader>
-          <CCardBody>
-            <CChartBar
-              data={{
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                datasets: [
-                  {
-                    label: 'GitHub Commits',
-                    backgroundColor: '#f87979',
-                    data: [40, 20, 12, 39, 10, 40, 39, 80, 40],
-                  },
-                ],
-              }}
-              labels="months"
-            />
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={6}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            Line Chart <DocsLink name="chart" />
-          </CCardHeader>
-          <CCardBody>
-            <CChartLine
-              data={{
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                datasets: [
-                  {
-                    label: 'My First dataset',
-                    backgroundColor: 'rgba(220, 220, 220, 0.2)',
-                    borderColor: 'rgba(220, 220, 220, 1)',
-                    pointBackgroundColor: 'rgba(220, 220, 220, 1)',
-                    pointBorderColor: '#fff',
-                    data: [random(), random(), random(), random(), random(), random(), random()],
-                  },
-                  {
-                    label: 'My Second dataset',
-                    backgroundColor: 'rgba(151, 187, 205, 0.2)',
-                    borderColor: 'rgba(151, 187, 205, 1)',
-                    pointBackgroundColor: 'rgba(151, 187, 205, 1)',
-                    pointBorderColor: '#fff',
-                    data: [random(), random(), random(), random(), random(), random(), random()],
-                  },
-                ],
-              }}
-            />
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={6}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            Doughnut Chart <DocsLink name="chart" />
-          </CCardHeader>
-          <CCardBody>
-            <CChartDoughnut
-              data={{
-                labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
-                datasets: [
-                  {
-                    backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
-                    data: [40, 20, 80, 10],
-                  },
-                ],
-              }}
-            />
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={6}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            Pie Chart <DocsLink name="chart" />{' '}
-          </CCardHeader>
-          <CCardBody>
-            <CChartPie
-              data={{
-                labels: ['Red', 'Green', 'Yellow'],
-                datasets: [
-                  {
-                    data: [300, 50, 100],
-                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-                    hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-                  },
-                ],
-              }}
-            />
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={6}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            Polar Area Chart
-            <DocsLink name="chart" />
-          </CCardHeader>
-          <CCardBody>
-            <CChartPolarArea
-              data={{
-                labels: ['Red', 'Green', 'Yellow', 'Grey', 'Blue'],
-                datasets: [
-                  {
-                    data: [11, 16, 7, 3, 14],
-                    backgroundColor: ['#FF6384', '#4BC0C0', '#FFCE56', '#E7E9ED', '#36A2EB'],
-                  },
-                ],
-              }}
-            />
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={6}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            Radar Chart <DocsLink name="chart" />
-          </CCardHeader>
-          <CCardBody>
-            <CChartRadar
-              data={{
-                labels: [
-                  'Eating',
-                  'Drinking',
-                  'Sleeping',
-                  'Designing',
-                  'Coding',
-                  'Cycling',
-                  'Running',
-                ],
-                datasets: [
-                  {
-                    label: 'My First dataset',
-                    backgroundColor: 'rgba(220, 220, 220, 0.2)',
-                    borderColor: 'rgba(220, 220, 220, 1)',
-                    pointBackgroundColor: 'rgba(220, 220, 220, 1)',
-                    pointBorderColor: '#fff',
-                    pointHighlightFill: '#fff',
-                    pointHighlightStroke: 'rgba(220, 220, 220, 1)',
-                    data: [65, 59, 90, 81, 56, 55, 40],
-                  },
-                  {
-                    label: 'My Second dataset',
-                    backgroundColor: 'rgba(151, 187, 205, 0.2)',
-                    borderColor: 'rgba(151, 187, 205, 1)',
-                    pointBackgroundColor: 'rgba(151, 187, 205, 1)',
-                    pointBorderColor: '#fff',
-                    pointHighlightFill: '#fff',
-                    pointHighlightStroke: 'rgba(151, 187, 205, 1)',
-                    data: [28, 48, 40, 19, 96, 27, 100],
-                  },
-                ],
-              }}
-            />
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
+    <Grid container spacing={3}>
+      <Grid size={{ xs: 12, lg: 6 }}>
+        <Card sx={{ mb: 3 }}>
+          <CardHeader title={<Typography variant="h6">Line Chart</Typography>} />
+          <CardContent>
+            <ResponsiveContainer width="100%" height={300}>
+              <LineChart data={lineData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Line
+                  type="monotone"
+                  dataKey="value"
+                  stroke={primaryColor}
+                  strokeWidth={2}
+                  dot={{ fill: primaryColor }}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+      </Grid>
+
+      <Grid size={{ xs: 12, lg: 6 }}>
+        <Card sx={{ mb: 3 }}>
+          <CardHeader title={<Typography variant="h6">Bar Chart</Typography>} />
+          <CardContent>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={barData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="value" fill={infoColor} />
+              </BarChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+      </Grid>
+
+      <Grid size={{ xs: 12, lg: 6 }}>
+        <Card sx={{ mb: 3 }}>
+          <CardHeader title={<Typography variant="h6">Area Chart</Typography>} />
+          <CardContent>
+            <ResponsiveContainer width="100%" height={300}>
+              <AreaChart data={lineData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Area
+                  type="monotone"
+                  dataKey="value"
+                  stroke={successColor}
+                  fill={successColor}
+                  fillOpacity={0.3}
+                />
+              </AreaChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+      </Grid>
+
+      <Grid size={{ xs: 12, lg: 6 }}>
+        <Card sx={{ mb: 3 }}>
+          <CardHeader title={<Typography variant="h6">Pie Chart</Typography>} />
+          <CardContent>
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
+                  data={pieData}
+                  cx="50%"
+                  cy="50%"
+                  labelLine={false}
+                  outerRadius={100}
+                  fill="#8884d8"
+                  dataKey="value"
+                  label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                >
+                  {pieData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+      </Grid>
+
+      <Grid size={{ xs: 12, lg: 6 }}>
+        <Card sx={{ mb: 3 }}>
+          <CardHeader title={<Typography variant="h6">Radar Chart</Typography>} />
+          <CardContent>
+            <ResponsiveContainer width="100%" height={300}>
+              <RadarChart cx="50%" cy="50%" outerRadius="80%" data={radarData}>
+                <PolarGrid />
+                <PolarAngleAxis dataKey="subject" />
+                <PolarRadiusAxis />
+                <Radar
+                  name="Dataset 1"
+                  dataKey="A"
+                  stroke={primaryColor}
+                  fill={primaryColor}
+                  fillOpacity={0.3}
+                />
+                <Radar
+                  name="Dataset 2"
+                  dataKey="B"
+                  stroke={secondaryColor}
+                  fill={secondaryColor}
+                  fillOpacity={0.3}
+                />
+                <Legend />
+                <Tooltip />
+              </RadarChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+      </Grid>
+
+      <Grid size={{ xs: 12, lg: 6 }}>
+        <Card sx={{ mb: 3 }}>
+          <CardHeader title={<Typography variant="h6">Multi-Line Chart</Typography>} />
+          <CardContent>
+            <ResponsiveContainer width="100%" height={300}>
+              <LineChart data={radarData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="subject" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Line type="monotone" dataKey="A" stroke={primaryColor} strokeWidth={2} />
+                <Line type="monotone" dataKey="B" stroke={warningColor} strokeWidth={2} />
+              </LineChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+      </Grid>
+    </Grid>
   )
 }
 

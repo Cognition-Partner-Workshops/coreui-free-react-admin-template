@@ -1,31 +1,52 @@
 import React from 'react'
+import { Box, Typography, Button, Paper, Grid, alpha, useTheme } from '@mui/material'
+import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 
 import IconsImg from 'src/assets/images/icons.webp'
 
-const DocsIcons = () => (
-  <div className="bg-warning bg-opacity-10 border border-2 border-warning rounded mb-4">
-    <div className="row d-flex align-items-center p-3 px-xl-4 flex-xl-nowrap">
-      <div className="col-xl-auto col-12 d-none d-xl-block p-0">
-        <img className="img-fluid" src={IconsImg} width="160px" height="160px" alt="CoreUI Icons" />
-      </div>
-      <div className="col-md col-12 px-lg-4">
-        CoreUI Icons package is delivered with more than 1500 icons in multiple formats SVG, PNG,
-        and Webfonts. CoreUI Icons are beautifully crafted symbols for common actions and items. You
-        can use them in your digital products for web or mobile app. For more information please
-        visit our documentation.
-      </div>
-      <div className="col-md-auto col-12 mt-3 mt-lg-0">
-        <a
-          className="btn btn-warning text-nowrap text-white"
-          href="https://coreui.io/react/docs/components/icon/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Explore Documentation
-        </a>
-      </div>
-    </div>
-  </div>
-)
+const DocsIcons = () => {
+  const theme = useTheme()
+
+  return (
+    <Paper
+      elevation={0}
+      sx={{
+        mb: 3,
+        p: 3,
+        backgroundColor: alpha(theme.palette.warning.main, 0.08),
+        border: 2,
+        borderColor: 'warning.main',
+        borderRadius: 2,
+      }}
+    >
+      <Grid container spacing={3} alignItems="center">
+        <Grid size={{ xs: 12, xl: 'auto' }} sx={{ display: { xs: 'none', xl: 'block' } }}>
+          <Box component="img" src={IconsImg} alt="MUI Icons" sx={{ width: 160, height: 160 }} />
+        </Grid>
+        <Grid size={{ xs: 12, md: true }}>
+          <Typography variant="body1" color="text.primary">
+            Material UI Icons package is delivered with more than 2000 icons in multiple formats.
+            MUI Icons are beautifully crafted symbols for common actions and items. You can use them
+            in your digital products for web or mobile app. For more information please visit our
+            documentation.
+          </Typography>
+        </Grid>
+        <Grid size={{ xs: 12, md: 'auto' }}>
+          <Button
+            variant="contained"
+            color="warning"
+            href="https://mui.com/material-ui/material-icons/"
+            target="_blank"
+            rel="noopener noreferrer"
+            endIcon={<OpenInNewIcon />}
+            sx={{ whiteSpace: 'nowrap', color: 'white' }}
+          >
+            Explore Documentation
+          </Button>
+        </Grid>
+      </Grid>
+    </Paper>
+  )
+}
 
 export default DocsIcons

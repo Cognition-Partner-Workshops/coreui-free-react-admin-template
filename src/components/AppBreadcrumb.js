@@ -1,15 +1,16 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, Link as RouterLink } from 'react-router-dom'
+import { Breadcrumbs, Link, Typography, Box } from '@mui/material'
+import NavigateNextIcon from '@mui/icons-material/NavigateNext'
+import HomeIcon from '@mui/icons-material/Home'
 
 import routes from '../routes'
-
-import { CBreadcrumb, CBreadcrumbItem } from '@coreui/react'
 
 const AppBreadcrumb = () => {
   const currentLocation = useLocation().pathname
 
-  const getRouteName = (pathname, routes) => {
-    const currentRoute = routes.find((route) => route.path === pathname)
+  const getRouteName = (pathname, routesList) => {
+    const currentRoute = routesList.find((route) => route.path === pathname)
     return currentRoute ? currentRoute.name : false
   }
 
@@ -18,12 +19,13 @@ const AppBreadcrumb = () => {
     location.split('/').reduce((prev, curr, index, array) => {
       const currentPathname = `${prev}/${curr}`
       const routeName = getRouteName(currentPathname, routes)
-      routeName &&
+      if (routeName) {
         breadcrumbs.push({
           pathname: currentPathname,
           name: routeName,
-          active: index + 1 === array.length ? true : false,
+          active: index + 1 === array.length,
         })
+      }
       return currentPathname
     })
     return breadcrumbs
@@ -32,19 +34,56 @@ const AppBreadcrumb = () => {
   const breadcrumbs = getBreadcrumbs(currentLocation)
 
   return (
-    <CBreadcrumb className="my-0">
-      <CBreadcrumbItem href="/">Home</CBreadcrumbItem>
-      {breadcrumbs.map((breadcrumb, index) => {
-        return (
-          <CBreadcrumbItem
-            {...(breadcrumb.active ? { active: true } : { href: breadcrumb.pathname })}
+    <Breadcrumbs
+      separator={<NavigateNextIcon fontSize="small" />}
+      aria-label="breadcrumb"
+      sx={{
+        '& .MuiBreadcrumbs-separator': {
+          mx: 0.5,
+        },
+      }}
+    >
+      <Link
+        component={RouterLink}
+        to="/"
+        underline="hover"
+        color="inherit"
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          fontSize: 14,
+          '&:hover': {
+            color: 'primary.main',
+          },
+        }}
+      >
+        <HomeIcon sx={{ mr: 0.5, fontSize: 18 }} />
+        Home
+      </Link>
+      {breadcrumbs.map((breadcrumb, index) =>
+        breadcrumb.active ? (
+          <Typography key={index} color="text.primary" sx={{ fontSize: 14, fontWeight: 500 }}>
+            {breadcrumb.name}
+          </Typography>
+        ) : (
+          <Link
             key={index}
+            component={RouterLink}
+            to={breadcrumb.pathname}
+            underline="hover"
+            color="inherit"
+            sx={{
+              fontSize: 14,
+              '&:hover': {
+                color: 'primary.main',
+              },
+            }}
           >
             {breadcrumb.name}
-          </CBreadcrumbItem>
-        )
-      })}
-    </CBreadcrumb>
+          </Link>
+        ),
+      )}
+    </Breadcrumbs>
   )
 }
 

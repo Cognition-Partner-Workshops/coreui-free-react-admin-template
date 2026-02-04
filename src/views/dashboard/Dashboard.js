@@ -1,69 +1,98 @@
-import React from 'react'
-import classNames from 'classnames'
-
+import React, { useState } from 'react'
 import {
-  CAvatar,
-  CButton,
-  CButtonGroup,
-  CCard,
-  CCardBody,
-  CCardFooter,
-  CCardHeader,
-  CCol,
-  CProgress,
-  CRow,
-  CTable,
-  CTableBody,
-  CTableDataCell,
-  CTableHead,
-  CTableHeaderCell,
-  CTableRow,
-} from '@coreui/react'
-import CIcon from '@coreui/icons-react'
-import {
-  cibCcAmex,
-  cibCcApplePay,
-  cibCcMastercard,
-  cibCcPaypal,
-  cibCcStripe,
-  cibCcVisa,
-  cibGoogle,
-  cibFacebook,
-  cibLinkedin,
-  cifBr,
-  cifEs,
-  cifFr,
-  cifIn,
-  cifPl,
-  cifUs,
-  cibTwitter,
-  cilCloudDownload,
-  cilPeople,
-  cilUser,
-  cilUserFemale,
-} from '@coreui/icons'
+  Box,
+  Card,
+  CardContent,
+  CardHeader,
+  Typography,
+  Grid,
+  Avatar,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  LinearProgress,
+  IconButton,
+  Menu,
+  MenuItem,
+  Button,
+  ButtonGroup,
+  Divider,
+  useTheme,
+  alpha,
+  Skeleton,
+  Fade,
+} from '@mui/material'
+import MoreVertIcon from '@mui/icons-material/MoreVert'
+import CloudDownloadIcon from '@mui/icons-material/CloudDownload'
+import PersonIcon from '@mui/icons-material/Person'
+import SearchIcon from '@mui/icons-material/Search'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
+import PaymentIcon from '@mui/icons-material/Payment'
+import DescriptionIcon from '@mui/icons-material/Description'
+import BugReportIcon from '@mui/icons-material/BugReport'
 
-import avatar1 from 'src/assets/images/avatars/1.jpg'
-import avatar2 from 'src/assets/images/avatars/2.jpg'
-import avatar3 from 'src/assets/images/avatars/3.jpg'
-import avatar4 from 'src/assets/images/avatars/4.jpg'
-import avatar5 from 'src/assets/images/avatars/5.jpg'
-import avatar6 from 'src/assets/images/avatars/6.jpg'
-
-import WidgetsBrand from '../widgets/WidgetsBrand'
 import WidgetsDropdown from '../widgets/WidgetsDropdown'
 import MainChart from './MainChart'
 
 const Dashboard = () => {
-  const progressExample = [
-    { title: 'Visits', value: '29.703 Users', percent: 40, color: 'success' },
-    { title: 'Unique', value: '24.093 Users', percent: 20, color: 'info' },
-    { title: 'Pageviews', value: '78.706 Views', percent: 60, color: 'warning' },
-    { title: 'New Users', value: '22.123 Users', percent: 80, color: 'danger' },
-    { title: 'Bounce Rate', value: 'Average Rate', percent: 40.15, color: 'primary' },
+  const theme = useTheme()
+  const [loading, setLoading] = useState(false)
+
+  const tableData = [
+    {
+      avatar: '/avatars/1.jpg',
+      user: { name: 'Yiorgos Avraamu', new: true, registered: 'Jan 1, 2023' },
+      country: { name: 'USA', flag: '🇺🇸' },
+      usage: { value: 50, period: 'Jun 11, 2023 - Jul 10, 2023', color: 'success' },
+      payment: { name: 'Mastercard', icon: '💳' },
+      activity: '10 sec ago',
+    },
+    {
+      avatar: '/avatars/2.jpg',
+      user: { name: 'Avram Tarasios', new: false, registered: 'Jan 1, 2023' },
+      country: { name: 'Brazil', flag: '🇧🇷' },
+      usage: { value: 22, period: 'Jun 11, 2023 - Jul 10, 2023', color: 'info' },
+      payment: { name: 'Visa', icon: '💳' },
+      activity: '5 minutes ago',
+    },
+    {
+      avatar: '/avatars/3.jpg',
+      user: { name: 'Quintin Ed', new: true, registered: 'Jan 1, 2023' },
+      country: { name: 'India', flag: '🇮🇳' },
+      usage: { value: 74, period: 'Jun 11, 2023 - Jul 10, 2023', color: 'warning' },
+      payment: { name: 'Stripe', icon: '💳' },
+      activity: '1 hour ago',
+    },
+    {
+      avatar: '/avatars/4.jpg',
+      user: { name: 'Enéas Kwadwo', new: true, registered: 'Jan 1, 2023' },
+      country: { name: 'France', flag: '🇫🇷' },
+      usage: { value: 98, period: 'Jun 11, 2023 - Jul 10, 2023', color: 'error' },
+      payment: { name: 'PayPal', icon: '💳' },
+      activity: 'Last month',
+    },
+    {
+      avatar: '/avatars/5.jpg',
+      user: { name: 'Agapetus Tadeáš', new: true, registered: 'Jan 1, 2023' },
+      country: { name: 'Spain', flag: '🇪🇸' },
+      usage: { value: 22, period: 'Jun 11, 2023 - Jul 10, 2023', color: 'primary' },
+      payment: { name: 'Google Wallet', icon: '💳' },
+      activity: 'Last week',
+    },
+    {
+      avatar: '/avatars/6.jpg',
+      user: { name: 'Friderik Dávid', new: true, registered: 'Jan 1, 2023' },
+      country: { name: 'Poland', flag: '🇵🇱' },
+      usage: { value: 43, period: 'Jun 11, 2023 - Jul 10, 2023', color: 'success' },
+      payment: { name: 'Amex', icon: '💳' },
+      activity: 'Last week',
+    },
   ]
 
-  const progressGroupExample1 = [
+  const progressGroupData1 = [
     { title: 'Monday', value1: 34, value2: 78 },
     { title: 'Tuesday', value1: 56, value2: 94 },
     { title: 'Wednesday', value1: 12, value2: 67 },
@@ -73,314 +102,332 @@ const Dashboard = () => {
     { title: 'Sunday', value1: 9, value2: 69 },
   ]
 
-  const progressGroupExample2 = [
-    { title: 'Male', icon: cilUser, value: 53 },
-    { title: 'Female', icon: cilUserFemale, value: 43 },
+  const progressGroupData2 = [
+    { title: 'Male', value: 53, icon: PersonIcon, color: 'warning' },
+    { title: 'Female', value: 43, icon: PersonIcon, color: 'success' },
   ]
 
-  const progressGroupExample3 = [
-    { title: 'Organic Search', icon: cibGoogle, percent: 56, value: '191,235' },
-    { title: 'Facebook', icon: cibFacebook, percent: 15, value: '51,223' },
-    { title: 'Twitter', icon: cibTwitter, percent: 11, value: '37,564' },
-    { title: 'LinkedIn', icon: cibLinkedin, percent: 8, value: '27,319' },
-  ]
-
-  const tableExample = [
-    {
-      avatar: { src: avatar1, status: 'success' },
-      user: {
-        name: 'Yiorgos Avraamu',
-        new: true,
-        registered: 'Jan 1, 2023',
-      },
-      country: { name: 'USA', flag: cifUs },
-      usage: {
-        value: 50,
-        period: 'Jun 11, 2023 - Jul 10, 2023',
-        color: 'success',
-      },
-      payment: { name: 'Mastercard', icon: cibCcMastercard },
-      activity: '10 sec ago',
-    },
-    {
-      avatar: { src: avatar2, status: 'danger' },
-      user: {
-        name: 'Avram Tarasios',
-        new: false,
-        registered: 'Jan 1, 2023',
-      },
-      country: { name: 'Brazil', flag: cifBr },
-      usage: {
-        value: 22,
-        period: 'Jun 11, 2023 - Jul 10, 2023',
-        color: 'info',
-      },
-      payment: { name: 'Visa', icon: cibCcVisa },
-      activity: '5 minutes ago',
-    },
-    {
-      avatar: { src: avatar3, status: 'warning' },
-      user: { name: 'Quintin Ed', new: true, registered: 'Jan 1, 2023' },
-      country: { name: 'India', flag: cifIn },
-      usage: {
-        value: 74,
-        period: 'Jun 11, 2023 - Jul 10, 2023',
-        color: 'warning',
-      },
-      payment: { name: 'Stripe', icon: cibCcStripe },
-      activity: '1 hour ago',
-    },
-    {
-      avatar: { src: avatar4, status: 'secondary' },
-      user: { name: 'Enéas Kwadwo', new: true, registered: 'Jan 1, 2023' },
-      country: { name: 'France', flag: cifFr },
-      usage: {
-        value: 98,
-        period: 'Jun 11, 2023 - Jul 10, 2023',
-        color: 'danger',
-      },
-      payment: { name: 'PayPal', icon: cibCcPaypal },
-      activity: 'Last month',
-    },
-    {
-      avatar: { src: avatar5, status: 'success' },
-      user: {
-        name: 'Agapetus Tadeáš',
-        new: true,
-        registered: 'Jan 1, 2023',
-      },
-      country: { name: 'Spain', flag: cifEs },
-      usage: {
-        value: 22,
-        period: 'Jun 11, 2023 - Jul 10, 2023',
-        color: 'primary',
-      },
-      payment: { name: 'Google Wallet', icon: cibCcApplePay },
-      activity: 'Last week',
-    },
-    {
-      avatar: { src: avatar6, status: 'danger' },
-      user: {
-        name: 'Friderik Dávid',
-        new: true,
-        registered: 'Jan 1, 2023',
-      },
-      country: { name: 'Poland', flag: cifPl },
-      usage: {
-        value: 43,
-        period: 'Jun 11, 2023 - Jul 10, 2023',
-        color: 'success',
-      },
-      payment: { name: 'Amex', icon: cibCcAmex },
-      activity: 'Last week',
-    },
+  const progressGroupData3 = [
+    { title: 'Organic Search', value: 191235, percent: 56, icon: SearchIcon, color: 'success' },
+    { title: 'Facebook', value: 51223, percent: 15, icon: PersonIcon, color: 'info' },
+    { title: 'Twitter', value: 37564, percent: 11, icon: PersonIcon, color: 'warning' },
+    { title: 'LinkedIn', value: 27319, percent: 8, icon: PersonIcon, color: 'error' },
   ]
 
   return (
-    <>
-      <WidgetsDropdown className="mb-4" />
-      <CCard className="mb-4">
-        <CCardBody>
-          <CRow>
-            <CCol sm={5}>
-              <h4 id="traffic" className="card-title mb-0">
-                Traffic
-              </h4>
-              <div className="small text-body-secondary">January - July 2023</div>
-            </CCol>
-            <CCol sm={7} className="d-none d-md-block">
-              <CButton color="primary" className="float-end">
-                <CIcon icon={cilCloudDownload} />
-              </CButton>
-              <CButtonGroup className="float-end me-3">
-                {['Day', 'Month', 'Year'].map((value) => (
-                  <CButton
-                    color="outline-secondary"
-                    key={value}
-                    className="mx-0"
-                    active={value === 'Month'}
-                  >
-                    {value}
-                  </CButton>
-                ))}
-              </CButtonGroup>
-            </CCol>
-          </CRow>
-          <MainChart />
-        </CCardBody>
-        <CCardFooter>
-          <CRow
-            xs={{ cols: 1, gutter: 4 }}
-            sm={{ cols: 2 }}
-            lg={{ cols: 4 }}
-            xl={{ cols: 5 }}
-            className="mb-2 text-center"
-          >
-            {progressExample.map((item, index, items) => (
-              <CCol
-                className={classNames({
-                  'd-none d-xl-block': index + 1 === items.length,
-                })}
-                key={index}
+    <Fade in timeout={500}>
+      <Box>
+        <WidgetsDropdown className="mb-4" />
+
+        <Card sx={{ mb: 4 }}>
+          <CardContent>
+            <Grid container spacing={3}>
+              <Grid size={{ sm: 5 }}>
+                <Typography variant="h5" fontWeight={600} gutterBottom>
+                  Traffic
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  January - July 2023
+                </Typography>
+              </Grid>
+              <Grid
+                size={{ sm: 7 }}
+                sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}
               >
-                <div className="text-body-secondary">{item.title}</div>
-                <div className="fw-semibold text-truncate">
-                  {item.value} ({item.percent}%)
-                </div>
-                <CProgress thin className="mt-2" color={item.color} value={item.percent} />
-              </CCol>
-            ))}
-          </CRow>
-        </CCardFooter>
-      </CCard>
-      <WidgetsBrand className="mb-4" withCharts />
-      <CRow>
-        <CCol xs>
-          <CCard className="mb-4">
-            <CCardHeader>Traffic {' & '} Sales</CCardHeader>
-            <CCardBody>
-              <CRow>
-                <CCol xs={12} md={6} xl={6}>
-                  <CRow>
-                    <CCol xs={6}>
-                      <div className="border-start border-start-4 border-start-info py-1 px-3">
-                        <div className="text-body-secondary text-truncate small">New Clients</div>
-                        <div className="fs-5 fw-semibold">9,123</div>
-                      </div>
-                    </CCol>
-                    <CCol xs={6}>
-                      <div className="border-start border-start-4 border-start-danger py-1 px-3 mb-3">
-                        <div className="text-body-secondary text-truncate small">
-                          Recurring Clients
-                        </div>
-                        <div className="fs-5 fw-semibold">22,643</div>
-                      </div>
-                    </CCol>
-                  </CRow>
-                  <hr className="mt-0" />
-                  {progressGroupExample1.map((item, index) => (
-                    <div className="progress-group mb-4" key={index}>
-                      <div className="progress-group-prepend">
-                        <span className="text-body-secondary small">{item.title}</span>
-                      </div>
-                      <div className="progress-group-bars">
-                        <CProgress thin color="info" value={item.value1} />
-                        <CProgress thin color="danger" value={item.value2} />
-                      </div>
-                    </div>
+                <ButtonGroup variant="outlined" size="small">
+                  <Button>Day</Button>
+                  <Button>Month</Button>
+                  <Button variant="contained">Year</Button>
+                </ButtonGroup>
+                <IconButton sx={{ ml: 2 }}>
+                  <CloudDownloadIcon />
+                </IconButton>
+              </Grid>
+            </Grid>
+            <MainChart />
+          </CardContent>
+        </Card>
+
+        <Grid container spacing={3} sx={{ mb: 4 }}>
+          <Grid size={{ xs: 12, lg: 6 }}>
+            <Card sx={{ height: '100%' }}>
+              <CardHeader
+                title="Traffic & Sales"
+                action={
+                  <IconButton>
+                    <MoreVertIcon />
+                  </IconButton>
+                }
+              />
+              <CardContent>
+                <Grid container spacing={3}>
+                  <Grid size={{ xs: 12, md: 6 }}>
+                    <Box sx={{ mb: 3 }}>
+                      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                          <PersonIcon fontSize="small" color="primary" />
+                          <Typography variant="body2">New Clients</Typography>
+                        </Box>
+                        <Typography variant="body2" fontWeight={600}>
+                          9,123
+                        </Typography>
+                      </Box>
+                      <LinearProgress
+                        variant="determinate"
+                        value={41}
+                        sx={{
+                          height: 6,
+                          borderRadius: 3,
+                          backgroundColor: alpha(theme.palette.primary.main, 0.1),
+                        }}
+                      />
+                    </Box>
+                    <Box sx={{ mb: 3 }}>
+                      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                          <ShoppingCartIcon fontSize="small" color="info" />
+                          <Typography variant="body2">Recurring Clients</Typography>
+                        </Box>
+                        <Typography variant="body2" fontWeight={600}>
+                          22,643
+                        </Typography>
+                      </Box>
+                      <LinearProgress
+                        variant="determinate"
+                        value={76}
+                        color="info"
+                        sx={{
+                          height: 6,
+                          borderRadius: 3,
+                          backgroundColor: alpha(theme.palette.info.main, 0.1),
+                        }}
+                      />
+                    </Box>
+                  </Grid>
+                  <Grid size={{ xs: 12, md: 6 }}>
+                    <Box sx={{ mb: 3 }}>
+                      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                          <PaymentIcon fontSize="small" color="warning" />
+                          <Typography variant="body2">Pageviews</Typography>
+                        </Box>
+                        <Typography variant="body2" fontWeight={600}>
+                          78,623
+                        </Typography>
+                      </Box>
+                      <LinearProgress
+                        variant="determinate"
+                        value={56}
+                        color="warning"
+                        sx={{
+                          height: 6,
+                          borderRadius: 3,
+                          backgroundColor: alpha(theme.palette.warning.main, 0.1),
+                        }}
+                      />
+                    </Box>
+                    <Box sx={{ mb: 3 }}>
+                      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                          <DescriptionIcon fontSize="small" color="error" />
+                          <Typography variant="body2">Organic</Typography>
+                        </Box>
+                        <Typography variant="body2" fontWeight={600}>
+                          49,123
+                        </Typography>
+                      </Box>
+                      <LinearProgress
+                        variant="determinate"
+                        value={84}
+                        color="error"
+                        sx={{
+                          height: 6,
+                          borderRadius: 3,
+                          backgroundColor: alpha(theme.palette.error.main, 0.1),
+                        }}
+                      />
+                    </Box>
+                  </Grid>
+                </Grid>
+                <Divider sx={{ my: 3 }} />
+                {progressGroupData1.map((item, index) => (
+                  <Box key={index} sx={{ mb: 2 }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.5 }}>
+                      <Typography variant="body2">{item.title}</Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {item.value1}% / {item.value2}%
+                      </Typography>
+                    </Box>
+                    <Box sx={{ display: 'flex', gap: 0.5 }}>
+                      <LinearProgress
+                        variant="determinate"
+                        value={item.value1}
+                        color="info"
+                        sx={{ flex: 1, height: 6, borderRadius: 3 }}
+                      />
+                      <LinearProgress
+                        variant="determinate"
+                        value={item.value2}
+                        color="success"
+                        sx={{ flex: 1, height: 6, borderRadius: 3 }}
+                      />
+                    </Box>
+                  </Box>
+                ))}
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid size={{ xs: 12, lg: 6 }}>
+            <Card sx={{ height: '100%' }}>
+              <CardHeader
+                title="Traffic Sources"
+                action={
+                  <IconButton>
+                    <MoreVertIcon />
+                  </IconButton>
+                }
+              />
+              <CardContent>
+                {progressGroupData2.map((item, index) => (
+                  <Box key={index} sx={{ mb: 3 }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <item.icon fontSize="small" color={item.color} />
+                        <Typography variant="body2">{item.title}</Typography>
+                      </Box>
+                      <Typography variant="body2" fontWeight={600}>
+                        {item.value}%
+                      </Typography>
+                    </Box>
+                    <LinearProgress
+                      variant="determinate"
+                      value={item.value}
+                      color={item.color}
+                      sx={{
+                        height: 6,
+                        borderRadius: 3,
+                        backgroundColor: alpha(theme.palette[item.color].main, 0.1),
+                      }}
+                    />
+                  </Box>
+                ))}
+                <Divider sx={{ my: 3 }} />
+                {progressGroupData3.map((item, index) => (
+                  <Box key={index} sx={{ mb: 3 }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <item.icon fontSize="small" color={item.color} />
+                        <Typography variant="body2">{item.title}</Typography>
+                      </Box>
+                      <Box sx={{ textAlign: 'right' }}>
+                        <Typography variant="body2" fontWeight={600}>
+                          {item.value.toLocaleString()}
+                        </Typography>
+                        <Typography variant="caption" color="text.secondary">
+                          ({item.percent}%)
+                        </Typography>
+                      </Box>
+                    </Box>
+                    <LinearProgress
+                      variant="determinate"
+                      value={item.percent}
+                      color={item.color}
+                      sx={{
+                        height: 6,
+                        borderRadius: 3,
+                        backgroundColor: alpha(theme.palette[item.color].main, 0.1),
+                      }}
+                    />
+                  </Box>
+                ))}
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+
+        <Card>
+          <CardHeader title="Users" />
+          <CardContent sx={{ p: 0 }}>
+            <TableContainer>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>User</TableCell>
+                    <TableCell>Country</TableCell>
+                    <TableCell>Usage</TableCell>
+                    <TableCell>Payment Method</TableCell>
+                    <TableCell>Activity</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {tableData.map((row, index) => (
+                    <TableRow
+                      key={index}
+                      sx={{
+                        '&:hover': {
+                          backgroundColor: alpha(theme.palette.primary.main, 0.04),
+                        },
+                        transition: theme.transitions.create('background-color'),
+                      }}
+                    >
+                      <TableCell>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                          <Avatar src={row.avatar} alt={row.user.name}>
+                            {row.user.name.charAt(0)}
+                          </Avatar>
+                          <Box>
+                            <Typography variant="body2" fontWeight={500}>
+                              {row.user.name}
+                            </Typography>
+                            <Typography variant="caption" color="text.secondary">
+                              {row.user.new ? 'New' : 'Recurring'} | Registered:{' '}
+                              {row.user.registered}
+                            </Typography>
+                          </Box>
+                        </Box>
+                      </TableCell>
+                      <TableCell>
+                        <Typography variant="body2">
+                          {row.country.flag} {row.country.name}
+                        </Typography>
+                      </TableCell>
+                      <TableCell>
+                        <Box sx={{ minWidth: 100 }}>
+                          <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.5 }}>
+                            <Typography variant="caption" fontWeight={500}>
+                              {row.usage.value}%
+                            </Typography>
+                          </Box>
+                          <LinearProgress
+                            variant="determinate"
+                            value={row.usage.value}
+                            color={row.usage.color}
+                            sx={{ height: 4, borderRadius: 2 }}
+                          />
+                          <Typography variant="caption" color="text.secondary">
+                            {row.usage.period}
+                          </Typography>
+                        </Box>
+                      </TableCell>
+                      <TableCell>
+                        <Typography variant="body2">
+                          {row.payment.icon} {row.payment.name}
+                        </Typography>
+                      </TableCell>
+                      <TableCell>
+                        <Typography variant="body2" color="text.secondary">
+                          {row.activity}
+                        </Typography>
+                      </TableCell>
+                    </TableRow>
                   ))}
-                </CCol>
-                <CCol xs={12} md={6} xl={6}>
-                  <CRow>
-                    <CCol xs={6}>
-                      <div className="border-start border-start-4 border-start-warning py-1 px-3 mb-3">
-                        <div className="text-body-secondary text-truncate small">Pageviews</div>
-                        <div className="fs-5 fw-semibold">78,623</div>
-                      </div>
-                    </CCol>
-                    <CCol xs={6}>
-                      <div className="border-start border-start-4 border-start-success py-1 px-3 mb-3">
-                        <div className="text-body-secondary text-truncate small">Organic</div>
-                        <div className="fs-5 fw-semibold">49,123</div>
-                      </div>
-                    </CCol>
-                  </CRow>
-
-                  <hr className="mt-0" />
-
-                  {progressGroupExample2.map((item, index) => (
-                    <div className="progress-group mb-4" key={index}>
-                      <div className="progress-group-header">
-                        <CIcon className="me-2" icon={item.icon} size="lg" />
-                        <span>{item.title}</span>
-                        <span className="ms-auto fw-semibold">{item.value}%</span>
-                      </div>
-                      <div className="progress-group-bars">
-                        <CProgress thin color="warning" value={item.value} />
-                      </div>
-                    </div>
-                  ))}
-
-                  <div className="mb-5"></div>
-
-                  {progressGroupExample3.map((item, index) => (
-                    <div className="progress-group" key={index}>
-                      <div className="progress-group-header">
-                        <CIcon className="me-2" icon={item.icon} size="lg" />
-                        <span>{item.title}</span>
-                        <span className="ms-auto fw-semibold">
-                          {item.value}{' '}
-                          <span className="text-body-secondary small">({item.percent}%)</span>
-                        </span>
-                      </div>
-                      <div className="progress-group-bars">
-                        <CProgress thin color="success" value={item.percent} />
-                      </div>
-                    </div>
-                  ))}
-                </CCol>
-              </CRow>
-
-              <br />
-
-              <CTable align="middle" className="mb-0 border" hover responsive>
-                <CTableHead className="text-nowrap">
-                  <CTableRow>
-                    <CTableHeaderCell className="bg-body-tertiary text-center">
-                      <CIcon icon={cilPeople} />
-                    </CTableHeaderCell>
-                    <CTableHeaderCell className="bg-body-tertiary">User</CTableHeaderCell>
-                    <CTableHeaderCell className="bg-body-tertiary text-center">
-                      Country
-                    </CTableHeaderCell>
-                    <CTableHeaderCell className="bg-body-tertiary">Usage</CTableHeaderCell>
-                    <CTableHeaderCell className="bg-body-tertiary text-center">
-                      Payment Method
-                    </CTableHeaderCell>
-                    <CTableHeaderCell className="bg-body-tertiary">Activity</CTableHeaderCell>
-                  </CTableRow>
-                </CTableHead>
-                <CTableBody>
-                  {tableExample.map((item, index) => (
-                    <CTableRow v-for="item in tableItems" key={index}>
-                      <CTableDataCell className="text-center">
-                        <CAvatar size="md" src={item.avatar.src} status={item.avatar.status} />
-                      </CTableDataCell>
-                      <CTableDataCell>
-                        <div>{item.user.name}</div>
-                        <div className="small text-body-secondary text-nowrap">
-                          <span>{item.user.new ? 'New' : 'Recurring'}</span> | Registered:{' '}
-                          {item.user.registered}
-                        </div>
-                      </CTableDataCell>
-                      <CTableDataCell className="text-center">
-                        <CIcon size="xl" icon={item.country.flag} title={item.country.name} />
-                      </CTableDataCell>
-                      <CTableDataCell>
-                        <div className="d-flex justify-content-between text-nowrap">
-                          <div className="fw-semibold">{item.usage.value}%</div>
-                          <div className="ms-3">
-                            <small className="text-body-secondary">{item.usage.period}</small>
-                          </div>
-                        </div>
-                        <CProgress thin color={item.usage.color} value={item.usage.value} />
-                      </CTableDataCell>
-                      <CTableDataCell className="text-center">
-                        <CIcon size="xl" icon={item.payment.icon} />
-                      </CTableDataCell>
-                      <CTableDataCell>
-                        <div className="small text-body-secondary text-nowrap">Last login</div>
-                        <div className="fw-semibold text-nowrap">{item.activity}</div>
-                      </CTableDataCell>
-                    </CTableRow>
-                  ))}
-                </CTableBody>
-              </CTable>
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
-    </>
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </CardContent>
+        </Card>
+      </Box>
+    </Fade>
   )
 }
 

@@ -1,99 +1,111 @@
-import React from 'react'
-import { CCard, CCardBody, CCardHeader, CCol, CFormSelect, CRow } from '@coreui/react'
+import React, { useState } from 'react'
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  Typography,
+  Grid,
+  FormControl,
+  InputLabel,
+  Select as MuiSelect,
+  MenuItem,
+  Box,
+} from '@mui/material'
 import { DocsComponents, DocsExample } from 'src/components'
 
 const Select = () => {
+  const [value, setValue] = useState('')
+
+  const handleChange = (event) => {
+    setValue(event.target.value)
+  }
+
   return (
-    <CRow>
-      <CCol xs={12}>
-        <DocsComponents href="forms/select/" />
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Select</strong> <small>Default</small>
-          </CCardHeader>
-          <CCardBody>
-            <DocsExample href="forms/select">
-              <CFormSelect aria-label="Default select example">
-                <option>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </CFormSelect>
+    <Grid container spacing={3}>
+      <Grid size={12}>
+        <DocsComponents href="components/select/" />
+        <Card sx={{ mb: 3 }}>
+          <CardHeader title={<Typography variant="h6">Select</Typography>} />
+          <CardContent>
+            <DocsExample href="components/select">
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, maxWidth: 300 }}>
+                <FormControl fullWidth>
+                  <InputLabel>Select option</InputLabel>
+                  <MuiSelect value={value} label="Select option" onChange={handleChange}>
+                    <MenuItem value="">Open this select menu</MenuItem>
+                    <MenuItem value={1}>One</MenuItem>
+                    <MenuItem value={2}>Two</MenuItem>
+                    <MenuItem value={3}>Three</MenuItem>
+                  </MuiSelect>
+                </FormControl>
+              </Box>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Select</strong> <small>Sizing</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              You may also choose from small and large custom selects to match our similarly sized
-              text inputs.
-            </p>
-            <DocsExample href="forms/select#sizing">
-              <CFormSelect size="lg" className="mb-3" aria-label="Large select example">
-                <option>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </CFormSelect>
-              <CFormSelect size="sm" className="mb-3" aria-label="Small select example">
-                <option>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </CFormSelect>
+          </CardContent>
+        </Card>
+
+        <Card sx={{ mb: 3 }}>
+          <CardHeader
+            title={
+              <Typography variant="h6">
+                Select{' '}
+                <Typography component="span" variant="body2" color="text.secondary">
+                  Sizes
+                </Typography>
+              </Typography>
+            }
+          />
+          <CardContent>
+            <DocsExample href="components/select#sizes">
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, maxWidth: 300 }}>
+                <FormControl size="small" fullWidth>
+                  <InputLabel>Small</InputLabel>
+                  <MuiSelect label="Small">
+                    <MenuItem value={1}>One</MenuItem>
+                    <MenuItem value={2}>Two</MenuItem>
+                    <MenuItem value={3}>Three</MenuItem>
+                  </MuiSelect>
+                </FormControl>
+                <FormControl fullWidth>
+                  <InputLabel>Normal</InputLabel>
+                  <MuiSelect label="Normal">
+                    <MenuItem value={1}>One</MenuItem>
+                    <MenuItem value={2}>Two</MenuItem>
+                    <MenuItem value={3}>Three</MenuItem>
+                  </MuiSelect>
+                </FormControl>
+              </Box>
             </DocsExample>
-            <p className="text-body-secondary small">
-              The <code>multiple</code> attribute is also supported:
-            </p>
-            <DocsExample href="forms/select#sizing">
-              <CFormSelect size="lg" multiple aria-label="Multiple select example">
-                <option>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </CFormSelect>
+          </CardContent>
+        </Card>
+
+        <Card sx={{ mb: 3 }}>
+          <CardHeader
+            title={
+              <Typography variant="h6">
+                Select{' '}
+                <Typography component="span" variant="body2" color="text.secondary">
+                  Disabled
+                </Typography>
+              </Typography>
+            }
+          />
+          <CardContent>
+            <DocsExample href="components/select#disabled">
+              <Box sx={{ maxWidth: 300 }}>
+                <FormControl fullWidth disabled>
+                  <InputLabel>Disabled</InputLabel>
+                  <MuiSelect label="Disabled">
+                    <MenuItem value={1}>One</MenuItem>
+                    <MenuItem value={2}>Two</MenuItem>
+                    <MenuItem value={3}>Three</MenuItem>
+                  </MuiSelect>
+                </FormControl>
+              </Box>
             </DocsExample>
-            <p className="text-body-secondary small">
-              As is the <code>htmlSize</code> property:
-            </p>
-            <DocsExample href="forms/select#sizing">
-              <CFormSelect size="lg" multiple aria-label="Multiple select example">
-                <option>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </CFormSelect>
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Select</strong> <small>Disabled</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Add the <code>disabled</code> boolean attribute on a select to give it a grayed out
-              appearance and remove pointer events.
-            </p>
-            <DocsExample href="forms/select#disabled">
-              <CFormSelect aria-label="Disabled select example" disabled>
-                <option>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </CFormSelect>
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
+          </CardContent>
+        </Card>
+      </Grid>
+    </Grid>
   )
 }
 

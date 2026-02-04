@@ -1,136 +1,84 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
+import { useTheme } from '@mui/material/styles'
+import { Box } from '@mui/material'
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  Legend,
+} from 'recharts'
 
-import { CChartLine } from '@coreui/react-chartjs'
-import { getStyle } from '@coreui/utils'
+const data = [
+  { name: 'January', dataset1: 168, dataset2: 132, dataset3: 65 },
+  { name: 'February', dataset1: 142, dataset2: 178, dataset3: 65 },
+  { name: 'March', dataset1: 189, dataset2: 95, dataset3: 65 },
+  { name: 'April', dataset1: 112, dataset2: 156, dataset3: 65 },
+  { name: 'May', dataset1: 175, dataset2: 88, dataset3: 65 },
+  { name: 'June', dataset1: 98, dataset2: 145, dataset3: 65 },
+  { name: 'July', dataset1: 156, dataset2: 112, dataset3: 65 },
+]
 
 const MainChart = () => {
-  const chartRef = useRef(null)
-
-  useEffect(() => {
-    const handleColorSchemeChange = () => {
-      if (chartRef.current) {
-        setTimeout(() => {
-          chartRef.current.options.scales.x.grid.borderColor = getStyle(
-            '--cui-border-color-translucent',
-          )
-          chartRef.current.options.scales.x.grid.color = getStyle('--cui-border-color-translucent')
-          chartRef.current.options.scales.x.ticks.color = getStyle('--cui-body-color')
-          chartRef.current.options.scales.y.grid.borderColor = getStyle(
-            '--cui-border-color-translucent',
-          )
-          chartRef.current.options.scales.y.grid.color = getStyle('--cui-border-color-translucent')
-          chartRef.current.options.scales.y.ticks.color = getStyle('--cui-body-color')
-          chartRef.current.update()
-        })
-      }
-    }
-
-    document.documentElement.addEventListener('ColorSchemeChange', handleColorSchemeChange)
-    return () =>
-      document.documentElement.removeEventListener('ColorSchemeChange', handleColorSchemeChange)
-  }, [chartRef])
-
-  const random = (min = 0, max = 100) => Math.floor(Math.random() * (max - min + 1)) + min
+  const theme = useTheme()
 
   return (
-    <>
-      <CChartLine
-        ref={chartRef}
-        style={{ height: '300px', marginTop: '40px' }}
-        data={{
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-          datasets: [
-            {
-              label: 'My First dataset',
-              backgroundColor: `rgba(${getStyle('--cui-info-rgb')}, .1)`,
-              borderColor: getStyle('--cui-info'),
-              pointHoverBackgroundColor: getStyle('--cui-info'),
-              borderWidth: 2,
-              data: [
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-              ],
-              fill: true,
-            },
-            {
-              label: 'My Second dataset',
-              backgroundColor: 'transparent',
-              borderColor: getStyle('--cui-success'),
-              pointHoverBackgroundColor: getStyle('--cui-success'),
-              borderWidth: 2,
-              data: [
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-              ],
-            },
-            {
-              label: 'My Third dataset',
-              backgroundColor: 'transparent',
-              borderColor: getStyle('--cui-danger'),
-              pointHoverBackgroundColor: getStyle('--cui-danger'),
-              borderWidth: 1,
-              borderDash: [8, 5],
-              data: [65, 65, 65, 65, 65, 65, 65],
-            },
-          ],
-        }}
-        options={{
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              display: false,
-            },
-          },
-          scales: {
-            x: {
-              grid: {
-                color: getStyle('--cui-border-color-translucent'),
-                drawOnChartArea: false,
-              },
-              ticks: {
-                color: getStyle('--cui-body-color'),
-              },
-            },
-            y: {
-              beginAtZero: true,
-              border: {
-                color: getStyle('--cui-border-color-translucent'),
-              },
-              grid: {
-                color: getStyle('--cui-border-color-translucent'),
-              },
-              max: 250,
-              ticks: {
-                color: getStyle('--cui-body-color'),
-                maxTicksLimit: 5,
-                stepSize: Math.ceil(250 / 5),
-              },
-            },
-          },
-          elements: {
-            line: {
-              tension: 0.4,
-            },
-            point: {
-              radius: 0,
-              hitRadius: 10,
-              hoverRadius: 4,
-              hoverBorderWidth: 3,
-            },
-          },
-        }}
-      />
-    </>
+    <Box sx={{ width: '100%', height: 300, mt: 4 }}>
+      <ResponsiveContainer>
+        <LineChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke={theme.palette.divider} vertical={false} />
+          <XAxis
+            dataKey="name"
+            stroke={theme.palette.text.secondary}
+            tick={{ fill: theme.palette.text.secondary, fontSize: 12 }}
+          />
+          <YAxis
+            stroke={theme.palette.text.secondary}
+            tick={{ fill: theme.palette.text.secondary, fontSize: 12 }}
+            domain={[0, 250]}
+          />
+          <Tooltip
+            contentStyle={{
+              backgroundColor: theme.palette.background.paper,
+              border: `1px solid ${theme.palette.divider}`,
+              borderRadius: 8,
+            }}
+          />
+          <Legend />
+          <Line
+            type="monotone"
+            dataKey="dataset1"
+            name="My First dataset"
+            stroke={theme.palette.info.main}
+            strokeWidth={2}
+            fill={`${theme.palette.info.main}20`}
+            dot={false}
+            activeDot={{ r: 6 }}
+          />
+          <Line
+            type="monotone"
+            dataKey="dataset2"
+            name="My Second dataset"
+            stroke={theme.palette.success.main}
+            strokeWidth={2}
+            dot={false}
+            activeDot={{ r: 6 }}
+          />
+          <Line
+            type="monotone"
+            dataKey="dataset3"
+            name="My Third dataset"
+            stroke={theme.palette.error.main}
+            strokeWidth={1}
+            strokeDasharray="8 5"
+            dot={false}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </Box>
   )
 }
 

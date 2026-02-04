@@ -1,31 +1,33 @@
-import Breadcrumbs from './Breadcrumbs'
-import Cards from './Cards'
-import Carousels from './Carousels'
-import Collapses from './Collapses'
-import Dropdowns from './Dropdowns'
-import Jumbotrons from './Jumbotrons'
-import ListGroups from './ListGroups'
-import Navbars from './Navbars'
-import Navs from './Navs'
-import Paginations from './Paginations'
-import Popovers from './Popovers'
-import ProgressBar from './ProgressBar'
-import Tabs from './Tabs'
-import Tooltips from './Tooltips'
+import Accordion from './accordion/Accordion'
+import Breadcrumbs from './breadcrumbs/Breadcrumbs'
+import Cards from './cards/Cards'
+import Carousels from './carousels/Carousels'
+import Collapses from './collapses/Collapses'
+import ListGroups from './list-groups/ListGroups'
+import Navs from './navs/Navs'
+import Paginations from './paginations/Paginations'
+import Placeholders from './placeholders/Placeholders'
+import Popovers from './popovers/Popovers'
+import Progress from './progress/Progress'
+import Spinners from './spinners/Spinners'
+import Tables from './tables/Tables'
+import Tabs from './tabs/Tabs'
+import Tooltips from './tooltips/Tooltips'
 
 export {
+  Accordion,
   Breadcrumbs,
   Cards,
   Carousels,
   Collapses,
-  Dropdowns,
-  Jumbotrons,
   ListGroups,
-  Navbars,
   Navs,
+  Paginations,
+  Placeholders,
   Popovers,
-  ProgressBar,
+  Progress,
+  Spinners,
+  Tables,
   Tabs,
   Tooltips,
-  Paginations,
 }

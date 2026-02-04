@@ -1,145 +1,147 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
-  CAlert,
-  CAlertHeading,
-  CAlertLink,
-  CCard,
-  CCardBody,
-  CCardHeader,
-  CCol,
-  CRow,
-} from '@coreui/react'
+  Card,
+  CardContent,
+  CardHeader,
+  Typography,
+  Grid,
+  Alert,
+  AlertTitle,
+  Button,
+  Collapse,
+  IconButton,
+  Box,
+} from '@mui/material'
+import CloseIcon from '@mui/icons-material/Close'
 import { DocsComponents, DocsExample } from 'src/components'
 
 const Alerts = () => {
+  const [open, setOpen] = useState(true)
+
   return (
-    <CRow>
-      <CCol xs={12}>
+    <Grid container spacing={3}>
+      <Grid size={12}>
         <DocsComponents href="components/alert/" />
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Alert</strong>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              React Alert is prepared for any length of text, as well as an optional close button.
-              For a styling, use one of the <strong>required</strong> contextual <code>color</code>{' '}
-              props (e.g., <code>primary</code>). For inline dismissal, use the{' '}
-              <a href="https://coreui.io/react/docs/components/alert#dismissing">dismissing prop</a>
-              .
-            </p>
+        <Card sx={{ mb: 3 }}>
+          <CardHeader title={<Typography variant="h6">Alerts</Typography>} />
+          <CardContent>
             <DocsExample href="components/alert">
-              <CAlert color="primary">A simple primary alert—check it out!</CAlert>
-              <CAlert color="secondary">A simple secondary alert—check it out!</CAlert>
-              <CAlert color="success">A simple success alert—check it out!</CAlert>
-              <CAlert color="danger">A simple danger alert—check it out!</CAlert>
-              <CAlert color="warning">A simple warning alert—check it out!</CAlert>
-              <CAlert color="info">A simple info alert—check it out!</CAlert>
-              <CAlert color="light">A simple light alert—check it out!</CAlert>
-              <CAlert color="dark">A simple dark alert—check it out!</CAlert>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                <Alert severity="success">This is a success alert!</Alert>
+                <Alert severity="info">This is an info alert!</Alert>
+                <Alert severity="warning">This is a warning alert!</Alert>
+                <Alert severity="error">This is an error alert!</Alert>
+              </Box>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Alert</strong> <small>Link color</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Use the <code>&lt;CAlertLink&gt;</code> component to immediately give matching colored
-              links inside any alert.
-            </p>
-            <DocsExample href="components/alert#link-color">
-              <CAlert color="primary">
-                A simple primary alert with <CAlertLink href="#">an example link</CAlertLink>. Give
-                it a click if you like.
-              </CAlert>
-              <CAlert color="secondary">
-                A simple secondary alert with <CAlertLink href="#">an example link</CAlertLink>.
-                Give it a click if you like.
-              </CAlert>
-              <CAlert color="success">
-                A simple success alert with <CAlertLink href="#">an example link</CAlertLink>. Give
-                it a click if you like.
-              </CAlert>
-              <CAlert color="danger">
-                A simple danger alert with <CAlertLink href="#">an example link</CAlertLink>. Give
-                it a click if you like.
-              </CAlert>
-              <CAlert color="warning">
-                A simple warning alert with <CAlertLink href="#">an example link</CAlertLink>. Give
-                it a click if you like.
-              </CAlert>
-              <CAlert color="info">
-                A simple info alert with <CAlertLink href="#">an example link</CAlertLink>. Give it
-                a click if you like.
-              </CAlert>
-              <CAlert color="light">
-                A simple light alert with <CAlertLink href="#">an example link</CAlertLink>. Give it
-                a click if you like.
-              </CAlert>
-              <CAlert color="dark">
-                A simple dark alert with <CAlertLink href="#">an example link</CAlertLink>. Give it
-                a click if you like.
-              </CAlert>
+          </CardContent>
+        </Card>
+
+        <Card sx={{ mb: 3 }}>
+          <CardHeader
+            title={
+              <Typography variant="h6">
+                Alerts{' '}
+                <Typography component="span" variant="body2" color="text.secondary">
+                  With title
+                </Typography>
+              </Typography>
+            }
+          />
+          <CardContent>
+            <DocsExample href="components/alert#description">
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                <Alert severity="success">
+                  <AlertTitle>Success</AlertTitle>
+                  This is a success alert with a title.
+                </Alert>
+                <Alert severity="info">
+                  <AlertTitle>Info</AlertTitle>
+                  This is an info alert with a title.
+                </Alert>
+                <Alert severity="warning">
+                  <AlertTitle>Warning</AlertTitle>
+                  This is a warning alert with a title.
+                </Alert>
+                <Alert severity="error">
+                  <AlertTitle>Error</AlertTitle>
+                  This is an error alert with a title.
+                </Alert>
+              </Box>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Alert</strong> <small>Additional content</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Alert can also incorporate supplementary components &amp; elements like heading,
-              paragraph, and divider.
-            </p>
-            <DocsExample href="components/alert#additional-content">
-              <CAlert color="success">
-                <CAlertHeading as="h4">Well done!</CAlertHeading>
-                <p>
-                  Aww yeah, you successfully read this important alert message. This example text is
-                  going to run a bit longer so that you can see how spacing within an alert works
-                  with this kind of content.
-                </p>
-                <hr />
-                <p className="mb-0">
-                  Whenever you need to, be sure to use margin utilities to keep things nice and
-                  tidy.
-                </p>
-              </CAlert>
+          </CardContent>
+        </Card>
+
+        <Card sx={{ mb: 3 }}>
+          <CardHeader
+            title={
+              <Typography variant="h6">
+                Alerts{' '}
+                <Typography component="span" variant="body2" color="text.secondary">
+                  Outlined
+                </Typography>
+              </Typography>
+            }
+          />
+          <CardContent>
+            <DocsExample href="components/alert#outlined">
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                <Alert variant="outlined" severity="success">
+                  This is an outlined success alert!
+                </Alert>
+                <Alert variant="outlined" severity="info">
+                  This is an outlined info alert!
+                </Alert>
+                <Alert variant="outlined" severity="warning">
+                  This is an outlined warning alert!
+                </Alert>
+                <Alert variant="outlined" severity="error">
+                  This is an outlined error alert!
+                </Alert>
+              </Box>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Alert</strong> <small>Dismissing</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Alerts can also be easily dismissed. Just add the <code>dismissible</code> prop.
-            </p>
-            <DocsExample href="components/alert#dismissing">
-              <CAlert
-                color="warning"
-                dismissible
-                onClose={() => {
-                  alert('👋 Well, hi there! Thanks for dismissing me.')
-                }}
-              >
-                <strong>Go right ahead</strong> and click that dimiss over there on the right.
-              </CAlert>
+          </CardContent>
+        </Card>
+
+        <Card sx={{ mb: 3 }}>
+          <CardHeader
+            title={
+              <Typography variant="h6">
+                Alerts{' '}
+                <Typography component="span" variant="body2" color="text.secondary">
+                  Dismissible
+                </Typography>
+              </Typography>
+            }
+          />
+          <CardContent>
+            <DocsExample href="components/alert#transition">
+              <Box sx={{ width: '100%' }}>
+                <Collapse in={open}>
+                  <Alert
+                    action={
+                      <IconButton
+                        aria-label="close"
+                        color="inherit"
+                        size="small"
+                        onClick={() => setOpen(false)}
+                      >
+                        <CloseIcon fontSize="inherit" />
+                      </IconButton>
+                    }
+                    sx={{ mb: 2 }}
+                  >
+                    Close me!
+                  </Alert>
+                </Collapse>
+                <Button disabled={open} variant="outlined" onClick={() => setOpen(true)}>
+                  Re-open
+                </Button>
+              </Box>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
+          </CardContent>
+        </Card>
+      </Grid>
+    </Grid>
   )
 }
 

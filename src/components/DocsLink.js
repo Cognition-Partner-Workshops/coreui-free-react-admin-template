@@ -1,24 +1,27 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { CLink } from '@coreui/react'
+import { Box, Link, Typography } from '@mui/material'
 
 const DocsLink = (props) => {
   const { href, name, text, ...rest } = props
 
-  const _href = name ? `https://coreui.io/react/docs/components/${name}` : href
+  const _href = name ? `https://mui.com/material-ui/${name}` : href
 
   return (
-    <div className="float-end">
-      <CLink
+    <Box sx={{ float: 'right' }}>
+      <Link
         {...rest}
         href={_href}
         rel="noreferrer noopener"
         target="_blank"
-        className="card-header-action"
+        underline="hover"
+        sx={{ display: 'flex', alignItems: 'center' }}
       >
-        <small className="text-body-secondary">{text || 'docs'}</small>
-      </CLink>
-    </div>
+        <Typography variant="body2" color="text.secondary">
+          {text || 'docs'}
+        </Typography>
+      </Link>
+    </Box>
   )
 }
 

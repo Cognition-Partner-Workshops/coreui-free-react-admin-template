@@ -1,77 +1,98 @@
 import React from 'react'
-import { CButton, CCard, CCardBody, CCardHeader, CLink, CTooltip, CRow, CCol } from '@coreui/react'
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  Typography,
+  Grid,
+  Tooltip,
+  Button,
+  Box,
+} from '@mui/material'
 import { DocsComponents, DocsExample } from 'src/components'
 
 const Tooltips = () => {
   return (
-    <CRow>
-      <CCol xs={12}>
+    <Grid container spacing={3}>
+      <Grid size={12}>
         <DocsComponents href="components/tooltip/" />
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Tooltip</strong> <small>Basic example</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">Hover over the links below to see tooltips:</p>
+        <Card sx={{ mb: 3 }}>
+          <CardHeader title={<Typography variant="h6">Tooltips</Typography>} />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              Tooltips display informative text when users hover over, focus on, or tap an element.
+            </Typography>
             <DocsExample href="components/tooltip">
-              <p className="text-body-secondary">
-                Tight pants next level keffiyeh
-                <CTooltip content="Tooltip text">
-                  <CLink> you probably </CLink>
-                </CTooltip>
-                haven&#39;theard of them. Photo booth beard raw denim letterpress vegan messenger
-                bag stumptown. Farm-to-table seitan, mcsweeney&#39;s fixie sustainable quinoa 8-bit
-                american apparel
-                <CTooltip content="Tooltip text">
-                  <CLink> have a </CLink>
-                </CTooltip>
-                terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo
-                thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney&#39;&#39;s
-                cleanse vegan chambray. A really ironic artisan
-                <CTooltip content="Tooltip text">
-                  <CLink> whatever keytar </CLink>
-                </CTooltip>
-                scenester farm-to-table banksy Austin
-                <CTooltip content="Tooltip text">
-                  <CLink> twitter handle </CLink>
-                </CTooltip>
-                freegan cred raw denim single-origin coffee viral.
-              </p>
+              <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+                <Tooltip title="Tooltip on top" placement="top">
+                  <Button variant="outlined">Tooltip on top</Button>
+                </Tooltip>
+                <Tooltip title="Tooltip on right" placement="right">
+                  <Button variant="outlined">Tooltip on right</Button>
+                </Tooltip>
+                <Tooltip title="Tooltip on bottom" placement="bottom">
+                  <Button variant="outlined">Tooltip on bottom</Button>
+                </Tooltip>
+                <Tooltip title="Tooltip on left" placement="left">
+                  <Button variant="outlined">Tooltip on left</Button>
+                </Tooltip>
+              </Box>
             </DocsExample>
-            <p className="text-body-secondary small">
-              Hover over the buttons below to see the four tooltips directions: top, right, bottom,
-              and left. Directions are mirrored when using CoreUI in RTL.
-            </p>
-            <DocsExample href="components/tooltip">
-              <CTooltip
-                content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                placement="top"
-              >
-                <CButton color="secondary">Tooltip on top</CButton>
-              </CTooltip>
-              <CTooltip
-                content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                placement="right"
-              >
-                <CButton color="secondary">Tooltip on right</CButton>
-              </CTooltip>
-              <CTooltip
-                content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                placement="bottom"
-              >
-                <CButton color="secondary">Tooltip on bottom</CButton>
-              </CTooltip>
-              <CTooltip
-                content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                placement="left"
-              >
-                <CButton color="secondary">Tooltip on left</CButton>
-              </CTooltip>
+          </CardContent>
+        </Card>
+
+        <Card sx={{ mb: 3 }}>
+          <CardHeader
+            title={
+              <Typography variant="h6">
+                Tooltips{' '}
+                <Typography component="span" variant="body2" color="text.secondary">
+                  Arrow
+                </Typography>
+              </Typography>
+            }
+          />
+          <CardContent>
+            <DocsExample href="components/tooltip#arrow">
+              <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+                <Tooltip title="Add" arrow>
+                  <Button variant="contained">Arrow tooltip</Button>
+                </Tooltip>
+              </Box>
             </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
+          </CardContent>
+        </Card>
+
+        <Card sx={{ mb: 3 }}>
+          <CardHeader
+            title={
+              <Typography variant="h6">
+                Tooltips{' '}
+                <Typography component="span" variant="body2" color="text.secondary">
+                  Custom HTML
+                </Typography>
+              </Typography>
+            }
+          />
+          <CardContent>
+            <DocsExample href="components/tooltip#custom-html">
+              <Tooltip
+                title={
+                  <React.Fragment>
+                    <Typography color="inherit" variant="subtitle2">
+                      Tooltip with HTML
+                    </Typography>
+                    <em>And here&apos;s</em> <b>some</b> <u>amazing content</u>.
+                  </React.Fragment>
+                }
+              >
+                <Button variant="outlined">HTML Tooltip</Button>
+              </Tooltip>
+            </DocsExample>
+          </CardContent>
+        </Card>
+      </Grid>
+    </Grid>
   )
 }
 

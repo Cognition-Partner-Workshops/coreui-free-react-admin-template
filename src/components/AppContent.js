@@ -1,14 +1,29 @@
 import React, { Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { CContainer, CSpinner } from '@coreui/react'
+import { Box, CircularProgress, Container, Fade } from '@mui/material'
 
-// routes config
 import routes from '../routes'
+
+const LoadingSpinner = () => (
+  <Box
+    sx={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      minHeight: 200,
+      py: 4,
+    }}
+  >
+    <Fade in timeout={500}>
+      <CircularProgress color="primary" />
+    </Fade>
+  </Box>
+)
 
 const AppContent = () => {
   return (
-    <CContainer className="px-4" lg>
-      <Suspense fallback={<CSpinner color="primary" />}>
+    <Container maxWidth="xl" sx={{ py: 3 }}>
+      <Suspense fallback={<LoadingSpinner />}>
         <Routes>
           {routes.map((route, idx) => {
             return (
@@ -26,7 +41,7 @@ const AppContent = () => {
           <Route path="/" element={<Navigate to="dashboard" replace />} />
         </Routes>
       </Suspense>
-    </CContainer>
+    </Container>
   )
 }
 
