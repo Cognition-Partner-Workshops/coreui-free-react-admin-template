@@ -1,12 +1,7 @@
 name: NPM Installation
 
 on:
-  push:
-    branches-ignore:
-      - "dependabot/**"
-  schedule:
-  - cron: '0 0 * * *'
-
+  workflow_dispatch:
 env:
   FORCE_COLOR: 2
   NODE: 16
