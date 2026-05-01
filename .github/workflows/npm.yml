@@ -2,8 +2,6 @@ name: NPM Installation
 
 on:
   workflow_dispatch:
-  - cron: '0 0 * * *'
-
 env:
   FORCE_COLOR: 2
   NODE: 16
